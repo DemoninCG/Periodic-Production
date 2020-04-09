@@ -1,3 +1,4 @@
+console.log("hello")
 let game
 
 function reset() {
