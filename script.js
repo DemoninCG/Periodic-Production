@@ -1,1 +1,3 @@
-alert("gay alarm went off");
+function myFunction() {
+	alert("gay alarm went off");
+}
