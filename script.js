@@ -13,7 +13,6 @@ reset()
 
 function update() {
 	document.getElementById("protonAmount").innerHTML = game.protonAmount
-}
 
 setInterval(update, 10)
 
