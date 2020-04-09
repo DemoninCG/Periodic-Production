@@ -1,6 +1,28 @@
-function myFunction() {
-	alert("gay alarm went off");
+let game
+
+function reset() {
+	game = {
+		protonAmount: new Decimal(0)
+	}
 }
-function ohNo() {
-	alert("it was RAZER BLADES HAHAHAhHAHHahaahahahahaahaah1111");
+
+reset()
+
+
+
+
+function update() {
+	document.getElementById("protonAmount").innerHTML = game.protonAmount
+}
+
+setInterval(update, 10)
+
+
+
+
+function protonAdd() {
+	game.protonAmount = game.protonAmount.add(1)
+}
+function protonDouble() {
+	game.protonAmount = game.protonAmount.multiply(2)
 }
