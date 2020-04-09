@@ -1,1 +1,8 @@
-spreadsheet.css
+body {
+	background-color: #00004d;
+}
+
+p.text {
+	font-family: "Lucida Console", Courier, monospace;
+} 
+
