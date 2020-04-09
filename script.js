@@ -1,1 +1,1 @@
-script.js
+alert("gay alarm went off");
