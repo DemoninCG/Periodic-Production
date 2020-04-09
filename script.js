@@ -14,6 +14,7 @@ reset()
 
 function update() {
 	document.getElementById("protonAmount").innerHTML = game.protonAmount
+}
 
 setInterval(update, 10)
 
@@ -25,4 +26,7 @@ function protonAdd() {
 }
 function protonDouble() {
 	game.protonAmount = game.protonAmount.multiply(2)
+}
+function protonPow() {
+	game.protonAmount = game.protonAmount.pow(2)
 }
