@@ -22,6 +22,12 @@ reset()
 
 function update() {
 	document.getElementById("protonAmount").innerHTML = currentNotation.format(game.protonAmount.toString(), 2, 0)
+	if (window.innerWidth >= 1340) {
+		document.getElementById("periodicTable").style.left = (window.innerWidth - 1330) / 2 + "px"
+	}
+	else {
+		document.getElementById("periodicTable").style.left = "5px"
+	}
 }
 
 setInterval(update, 10)
