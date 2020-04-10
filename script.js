@@ -1,3 +1,7 @@
+/* global Decimal*/
+/* global Notation*/
+/* global ADNotations*/
+
 console.log("hello")
 let game
 
@@ -5,15 +9,14 @@ function reset() {
 	game = {
 		protonAmount: new Decimal(0)
 	}
+	currentNotation = new ADNotations.ScientificNotation()
 }
 
 reset()
 
 
-
-
 function update() {
-	document.getElementById("protonAmount").innerHTML = game.protonAmount
+	document.getElementById("protonAmount").innerHTML = currentNotation.format(game.protonAmount.toString(), 2, 0)
 }
 
 setInterval(update, 10)
