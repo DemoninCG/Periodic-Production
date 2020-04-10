@@ -3,6 +3,10 @@ body {
 	font-family: Tahoma, Geneva, sans-serif;
 }
 
+#protonText {
+	font-size: 30px;
+}
+
 table {
 }
 
@@ -13,7 +17,9 @@ th, td {
 	line-height: 60px;
 	border: 3px solid black;
 	background-color: #aaaaaa;
+	font-size: 22px;
 	position: absolute;
+	border-radius: 5px;
 }
 
 th:hover, td:hover {
