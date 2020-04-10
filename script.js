@@ -5,6 +5,12 @@
 console.log("hello")
 let game
 
+
+function darkMode() {
+	var element = document.body;
+	element.classList.toggle("dark-mode");
+}
+
 function reset() {
 	game = {
 		protonAmount: new Decimal(0)

@@ -1,6 +1,12 @@
 body {
 	background-color: #dddddd;
 	font-family: Tahoma, Geneva, sans-serif;
+	color: #000000;
+}
+
+.dark-mode {
+	background-color: #303030;
+	color: #ffffff;
 }
 
 #protonText {
