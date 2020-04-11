@@ -19,7 +19,10 @@ body {
 	left: 295px;
 }
 
-table {
+.rowNumber {
+	position: absolute;
+	left: 255px;
+	font-size: 26px;
 }
 
 th, td {
