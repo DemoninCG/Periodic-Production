@@ -10,7 +10,7 @@ function reset() {
 		protonAmount: new Decimal(0),
 		backgroundPosition: 0,
 	}
-	currentNotation = new ADNotations.ScientificNotation()
+	currentNotation = new ADNotations.MixedScientificNotation()
 }
 
 reset()
@@ -22,7 +22,7 @@ reset()
 
 
 function update() {
-	document.getElementById("protonAmount").innerHTML = currentNotation.format(game.protonAmount.toString(), 2, 0)
+	document.getElementById("protonAmount").innerHTML = currentNotation.format(game.protonAmount, 2, 0)
 	if (window.innerWidth >= 1340) {
 		document.getElementById("periodicTable").style.left = (window.innerWidth - 1330) / 2 + "px"
 	}

@@ -1,10 +1,6 @@
-﻿/* global Decimal*/
-/* global Notation*/
-/* global ADNotations*/
-
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('break_eternity.js/break_eternity')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'break_eternity.js/break_eternity'], factory) :
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('break_infinity.js/break_infinity')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'break_infinity.js/break_infinity'], factory) :
   (global = global || self, factory(global.ADNotations = {}, global.Decimal));
 }(this, (function (exports, Decimal) { 'use strict';
 
@@ -12,7 +8,7 @@
 
   var Settings = {
     isInfinite: function isInfinite(decimal) {
-      return decimal.gte(Infinity);
+      return decimal.gte(Decimal.MAX_VALUE);
     },
     exponentCommas: {
       show: true,
@@ -64,7 +60,7 @@
       var decimal = Decimal.fromValue_noAlloc(value);
 
       if (decimal.exponent < -300) {
-        return decimal.sign < 0 ? this.formatVerySmallNegativeDecimal(decimal.abs(), placesUnder1000) : this.formatVerySmallDecimal(decimal, placesUnder1000);
+        return decimal.sign() < 0 ? this.formatVerySmallNegativeDecimal(decimal.abs(), placesUnder1000) : this.formatVerySmallDecimal(decimal, placesUnder1000);
       }
 
       if (decimal.exponent < 3) {
@@ -73,10 +69,10 @@
       }
 
       if (Settings.isInfinite(decimal.abs())) {
-        return decimal.sign < 0 ? this.negativeInfinite : this.infinite;
+        return decimal.sign() < 0 ? this.negativeInfinite : this.infinite;
       }
 
-      return decimal.sign < 0 ? this.formatNegativeDecimal(decimal.abs(), places) : this.formatDecimal(decimal, places);
+      return decimal.sign() < 0 ? this.formatNegativeDecimal(decimal.abs(), places) : this.formatDecimal(decimal, places);
     };
 
     Object.defineProperty(Notation.prototype, "negativeInfinite", {
@@ -88,7 +84,7 @@
     });
     Object.defineProperty(Notation.prototype, "infinite", {
       get: function get() {
-        return "This is Infinite";
+        return "Infinite";
       },
       enumerable: true,
       configurable: true
@@ -302,6 +298,7 @@
 
   var CancerNotation = function (_super) {
     __extends(CancerNotation, _super);
+
     function CancerNotation() {
       return _super.call(this, CANCER) || this;
     }
