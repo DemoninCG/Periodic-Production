@@ -7,7 +7,8 @@ let game
 
 function reset() {
 	game = {
-		protonAmount: new Decimal(0)
+		protonAmount: new Decimal(0),
+		backgroundPosition: 0,
 	}
 	currentNotation = new ADNotations.ScientificNotation()
 }
@@ -36,7 +37,12 @@ setInterval(update, 10)
 
 
 
+function backPos() {
+	game.backgroundPosition += 1
+	document.body.style.backgroundPosition = game.backgroundPosition + "px " + game.backgroundPosition + "px"
+}
 
+setInterval(backPos, 50)
 
 function darkMode() {
 	var element = document.body;
