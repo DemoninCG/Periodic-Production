@@ -55,9 +55,6 @@ setInterval(update, 10)
 
 function backPos() {
 	game.backgroundPosition += 1
-	if (game.backgroundPosition >= 600) {
-		game.backgroundPosition = 0
-	}
 	document.body.style.backgroundPosition = game.backgroundPosition + "px " + game.backgroundPosition + "px"
 }
 
@@ -72,7 +69,7 @@ function protonAdd() {
 	game.protonAmount = game.protonAmount.add(1)
 }
 function protonDouble() {
-	game.protonAmount = game.protonAmount.multiply(2)
+	game.protonAmount = game.protonAmount.multiply(100)
 }
 function protonPow() {
 	game.protonAmount = game.protonAmount.pow(2)

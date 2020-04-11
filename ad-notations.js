@@ -1309,7 +1309,7 @@
     return PrimeNotation;
   }(Notation);
 
-  var BARS = ["", "", "", "", "", "", "", ""];
+  var BARS = ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"];
   var LOG8 = Math.log(8);
 
   var BarNotation = function (_super) {
