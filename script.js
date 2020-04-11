@@ -2,7 +2,7 @@
 /* global Notation*/
 /* global ADNotations*/
 
-console.log("hello")
+console.log("Hello there! This is a test console message to ensure the JS file works.")
 let game
 
 function reset() {
@@ -39,6 +39,9 @@ setInterval(update, 10)
 
 function backPos() {
 	game.backgroundPosition += 1
+	if (game.backgroundPosition >= 600) {
+		game.backgroundPosition = 0
+	}
 	document.body.style.backgroundPosition = game.backgroundPosition + "px " + game.backgroundPosition + "px"
 }
 
