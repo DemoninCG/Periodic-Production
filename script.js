@@ -10,7 +10,7 @@ function reset() {
 		protonAmount: new Decimal(0),
 		backgroundPosition: 0,
 	}
-	currentNotation = new ADNotations.MixedScientificNotation()
+	currentNotation = new ADNotations.StandardNotation()
 }
 
 reset()
