@@ -1,0 +1,46 @@
+body {
+	background-image: url('assets/back2.jpg');
+	color: #000000;
+}
+
+.buttonGeneric {
+	background-color: #b0b0b0;
+	color: black;
+	border-color: #303030;
+}
+
+#tabBar {
+	background-color: #aaaaaa;
+	border-left: 3px solid #666666;
+	border-top: 3px solid #666666;
+	border-bottom: 3px solid #666666;
+}
+
+#ingameSecondBack {
+	background-color: #aaaaaa;
+}
+
+th, td {
+	border: 3px solid black;
+	background-color: #aaaaaa;
+}
+
+th:hover, td:hover {
+	background-color: #bbbbbb;
+}
+
+.affordable {
+	background-color: #aaaaff;
+}
+
+.affordable:hover {
+	background-color: #bbbbff;
+}
+
+
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  background-color: #888888;
+  border: 3px solid #555555;
+}

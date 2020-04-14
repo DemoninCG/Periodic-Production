@@ -4,28 +4,27 @@
 <head>
 	<meta charset="utf-8" />
 	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="themeLight.css">
 	<script src="ad-notations.js" defer></script>
     <script type="text/javascript" src="break_infinity.js"></script>
     <script src="script.js" defer></script>
 	<title>Element Game</title>
 </head>
 <body>
-	<button class="buttonGeneric" onclick="protonDouble()"><b>This button multiplies your protons by 100</b></button>
-	<button class="buttonGeneric" onclick="protonAdd()"><b>This button makes protons</b></button>
-	<button class="buttonGeneric" onclick="protonPow()"><b>This button squares your protons</b></button>
-	<button class="buttonGeneric" onclick="darkMode()"><b>Dark theme</b></button>
-
-	<br><br><br><center><p id="protonText">You have <a id="protonAmount" style="font-size: 60px">0</a> protons</p></center>
-
+	<div id="tabBar"></div>
+	
+	<div id="ingameSecondBack"></div>
 	<!-- The Periodic Table -->
 	<table id="periodicTable">
-		<p class="rowNumber" style="top: 88px"><b>1</b></p>
-		<p class="rowNumber" style="top: 178px"><b>2</b></p>
-		<p class="rowNumber" style="top: 268px"><b>3</b></p>
-		<p class="rowNumber" style="top: 358px"><b>4</b></p>
-		<p class="rowNumber" style="top: 448px"><b>5</b></p>
-		<p class="rowNumber" style="top: 538px"><b>6</b></p>
-		<p class="rowNumber" style="top: 628px"><b>7</b></p>
+		<p id="protonText">You have <a id="protonAmount" style="font-size: 60px">0</a> protons</p>
+		<hr noshade id="protonHR">
+		<p class="rowNumber" style="top: 38px"><b>1</b></p>
+		<p class="rowNumber" style="top: 128px"><b>2</b></p>
+		<p class="rowNumber" style="top: 218px"><b>3</b></p>
+		<p class="rowNumber" style="top: 308px"><b>4</b></p>
+		<p class="rowNumber" style="top: 398px"><b>5</b></p>
+		<p class="rowNumber" style="top: 488px"><b>6</b></p>
+		<p class="rowNumber" style="top: 578px"><b>7</b></p>
 		<!-- Row 1 -->
 		<tr>
 			<td style="top: 0px; left: 0px; background-color: #cccccc" class="tooltip">H<span class="tooltiptext"><b>Hydrogen</b><br>You have 0</span></td>
@@ -137,39 +136,39 @@
 		</tr>
 		<!-- Lanthanides -->
 		<tr>
-			<td style="top: 650px; left: 225px">La</td>
-			<td style="top: 650px; left: 300px">Ce</td>
-			<td style="top: 650px; left: 375px">Pr</td>
-			<td style="top: 650px; left: 450px">Nd</td>
-			<td style="top: 650px; left: 525px">Pm</td>
-			<td style="top: 650px; left: 600px">Sm</td>
-			<td style="top: 650px; left: 675px">Eu</td>
-			<td style="top: 650px; left: 750px">Gd</td>
-			<td style="top: 650px; left: 825px">Tb</td>
-			<td style="top: 650px; left: 900px">Dy</td>
-			<td style="top: 650px; left: 975px">Ho</td>
-			<td style="top: 650px; left: 1050px">Er</td>
-			<td style="top: 650px; left: 1125px">Tm</td>
-			<td style="top: 650px; left: 1200px">Yb</td>
-			<td style="top: 650px; left: 1275px">Lu</td>
+			<td style="top: 670px; left: 225px">La</td>
+			<td style="top: 670px; left: 300px">Ce</td>
+			<td style="top: 670px; left: 375px">Pr</td>
+			<td style="top: 670px; left: 450px">Nd</td>
+			<td style="top: 670px; left: 525px">Pm</td>
+			<td style="top: 670px; left: 600px">Sm</td>
+			<td style="top: 670px; left: 675px">Eu</td>
+			<td style="top: 670px; left: 750px">Gd</td>
+			<td style="top: 670px; left: 825px">Tb</td>
+			<td style="top: 670px; left: 900px">Dy</td>
+			<td style="top: 670px; left: 975px">Ho</td>
+			<td style="top: 670px; left: 1050px">Er</td>
+			<td style="top: 670px; left: 1125px">Tm</td>
+			<td style="top: 670px; left: 1200px">Yb</td>
+			<td style="top: 670px; left: 1275px">Lu</td>
 		</tr>
 		<!-- Actinides -->
 		<tr>
-			<td style="top: 740px; left: 225px">Ac</td>
-			<td style="top: 740px; left: 300px">Th</td>
-			<td style="top: 740px; left: 375px">Pa</td>
-			<td style="top: 740px; left: 450px">U</td>
-			<td style="top: 740px; left: 525px">Np</td>
-			<td style="top: 740px; left: 600px">Pu</td>
-			<td style="top: 740px; left: 675px">Am</td>
-			<td style="top: 740px; left: 750px">Cm</td>
-			<td style="top: 740px; left: 825px">Bk</td>
-			<td style="top: 740px; left: 900px">Cf</td>
-			<td style="top: 740px; left: 975px">Es</td>
-			<td style="top: 740px; left: 1050px">Fm</td>
-			<td style="top: 740px; left: 1125px">Md</td>
-			<td style="top: 740px; left: 1200px">No</td>
-			<td style="top: 740px; left: 1275px">Lr</td>
+			<td style="top: 760px; left: 225px">Ac</td>
+			<td style="top: 760px; left: 300px">Th</td>
+			<td style="top: 760px; left: 375px">Pa</td>
+			<td style="top: 760px; left: 450px">U</td>
+			<td style="top: 760px; left: 525px">Np</td>
+			<td style="top: 760px; left: 600px">Pu</td>
+			<td style="top: 760px; left: 675px">Am</td>
+			<td style="top: 760px; left: 750px">Cm</td>
+			<td style="top: 760px; left: 825px">Bk</td>
+			<td style="top: 760px; left: 900px">Cf</td>
+			<td style="top: 760px; left: 975px">Es</td>
+			<td style="top: 760px; left: 1050px">Fm</td>
+			<td style="top: 760px; left: 1125px">Md</td>
+			<td style="top: 760px; left: 1200px">No</td>
+			<td style="top: 760px; left: 1275px">Lr</td>
 		</tr>
 	</table>
 </body>
