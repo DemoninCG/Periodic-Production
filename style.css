@@ -11,6 +11,19 @@ body {
 	margin-right: 30px;
 }
 
+#widthMessage {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	width: 500px;
+	height: 50px;
+	line-height: 23px;
+	background-color: #aaaaaa;
+	border: 3px solid #666666;
+	z-index: 999;
+	display: none;
+}
+
 #tabBar {
 	position: absolute;
 	right: 0px;

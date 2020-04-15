@@ -10,7 +10,14 @@ function reset() {
 		protonAmount: new Decimal(0),
 		backgroundPosition: 0,
 	}
+
 	currentNotation = new ADNotations.StandardNotation()
+
+	var givenWidthMessage = false
+	if (screen.width != 1920 && givenWidthMessage == false) {
+		givenWidthMessage = true
+		widthMessage()
+	}
 }
 
 reset()
@@ -27,6 +34,19 @@ function update() {
 
 setInterval(update, 10)
 
+
+
+
+
+
+function widthMessage() {
+	document.getElementById("widthMessage").style.display = "block"
+	setTimeout(widthMessageHide, 3000)
+}
+
+function widthMessageHide() {
+	document.getElementById("widthMessage").style.display = "none"
+}
 
 
 onmousemove = function(e) {
