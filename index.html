@@ -11,13 +11,15 @@
 	<title>Element Game</title>
 </head>
 <body>
-	<div id="tabBar"></div>
 	
 	<div id="ingameSecondBack"></div>
+	<div style="width: 1520px">
+		<p id="protonText">You have <a id="protonAmount" style="font-size: 60px">0</a> protons</p>
+	</div>
+	<hr noshade id="protonHR">
+
 	<!-- The Periodic Table -->
 	<table id="periodicTable">
-		<p id="protonText">You have <a id="protonAmount" style="font-size: 60px">0</a> protons</p>
-		<hr noshade id="protonHR">
 		<p class="rowNumber" style="top: 38px"><b>1</b></p>
 		<p class="rowNumber" style="top: 128px"><b>2</b></p>
 		<p class="rowNumber" style="top: 218px"><b>3</b></p>
@@ -27,7 +29,7 @@
 		<p class="rowNumber" style="top: 578px"><b>7</b></p>
 		<!-- Row 1 -->
 		<tr>
-			<td style="top: 0px; left: 0px; background-color: #cccccc" class="tooltip">H<span class="tooltiptext"><b>Hydrogen</b><br>You have 0</span></td>
+			<td style="top: 0px; left: 0px; background-color: #cccccc" class="tooltip">H<span class="tooltiptext"><b>Hydrogen (Protons)</b><br>You have 0</span></td>
 			<td style="top: 0px; left: 1275px" class="affordable tooltip">He<span class="tooltiptext"><b>Helium</b><br>You have 0<br>Costs 0 protons</span></td>
 		</tr>
 		<!-- Row 2 -->
@@ -171,5 +173,7 @@
 			<td style="top: 760px; left: 1275px">Lr</td>
 		</tr>
 	</table>
+
+	<div id="tabBar"></div>
 </body>
 </html>
