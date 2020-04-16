@@ -9,6 +9,8 @@ function reset() {
 	game = {
 		protonAmount: new Decimal(0),
 		backgroundPosition: 0,
+		tabBarOut: false,
+		tabBarX: 0,
 	}
 
 	currentNotation = new ADNotations.StandardNotation()
@@ -30,6 +32,14 @@ reset()
 
 function update() {
 	document.getElementById("protonAmount").innerHTML = currentNotation.format(game.protonAmount, 2, 0)
+	document.getElementById("tabBar").style.width = (Math.sin(game.tabBarX / 25) * 160 + 40) + "px"
+
+	if (game.tabBarOut == true && game.tabBarX < 40) {
+		game.tabBarX += 1
+	}
+	if (game.tabBarOut == false && game.tabBarX > 0) {
+		game.tabBarX -= 1
+	}
 }
 
 setInterval(update, 10)
@@ -48,14 +58,12 @@ function widthMessageHide() {
 	document.getElementById("widthMessage").style.display = "none"
 }
 
+function tabBarOpen() {
+	game.tabBarOut = true
+}
 
-onmousemove = function(e) {
-	if (e.clientX > window.innerWidth - 200) {
-		document.getElementById("tabBar").style.width = "200px"
-	}
-	else {
-		document.getElementById("tabBar").style.width = "40px"
-	}
+function tabBarClose() {
+	game.tabBarOut = false
 }
 
 function backPos() {
