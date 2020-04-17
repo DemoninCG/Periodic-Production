@@ -33,6 +33,7 @@ reset()
 function update() {
 	document.getElementById("protonAmount").innerHTML = currentNotation.format(game.protonAmount, 2, 0)
 	document.getElementById("tabBar").style.width = (Math.sin(game.tabBarX / 25) * 160 + 40) + "px"
+	document.getElementById("tabBarText").style.lineHeight = (window.innerHeight / 1.5 + 210) + "px"
 
 	if (game.tabBarOut == true && game.tabBarX < 40) {
 		game.tabBarX += 1
@@ -60,10 +61,12 @@ function widthMessageHide() {
 
 function tabBarOpen() {
 	game.tabBarOut = true
+	document.getElementById("tabBarText").style.display = "none"
 }
 
 function tabBarClose() {
 	game.tabBarOut = false
+	document.getElementById("tabBarText").style.display = "block"
 }
 
 function backPos() {
@@ -75,10 +78,4 @@ setInterval(backPos, 50)
 
 function protonAdd() {
 	game.protonAmount = game.protonAmount.add(1)
-}
-function protonDouble() {
-	game.protonAmount = game.protonAmount.multiply(100)
-}
-function protonPow() {
-	game.protonAmount = game.protonAmount.pow(2)
 }
