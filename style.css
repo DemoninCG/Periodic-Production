@@ -47,6 +47,14 @@ body {
 	height: 100%;
 }
 
+#ingameSecondBar {
+	position: absolute;
+	left: 0px;
+	bottom: 0px;
+	width: 38px;
+	height: 50%;
+}
+
 #protonText {
 	font-size: 30px;
 	text-align: center;

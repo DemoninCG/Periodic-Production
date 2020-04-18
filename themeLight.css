@@ -24,6 +24,10 @@ body {
 	background-color: #aaaaaa;
 }
 
+#ingameSecondBar {
+	background-color: #888888;
+}
+
 th, td {
 	border: 3px solid black;
 	background-color: #aaaaaa;

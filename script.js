@@ -11,6 +11,8 @@ function reset() {
 		backgroundPosition: 0,
 		tabBarOut: false,
 		tabBarX: 0,
+		ingameSecond: 1000,
+		ingameSecondBarHeight: 0,
 	}
 
 	currentNotation = new ADNotations.StandardNotation()
@@ -30,7 +32,7 @@ reset()
 
 
 
-function update() {
+function updateSmall() {
 	document.getElementById("protonAmount").innerHTML = currentNotation.format(game.protonAmount, 2, 0)
 	document.getElementById("tabBar").style.width = (Math.sin(game.tabBarX / 25) * 160 + 40) + "px"
 	document.getElementById("tabBarText").style.lineHeight = (window.innerHeight / 1.5 + 210) + "px"
@@ -43,12 +45,26 @@ function update() {
 	}
 }
 
-setInterval(update, 10)
+function updateLarge() {
+	game.ingameSecondBarHeight = 0
+	document.getElementById("ingameSecondBar").style.height = game.ingameSecondBarHeight + "%"
+}
+
+setInterval(updateSmall, 10)
+setInterval(updateLarge, game.ingameSecond)
 
 
 
 
 
+
+
+function IngameSecondBarUp() {
+	game.ingameSecondBarHeight += (1000 / game.ingameSecond)
+	document.getElementById("ingameSecondBar").style.height = game.ingameSecondBarHeight + "%"
+}
+
+setInterval(IngameSecondBarUp, 10)
 
 function widthMessage() {
 	document.getElementById("widthMessage").style.display = "block"
