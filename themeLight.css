@@ -27,6 +27,10 @@ body {
 	background-image: linear-gradient(to right, #aaaaaa, #888888);
 }
 
+.tabText {
+	color: #333333;
+}
+
 #tabBarText {
 	color: #666666;
 }

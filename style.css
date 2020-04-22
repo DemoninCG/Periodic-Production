@@ -1,3 +1,8 @@
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 body {
 	background-image: url('assets/back2.jpg');
 	font-family: Tahoma, Geneva, sans-serif;
@@ -38,6 +43,12 @@ body {
 	width: 30px;
 	height: 45px;
 	border-radius: 10px 0px 0px 10px;
+}
+
+.tabText {
+	font-size: 22px;
+	text-indent: 15px;
+	line-height: 0px;
 }
 
 #tabBarText {

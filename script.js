@@ -39,8 +39,14 @@ reset()
 function updateSmall() {
 	document.getElementById("protonAmount").innerHTML = currentNotation.format(game.protonAmount, 2, 0)
 	document.getElementById("tabBar").style.width = (Math.sin(game.tabBarX / 25) * 160 + 40) + "px"
-	document.getElementById("tableTab").style.width = (Math.sin(game.tabBarX / 25) * 250 - 90) + "px"
+	document.getElementById("tabLogo").style.right = (Math.sin(game.tabBarX / 25) * 160 - 120) + "px"
+	document.getElementById("tableTab").style.width = (Math.sin(game.tabBarX / 25) * 250 - 70) + "px"
+	document.getElementById("prestigeTab").style.width = (Math.sin(game.tabBarX / 25) * 250 - 90) + "px"
+	document.getElementById("skillsTab").style.width = (Math.sin(game.tabBarX / 25) * 250 - 90) + "px"
+	document.getElementById("neutronsTab").style.width = (Math.sin(game.tabBarX / 25) * 250 - 90) + "px"
+	document.getElementById("tachyonsTab").style.width = (Math.sin(game.tabBarX / 25) * 250 - 90) + "px"
 	document.getElementById("optionsTab").style.width = (Math.sin(game.tabBarX / 25) * 250 - 90) + "px"
+	document.getElementById("statisticsTab").style.width = (Math.sin(game.tabBarX / 25) * 250 - 90) + "px"
 	document.getElementById("tabBarText").style.lineHeight = (window.innerHeight / 1.5 + 210) + "px"
 
 	if (game.tabBarOut == true && game.tabBarX < 40) {
@@ -51,12 +57,27 @@ function updateSmall() {
 	}
 
 	if ((Math.sin(game.tabBarX / 25) * 250 - 90) > 0) {
-		document.getElementById("tableTab").style.display = "block"
+		document.getElementById("prestigeTab").style.display = "block"
+		document.getElementById("skillsTab").style.display = "block"
+		document.getElementById("neutronsTab").style.display = "block"
+		document.getElementById("tachyonsTab").style.display = "block"
 		document.getElementById("optionsTab").style.display = "block"
+		document.getElementById("statisticsTab").style.display = "block"
+	}
+	else {
+		document.getElementById("prestigeTab").style.display = "none"
+		document.getElementById("skillsTab").style.display = "none"
+		document.getElementById("neutronsTab").style.display = "none"
+		document.getElementById("tachyonsTab").style.display = "none"
+		document.getElementById("optionsTab").style.display = "none"
+		document.getElementById("statisticsTab").style.display = "none"
+	}
+
+	if ((Math.sin(game.tabBarX / 25) * 250 - 70) > 0) {
+		document.getElementById("tableTab").style.display = "block"
 	}
 	else {
 		document.getElementById("tableTab").style.display = "none"
-		document.getElementById("optionsTab").style.display = "none"
 	}
 }
 
