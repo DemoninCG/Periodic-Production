@@ -16,6 +16,17 @@ body {
 	border-bottom: 3px solid #666666;
 }
 
+.tab {
+	background-image: linear-gradient(to right, #999999, #777777);
+	border-left: 3px solid #666666;
+	border-top: 3px solid #666666;
+	border-bottom: 3px solid #666666;
+}
+
+.tab:hover {
+	background-image: linear-gradient(to right, #aaaaaa, #888888);
+}
+
 #tabBarText {
 	color: #666666;
 }

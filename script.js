@@ -22,6 +22,10 @@ function reset() {
 		givenWidthMessage = true
 		widthMessage()
 	}
+	else if (screen.height != 1080 && givenWidthMessage == false) {
+		givenWidthMessage = true
+		widthMessage()
+	}
 }
 
 reset()
@@ -35,6 +39,8 @@ reset()
 function updateSmall() {
 	document.getElementById("protonAmount").innerHTML = currentNotation.format(game.protonAmount, 2, 0)
 	document.getElementById("tabBar").style.width = (Math.sin(game.tabBarX / 25) * 160 + 40) + "px"
+	document.getElementById("tableTab").style.width = (Math.sin(game.tabBarX / 25) * 250 - 90) + "px"
+	document.getElementById("optionsTab").style.width = (Math.sin(game.tabBarX / 25) * 250 - 90) + "px"
 	document.getElementById("tabBarText").style.lineHeight = (window.innerHeight / 1.5 + 210) + "px"
 
 	if (game.tabBarOut == true && game.tabBarX < 40) {
@@ -42,6 +48,15 @@ function updateSmall() {
 	}
 	if (game.tabBarOut == false && game.tabBarX > 0) {
 		game.tabBarX -= 1
+	}
+
+	if ((Math.sin(game.tabBarX / 25) * 250 - 90) > 0) {
+		document.getElementById("tableTab").style.display = "block"
+		document.getElementById("optionsTab").style.display = "block"
+	}
+	else {
+		document.getElementById("tableTab").style.display = "none"
+		document.getElementById("optionsTab").style.display = "none"
 	}
 }
 
