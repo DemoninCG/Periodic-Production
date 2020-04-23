@@ -51,6 +51,12 @@ body {
 	line-height: 0px;
 }
 
+#versionText {
+	font-size: 12px;
+	position: absolute;
+	bottom: -3px;
+}
+
 #tabBarText {
 	font-size: 25px;
 	line-height: 850px;

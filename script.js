@@ -39,7 +39,8 @@ reset()
 function updateSmall() {
 	document.getElementById("protonAmount").innerHTML = currentNotation.format(game.protonAmount, 2, 0)
 	document.getElementById("tabBar").style.width = (Math.sin(game.tabBarX / 25) * 160 + 40) + "px"
-	document.getElementById("tabLogo").style.right = (Math.sin(game.tabBarX / 25) * 160 - 120) + "px"
+	document.getElementById("tabLogo").style.right = (Math.sin(game.tabBarX / 25) * 160 - 156) + "px"
+	document.getElementById("versionText").style.right = (Math.sin(game.tabBarX / 25) * 160 - 105) + "px"
 	document.getElementById("tableTab").style.width = (Math.sin(game.tabBarX / 25) * 250 - 70) + "px"
 	document.getElementById("prestigeTab").style.width = (Math.sin(game.tabBarX / 25) * 250 - 90) + "px"
 	document.getElementById("skillsTab").style.width = (Math.sin(game.tabBarX / 25) * 250 - 90) + "px"
