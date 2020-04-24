@@ -3,11 +3,6 @@ html, body {
     overflow-x: hidden;
 }
 
-body {
-	background-image: url('assets/back2.jpg');
-	font-family: Tahoma, Geneva, sans-serif;
-}
-
 .buttonGeneric {
 	height: 40px;
 	border-width: 5px;
