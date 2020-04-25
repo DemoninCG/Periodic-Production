@@ -88,7 +88,7 @@ function updateSmall() {
 	}
 
 	var elementCostTemp
-	for (elementCostTemp = 0; elementCostTemp <= 8; elementCostTemp++) {
+	for (elementCostTemp = 0; elementCostTemp <= 116; elementCostTemp++) {
 		game.elementCosts [elementCostTemp] = game.baseCosts [elementCostTemp]
 		var elementCostTemp2 = (elementCostTemp + 2) + "cost"
 		document.getElementById(elementCostTemp2).innerHTML = game.elementCosts [elementCostTemp]
