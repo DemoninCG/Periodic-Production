@@ -14,11 +14,11 @@ function reset() {
 		ingameSecond: 1000,
 		ingameSecondBarHeight: 0,
 
-		baseCosts: [20, 100, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 
-		69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 
-		69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 
-		69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 
-		69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69],
+		baseCosts: [new Decimal(20), new Decimal(100), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), 
+		new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), 
+		new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), 
+		new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), 
+		new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), 69],
 		elementAmounts: [],
 		elementCosts: [],
 	}
@@ -37,6 +37,9 @@ function reset() {
 }
 
 reset()
+
+
+
 
 
 
