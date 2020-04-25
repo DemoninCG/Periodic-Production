@@ -125,6 +125,8 @@ function tableTabSwitch() {
 	for (rowNumberTemp = 0; rowNumberTemp < 7; rowNumberTemp++) {
 		rowNumbers[rowNumberTemp].style.display = "block"
 	}
+
+	document.body.style.backgroundImage = "url('assets/back2.jpg')"
 }
 
 function optionsTabSwitch() {
@@ -137,6 +139,8 @@ function optionsTabSwitch() {
 	for (rowNumberTemp = 0; rowNumberTemp < 7; rowNumberTemp++) {
 		rowNumbers[rowNumberTemp].style.display = "none"
 	}
+
+	document.body.style.backgroundImage = "url('assets/back.jpg')"
 }
 
 // Increase the height of the ingame second bar
