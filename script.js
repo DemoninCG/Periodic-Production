@@ -113,6 +113,32 @@ setInterval(updateLarge, game.ingameSecond)
 
 
 
+
+// Switching tabs
+function tableTabSwitch() {
+	document.getElementById("periodicTable").style.display = "block"
+	document.getElementById("protonText").style.display = "block"
+	document.getElementById("protonCreateButton").style.display = "block"
+
+	var rowNumbers = document.getElementsByClassName("rowNumber")
+	var rowNumberTemp
+	for (rowNumberTemp = 0; rowNumberTemp < 7; rowNumberTemp++) {
+		rowNumbers[rowNumberTemp].style.display = "block"
+	}
+}
+
+function optionsTabSwitch() {
+	document.getElementById("periodicTable").style.display = "none"
+	document.getElementById("protonText").style.display = "none"
+	document.getElementById("protonCreateButton").style.display = "none"
+
+	var rowNumbers = document.getElementsByClassName("rowNumber")
+	var rowNumberTemp
+	for (rowNumberTemp = 0; rowNumberTemp < 7; rowNumberTemp++) {
+		rowNumbers[rowNumberTemp].style.display = "none"
+	}
+}
+
 // Increase the height of the ingame second bar
 function IngameSecondBarUp() {
 	game.ingameSecondBarHeight += (1000 / game.ingameSecond)
