@@ -41,7 +41,7 @@ reset()
 
 
 
-
+// Stuff that needs to be updated every frame (16ms, 60 times/second)
 function updateSmall() {
 	document.getElementById("protonAmount").innerHTML = currentNotation.format(game.protonAmount, 2, 0)
 	document.getElementById("tabBar").style.width = (Math.sin(game.tabBarX / 25) * 160 + 40) + "px"
@@ -95,6 +95,8 @@ function updateSmall() {
 	}
 }
 
+
+// Stuff that needs to be updated every ingame second (starts at 1 second, decreases with tachyons)
 function updateLarge() {
 	game.ingameSecondBarHeight = 0
 	document.getElementById("ingameSecondBar").style.height = game.ingameSecondBarHeight + "%"
@@ -108,7 +110,7 @@ setInterval(updateLarge, game.ingameSecond)
 
 
 
-
+// Increase the height of the ingame second bar
 function IngameSecondBarUp() {
 	game.ingameSecondBarHeight += (1000 / game.ingameSecond)
 	document.getElementById("ingameSecondBar").style.height = game.ingameSecondBarHeight + "%"
@@ -116,6 +118,8 @@ function IngameSecondBarUp() {
 
 setInterval(IngameSecondBarUp, 10)
 
+
+// Gives the player a message if their screen is not 1920x1080
 function widthMessage() {
 	document.getElementById("widthMessage").style.display = "block"
 	setTimeout(widthMessageHide, 3000)
@@ -125,6 +129,7 @@ function widthMessageHide() {
 	document.getElementById("widthMessage").style.display = "none"
 }
 
+// Smooth tab bar animations
 function tabBarOpen() {
 	game.tabBarOut = true
 	document.getElementById("tabBarText").style.display = "none"
@@ -142,6 +147,7 @@ function backPos() {
 
 setInterval(backPos, 50)
 
+// Add 1 proton, wow amazing
 function protonAdd() {
 	game.protonAmount = game.protonAmount.add(1)
 }

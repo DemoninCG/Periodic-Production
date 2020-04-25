@@ -13,8 +13,11 @@
 </head>
 <body>
 	
+	<!-- The ingame second bar -->
 	<div id="ingameSecondBack"></div>
 	<div id="ingameSecondBar"></div>
+
+	<!-- The proton amount text -->
 	<div style="width: 1520px">
 		<p id="protonText">You have <a id="protonAmount" style="font-size: 60px">0</a> protons</p>
 	</div>
@@ -175,10 +178,13 @@
 		</tr>
 	</table>
 
+	<!-- The width message -->
 	<div id="widthMessage">It appears your screen size is not 1920x1080! This game is designed for 1080p screens, so things may break for you.</div>
 
+	<!-- The button to make protons -->
 	<button class="buttonGeneric" style="position: absolute; top: 60px; left: 1480px; font-size: 22px; width: 250px" onclick="protonAdd()"><b>Create a proton</b></button>
 
+	<!-- The tab bar on the right side -->
 	<div id="tabBar" onmouseover="tabBarOpen()" onmouseout="tabBarClose()">
 		<p id="tabBarText"><</p>
 		<div id="tableTab" class="tab" style="top: 17px; height: 65px;"><p class="tabText" style="line-height: 24px">Table</p></div>
@@ -188,7 +194,7 @@
 		<div id="tachyonsTab" class="tab" style="top: 253px"><p class="tabText">Tachyons</p></div>
 		<div id="optionsTab" class="tab" style="bottom: 47px"><p class="tabText">Options</p></div>
 		<div id="statisticsTab" class="tab" style="bottom: 101px"><p class="tabText">Statistics</p></div>
-		<p id="versionText">Periodic Production<br>Update 39</p>
+		<p id="versionText">Periodic Production<br>Update 40</p>
 		<img src="assets/logo-full-noback.png" id="tabLogo" style="width: 40px; height: 40px; position: absolute; bottom: 3px">
 	</div>
 </body>
