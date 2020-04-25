@@ -13,6 +13,14 @@ function reset() {
 		tabBarX: 0,
 		ingameSecond: 1000,
 		ingameSecondBarHeight: 0,
+
+		baseCosts: [20, 100, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 
+		69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 
+		69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 
+		69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 
+		69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69],
+		elementAmounts: [],
+		elementCosts: [],
 	}
 
 	currentNotation = new ADNotations.StandardNotation()
@@ -29,8 +37,6 @@ function reset() {
 }
 
 reset()
-
-
 
 
 
@@ -80,6 +86,13 @@ function updateSmall() {
 	else {
 		document.getElementById("tableTab").style.display = "none"
 	}
+
+	var elementCostTemp
+	for (elementCostTemp = 0; elementCostTemp <= 8; elementCostTemp++) {
+		game.elementCosts [elementCostTemp] = game.baseCosts [elementCostTemp]
+		var elementCostTemp2 = (elementCostTemp + 2) + "cost"
+		document.getElementById(elementCostTemp2).innerHTML = game.elementCosts [elementCostTemp]
+	}
 }
 
 function updateLarge() {
@@ -87,7 +100,7 @@ function updateLarge() {
 	document.getElementById("ingameSecondBar").style.height = game.ingameSecondBarHeight + "%"
 }
 
-setInterval(updateSmall, 10)
+setInterval(updateSmall, 16)
 setInterval(updateLarge, game.ingameSecond)
 
 
