@@ -138,3 +138,17 @@ th, td {
 .tooltip:hover .tooltiptext {
   visibility: visible;
 }
+
+#options {
+	position: absolute;
+	top: 20px;
+	left: 58px;
+	width: 75%;
+	height: 95.5%;
+	border-radius: 10px;
+}
+
+.optionsText {
+	font-size: 22px;
+	padding-left: 22px;
+}

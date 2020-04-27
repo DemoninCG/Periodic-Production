@@ -68,10 +68,17 @@ th:hover, td:hover {
 	background-color: #bbbbff;
 }
 
-
-
 /* Tooltip text */
 .tooltip .tooltiptext {
-  background-color: #888888;
-  border: 3px solid #555555;
+	background-color: #888888;
+	border: 3px solid #555555;
+}
+
+#options {
+	background: rgba(34, 34, 34, 0.2);
+	border: 3px rgba(34, 34, 34, 0.2);
+}
+
+.optionsText {
+	color: #111111;
 }

@@ -23,6 +23,8 @@ function reset() {
 		elementCosts: [],
 	}
 
+	document.getElementById("options").style.display = "none"
+
 	currentNotation = new ADNotations.StandardNotation()
 
 	var givenWidthMessage = false
@@ -119,6 +121,7 @@ function tableTabSwitch() {
 	document.getElementById("periodicTable").style.display = "block"
 	document.getElementById("protonText").style.display = "block"
 	document.getElementById("protonCreateButton").style.display = "block"
+	document.getElementById("options").style.display = "none"
 
 	var rowNumbers = document.getElementsByClassName("rowNumber")
 	var rowNumberTemp
@@ -133,6 +136,7 @@ function optionsTabSwitch() {
 	document.getElementById("periodicTable").style.display = "none"
 	document.getElementById("protonText").style.display = "none"
 	document.getElementById("protonCreateButton").style.display = "none"
+	document.getElementById("options").style.display = "block"
 
 	var rowNumbers = document.getElementsByClassName("rowNumber")
 	var rowNumberTemp
