@@ -197,10 +197,32 @@
 	<div id="options">
 		<p class="optionsText" style="font-size: 42px; line-height: 5px">Options (Still in progress)</p>
 		<br>
-		<p class="optionsText">[ ] Notation</p>
-		<p class="optionsText">[ ] Color theme</p>
+		<p class="optionsText" style="font-size: 26px">Visuals</p>
+		<p class="optionsText optionsTextButton">Notation</p>
+		<select id="optionsNotation" class="optionsDropdown">
+		  <option value="Standard">Standard</option>
+		  <option value="Scientific">Scientific</option>
+		  <option value="Scientific">Engineering</option>
+		  <option value="Scientific">Mixed scientific</option>
+		  <option value="Scientific">Mixed engineering</option>
+		  <option value="Scientific">Letters</option>
+		  <option value="Scientific">Cancer</option>
+		</select>
+		<p class="optionsText optionsTextButton">Color theme</p>
+		<select id="optionsColorTheme" class="optionsDropdown">
+		  <option value="Light">Light</option>
+		  <option value="Dark">Dark</option>
+		  <option value="Colourful">Colourful</option>
+		  <option value="Vaporwave">Vaporwave</option>
+		</select>
+		<br><br>
+		<p class="optionsText" style="font-size: 26px">Saving/loading</p>
+		<p class="optionsText optionsTextButton">Manual save</p>
+		<p class="optionsText optionsTextButton">Export</p>
+		<p class="optionsText optionsTextButton">Import</p>
 		<br><br><br>
-		<p class="optionsText" style="color: #bb1111">HARD RESET</p>
+		<p class="optionsText optionsTextButton" style="color: #bb1111; background: rgba(160, 100, 100, 0.5)">HARD RESET</p>
+		<p class="optionsText" style="position: absolute; bottom: 0px; left: 0px; font-size: 12px; line-height: 15px">Libraries used: break_infinity.js, ad-notations.js</p>
 	</div>
 
 	<!-- The tab bar on the right side -->
@@ -213,7 +235,7 @@
 		<div id="tachyonsTab" class="tab unselectable" style="top: 253px"><p class="tabText">Tachyons</p></div>
 		<div id="optionsTab" class="tab unselectable" style="bottom: 47px" onclick="optionsTabSwitch()"><p class="tabText">Options</p></div>
 		<div id="statisticsTab" class="tab unselectable" style="bottom: 101px"><p class="tabText">Statistics</p></div>
-		<p id="versionText">Periodic Production<br>Update 45</p>
+		<p id="versionText">Periodic Production<br>Update 46</p>
 		<img src="assets/logo-full-noback.png" id="tabLogo" style="width: 40px; height: 40px; position: absolute; bottom: 3px">
 	</div>
 </body>

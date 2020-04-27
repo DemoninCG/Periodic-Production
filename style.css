@@ -151,4 +151,21 @@ th, td {
 .optionsText {
 	font-size: 22px;
 	padding-left: 22px;
+	line-height: 30px;
+}
+
+.optionsTextButton {
+	background: rgba(120, 120, 120, 0.5);
+	height: 30px;
+}
+
+.optionsTextButton:hover {
+	background: rgba(140, 140, 140, 0.5);
+}
+
+.optionsDropdown {
+	background-color: #bbbbbb;
+	border: 2px solid #666666;
+	margin-left: 22px;
+	width: 120px;
 }
