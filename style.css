@@ -98,17 +98,17 @@ p {
 #protonTextDiv {
 	position: absolute;
 	top: 15px;
-	left: 120px;
-	width: 1318px;
+	left: 103px;
+	width: 1334px;
 	height: 80px;
-	transform: skew(330deg);
+	border: 3px rgba(34, 34, 34, 0.2);
+	border-radius: 8px;
 }
 
 #protonText {
 	font-size: 30px;
 	text-align: center;
 	margin-top: 0px;
-	transform: skew(30deg);
 }
 
 
