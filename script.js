@@ -105,10 +105,11 @@ function updateSmall() {
 function updateLarge() {
 	game.ingameSecondBarHeight = 0
 	document.getElementById("ingameSecondBar").style.height = game.ingameSecondBarHeight + "%"
+	setTimeout(updateLarge, game.ingameSecond)
 }
 
 setInterval(updateSmall, 16)
-setInterval(updateLarge, game.ingameSecond)
+setTimeout(updateLarge, game.ingameSecond)
 
 
 
