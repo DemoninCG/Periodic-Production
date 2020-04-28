@@ -23,7 +23,8 @@ p {
 	height: 40px;
 	border-width: 5px;
 	border-radius: 10px;
-	width: 300px;
+	width: 250px;
+	font-size: 22px;
 }
 
 #widthMessage {
@@ -94,17 +95,28 @@ p {
 	height: 50%;
 }
 
+#protonTextDiv {
+	position: absolute;
+	top: 15px;
+	left: 120px;
+	width: 1318px;
+	height: 80px;
+	transform: skew(330deg);
+	background: rgba(100, 100, 100, 0.5)
+}
+
 #protonText {
 	font-size: 30px;
 	text-align: center;
-	margin-top: 60px;
+	margin-top: 0px;
+	transform: skew(30deg);
 }
 
 
 /* The table */
 #periodicTable {
 	position: absolute;
-	top: 50px;
+	top: 180px;
 	left: 100px;
 }
 
