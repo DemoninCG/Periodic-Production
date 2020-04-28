@@ -12,6 +12,7 @@ function reset() {
 		tabBarOut: false,
 		tabBarX: 0,
 		ingameSecond: 1000,
+		ingameSecondTime: Date.now(),
 		ingameSecondBarHeight: 0,
 
 		baseCosts: [new Decimal(20), new Decimal(100), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), 
@@ -106,6 +107,7 @@ function updateLarge() {
 	game.ingameSecondBarHeight = 0
 	document.getElementById("ingameSecondBar").style.height = game.ingameSecondBarHeight + "%"
 	setTimeout(updateLarge, game.ingameSecond)
+	game.ingameSecondTime = Date.now()
 }
 
 setInterval(updateSmall, 16)
@@ -150,7 +152,7 @@ function optionsTabSwitch() {
 
 // Increase the height of the ingame second bar
 function IngameSecondBarUp() {
-	game.ingameSecondBarHeight += (1000 / game.ingameSecond)
+	game.ingameSecondBarHeight = (Date.now() - game.ingameSecondTime) / (game.ingameSecond / 100)
 	document.getElementById("ingameSecondBar").style.height = game.ingameSecondBarHeight + "%"
 }
 
