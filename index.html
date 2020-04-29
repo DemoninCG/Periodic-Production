@@ -215,6 +215,8 @@
 		<br><br>
 		<p class="optionsText">You currently have <a class="protonAmount">0</a> protons</p>
 		<p class="optionsText">That'd take about <a id="protonAmountSeconds">0 seconds</a> to write out completely</p>
+		<br><br>
+		<p class="optionsText">Element rules:<br>The first element of each row (Li, Na, K, etc.) multiplies all rows before it<br>Other elements produce the element before them.</p>
 	</div>
 
 	<!-- Options container -->
@@ -223,16 +225,16 @@
 		<br>
 		<p class="optionsText" style="font-size: 32px; line-height: 50px">Visuals</p>
 		<p class="optionsText" style="line-height: 2px">Notation</p>
-		<select id="optionsNotation " class="optionsDropdown">
+		<select id="optionsNotation" class="optionsDropdown">
 		  <option value="Standard">Standard</option>
 		  <option value="Scientific">Scientific</option>
-		  <option value="Scientific">Engineering</option>
-		  <option value="Scientific">Mixed scientific</option>
-		  <option value="Scientific">Mixed engineering</option>
-		  <option value="Scientific">Letters</option>
-		  <option value="Scientific">Cancer</option>
+		  <option value="Engineering">Engineering</option>
+		  <option value="Mixed Scientific">Mixed scientific</option>
+		  <option value="Mixed Engineering">Mixed engineering</option>
+		  <option value="Letters">Letters</option>
+		  <option value="Cancer">Cancer</option>
 		</select><br><br>
-		<p class="optionsText" style="line-height: 2px">Color theme</p>
+		<p class="optionsText" style="line-height: 2px">Color theme (Will be implemented soon!)</p>
 		<select id="optionsColorTheme" class="optionsDropdown">
 		  <option value="Light">Light</option>
 		  <option value="Dark">Dark</option>
@@ -246,7 +248,7 @@
 		<p class="optionsText optionsTextButton">Import</p>
 		<br><br><br>
 		<p class="optionsText optionsTextButton" style="color: #bb1111; background: rgba(160, 100, 100, 0.5)">HARD RESET</p>
-		<p class="optionsText" style="position: absolute; bottom: 0px; left: 0px; font-size: 12px; line-height: 15px">Libraries used: break_infinity.js, ad-notations.js</p>
+		<p class="optionsText" style="position: absolute; bottom: 5px; left: 0px; font-size: 12px; line-height: 15px">Game made by Demonin, tested by LightB and Wolfdale276<br>Libraries used: break_infinity.js, ad-notations.js</p>
 	</div>
 
 	<!-- The tab bar on the right side -->
@@ -259,7 +261,7 @@
 		<div id="tachyonsTab" class="tab" style="top: 253px"><p class="tabText">Tachyons</p></div>
 		<div id="optionsTab" class="tab" style="bottom: 47px" onclick="optionsTabSwitch()"><p class="tabText">Options</p></div>
 		<div id="statisticsTab" class="tab" style="bottom: 101px" onclick="statisticsTabSwitch()"><p class="tabText">Statistics</p></div>
-		<p id="versionText" class="">Periodic Production<br>Update 58</p>
+		<p id="versionText" class="">Periodic Production<br>Update 59</p>
 		<img src="assets/logo-full-noback.png" id="tabLogo" class="unselectable" style="width: 40px; height: 40px; position: absolute; bottom: 3px">
 	</div>
 </body>

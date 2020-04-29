@@ -14,12 +14,9 @@ function reset() {
 		ingameSecond: 1000,
 		ingameSecondTime: Date.now(),
 		ingameSecondBarHeight: 0,
+		currentNotation: new ADNotations.StandardNotation(),
 
-		baseCosts: [new Decimal(20), new Decimal(100), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), 
-		new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), 
-		new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), 
-		new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), 
-		new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69)],
+		baseCosts: [new Decimal(20), new Decimal(100)],
 		elementAmounts: [],
 		elementCosts: [],
 	}
@@ -27,11 +24,12 @@ function reset() {
 	game.elementAmounts.length = 119
 	game.elementAmounts.fill(0)
 
+	game.baseCosts.length = 117
+	game.baseCosts.fill(new Decimal(69), 2, 117)
+
 	document.getElementById("skills").style.display = "none"
 	document.getElementById("statistics").style.display = "none"
 	document.getElementById("options").style.display = "none"
-
-	currentNotation = new ADNotations.StandardNotation()
 
 	var givenWidthMessage = false
 	if (screen.width != 1920 && givenWidthMessage == false) {
@@ -54,9 +52,31 @@ reset()
 
 // Stuff that needs to be updated every frame (16ms, 60 times/second)
 function updateSmall() {
-	document.getElementsByClassName("protonAmount")[0].innerHTML = currentNotation.format(game.protonAmount, 2, 0)
-	document.getElementsByClassName("protonAmount")[1].innerHTML = currentNotation.format(game.protonAmount, 2, 0)
-	document.getElementsByClassName("protonAmount")[2].innerHTML = currentNotation.format(game.protonAmount, 2, 0)
+	if (document.getElementById("optionsNotation").value == "Standard") {
+		game.currentNotation = new ADNotations.StandardNotation()
+	}
+	else if (document.getElementById("optionsNotation").value == "Scientific") {
+		game.currentNotation = new ADNotations.ScientificNotation()
+	}
+	else if (document.getElementById("optionsNotation").value == "Engineering") {
+		game.currentNotation = new ADNotations.EngineeringNotation()
+	}
+	else if (document.getElementById("optionsNotation").value == "Mixed Scientific") {
+		game.currentNotation = new ADNotations.MixedScientificNotation()
+	}
+	else if (document.getElementById("optionsNotation").value == "Mixed Engineering") {
+		game.currentNotation = new ADNotations.MixedEngineeringNotation()
+	}
+	else if (document.getElementById("optionsNotation").value == "Letters") {
+		game.currentNotation = new ADNotations.LettersNotation()
+	}
+	else if (document.getElementById("optionsNotation").value == "Cancer") {
+		game.currentNotation = new ADNotations.CancerNotation()
+	}
+
+	document.getElementsByClassName("protonAmount")[0].innerHTML = game.currentNotation.format(game.protonAmount, 2, 0)
+	document.getElementsByClassName("protonAmount")[1].innerHTML = game.currentNotation.format(game.protonAmount, 2, 0)
+	document.getElementsByClassName("protonAmount")[2].innerHTML = game.currentNotation.format(game.protonAmount, 2, 0)
 	if (game.protonAmount == 0) {
 		var protonAmountSeconds = new Decimal(0)
 	}
@@ -124,15 +144,22 @@ function updateSmall() {
 
 	var elementCostTemp
 	for (elementCostTemp = 0; elementCostTemp <= 116; elementCostTemp++) {
-		game.elementCosts [elementCostTemp] = game.baseCosts [elementCostTemp] * Math.pow(2, game.elementAmounts[elementCostTemp+2])
+		if (game.elementAmounts[elementCostTemp+2] < 100) {
+			game.elementCosts [elementCostTemp] = game.baseCosts [elementCostTemp] * Math.pow(elementCostTemp+2, game.elementAmounts[elementCostTemp+2])
+		}
+		else {
+			game.elementCosts [elementCostTemp] = Infinity
+		}
 		var elementCostTemp2 = (elementCostTemp + 2) + "cost"
-		document.getElementById(elementCostTemp2).innerHTML = game.elementCosts [elementCostTemp]
+		document.getElementById(elementCostTemp2).innerHTML = game.currentNotation.format(game.elementCosts [elementCostTemp], 2, 0)
 	}
 }
 
 
 // Stuff that needs to be updated every ingame second (starts at 1 second, decreases with tachyons)
 function updateLarge() {
+	game.protonAmount = game.protonAmount.add(new Decimal(game.elementAmounts[2]).multiply(game.elementAmounts[3] + 1))
+
 	game.ingameSecondBarHeight = 0
 	document.getElementById("ingameSecondBar").style.height = game.ingameSecondBarHeight + "%"
 	setTimeout(updateLarge, game.ingameSecond)
@@ -147,14 +174,9 @@ setTimeout(updateLarge, game.ingameSecond)
 
 // Buying elements
 function buyElement(x) {
-	if (game.protonAmount > game.elementCosts[x-2]) {
+	if (game.protonAmount >= game.elementCosts[x-2]) {
 		game.protonAmount = game.protonAmount.subtract(game.elementCosts[x-2])
-		 if (game.elementAmounts[x] == undefined) {
-			game.elementAmounts[x] = 1
-		 }
-		 else {
-			game.elementAmounts[x] += 1
-		 }
+		game.elementAmounts[x] += 1
 	}
 }
 
