@@ -16,16 +16,16 @@ function reset() {
 		ingameSecondBarHeight: 0,
 		currentNotation: new ADNotations.StandardNotation(),
 
-		baseCosts: [new Decimal(20), new Decimal(100)],
+		baseCosts: [new Decimal(20), new Decimal(100), new Decimal(800)],
 		elementAmounts: [],
 		elementCosts: [],
 	}
 
 	game.elementAmounts.length = 119
-	game.elementAmounts.fill(0)
+	game.elementAmounts.fill(new Decimal(0))
 
 	game.baseCosts.length = 117
-	game.baseCosts.fill(new Decimal(69), 2, 117)
+	game.baseCosts.fill(new Decimal(69), 3, 117)
 
 	document.getElementById("skills").style.display = "none"
 	document.getElementById("statistics").style.display = "none"
@@ -158,7 +158,8 @@ function updateSmall() {
 
 // Stuff that needs to be updated every ingame second (starts at 1 second, decreases with tachyons)
 function updateLarge() {
-	game.protonAmount = game.protonAmount.add(new Decimal(game.elementAmounts[2]).multiply(game.elementAmounts[3] + 1))
+	game.protonAmount = game.protonAmount.add(new Decimal(game.elementAmounts[2]).multiply(game.elementAmounts[3].add(1)))
+	game.elementAmounts[3] = game.elementAmounts[3].add(game.elementAmounts[4])
 
 	game.ingameSecondBarHeight = 0
 	document.getElementById("ingameSecondBar").style.height = game.ingameSecondBarHeight + "%"
@@ -176,7 +177,7 @@ setTimeout(updateLarge, game.ingameSecond)
 function buyElement(x) {
 	if (game.protonAmount >= game.elementCosts[x-2]) {
 		game.protonAmount = game.protonAmount.subtract(game.elementCosts[x-2])
-		game.elementAmounts[x] += 1
+		game.elementAmounts[x] = game.elementAmounts[x].add(1)
 	}
 }
 

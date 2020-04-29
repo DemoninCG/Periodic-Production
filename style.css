@@ -101,7 +101,6 @@ p {
 	left: 103px;
 	width: 1334px;
 	height: 80px;
-	border: 3px rgba(34, 34, 34, 0.2);
 	border-radius: 8px;
 }
 
@@ -109,6 +108,15 @@ p {
 	font-size: 30px;
 	text-align: center;
 	margin-top: 0px;
+}
+
+#infoDiv {
+	position: absolute;
+	top: 111px;
+	left: 250px;
+	width: 738px;
+	height: 282px;
+	border-radius: 8px;
 }
 
 
@@ -174,7 +182,6 @@ th, td {
 	left: 53px;
 	width: 1400px;
 	height: 60px;
-	border: 3px rgba(34, 34, 34, 0.2);
 	border-radius: 8px;
 }
 
@@ -230,17 +237,10 @@ th, td {
 }
 
 .optionsTextButton {
-	background: rgba(120, 120, 120, 0.5);
 	height: 30px;
 }
 
-.optionsTextButton:hover {
-	background: rgba(140, 140, 140, 0.5);
-}
-
 .optionsDropdown {
-	background-color: #bbbbbb;
-	border: 2px solid #666666;
 	margin-left: 22px;
 	width: 120px;
 }

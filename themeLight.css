@@ -52,7 +52,13 @@ body {
 }
 
 #protonTextDiv {
-	background: rgba(34, 34, 34, 0.2)
+	background: rgba(34, 34, 34, 0.2);
+	border: 3px rgba(34, 34, 34, 0.2);
+}
+
+#infoDiv {
+	background: rgba(68, 68, 68, 0.1);
+	border: 3px rgba(68, 68, 68, 0.1);
 }
 
 th, td {
@@ -75,7 +81,8 @@ th:hover, td:hover {
 
 
 #skillsTopBar {
-	background: rgba(34, 34, 34, 0.2)
+	background: rgba(34, 34, 34, 0.2);
+	border: 3px rgba(34, 34, 34, 0.2);
 }
 
 .skillsTopTab {
@@ -105,4 +112,17 @@ th:hover, td:hover {
 
 .optionsText {
 	color: #111111;
+}
+
+.optionsTextButton {
+	background: rgba(120, 120, 120, 0.5);
+}
+
+.optionsTextButton:hover {
+	background: rgba(140, 140, 140, 0.5);
+}
+
+.optionsDropdown {
+	background-color: #bbbbbb;
+	border: 2px solid #666666;
 }
