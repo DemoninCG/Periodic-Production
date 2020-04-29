@@ -30,7 +30,7 @@
 	<div id="table">
 		<!-- The proton amount text -->
 		<div id="protonTextDiv">
-			<p id="protonText">You have <a id="protonAmount" style="font-size: 60px">0</a> protons</p>
+			<p id="protonText">You have <a class="protonAmount" style="font-size: 60px">0</a> protons</p>
 		</div>
 
 		<!-- The Periodic Table -->
@@ -44,7 +44,7 @@
 			<p class="rowNumber" style="top: 618px"><b>7</b></p>
 			<!-- Row 1 -->
 			<tr>
-				<td style="top: 0px; left: 0px; background-color: #cccccc; border: 3px solid #666666; color: #333333" class="tooltip unselectable">H<span class="tooltiptext" style="color: #000000"><b>Hydrogen/Protons [1]</b><br>You have 0</span></td>
+				<td style="top: 0px; left: 0px; background-color: #cccccc; border: 3px solid #666666; color: #333333" class="tooltip unselectable">H<span class="tooltiptext" style="color: #000000"><b>Hydrogen/Protons [1]</b><br>You have <a class="protonAmount">0</a></span></td>
 				<td style="top: 0px; left: 1275px" class="tooltip unselectable" onclick="buyElement(2)">He<span class="tooltiptext"><b>Helium [2]</b><br>You have 0<br>Costs <a id="2cost">0</a> protons</span></td>
 			</tr>
 			<!-- Row 2 -->
@@ -209,6 +209,14 @@
 		<div class="skillsTopTab" style="top: 22px; left: 1290px; background-color: #000000; border: 3px solid #8855ff; color: #8855ff; box-shadow: 0px 0px 16px #8855ff;">True Planck</div>
 	</div>
 
+	<!-- Statistics container -->
+	<div id="statistics">
+		<p class="optionsText" style="font-size: 42px; line-height: 5px">Statistics (Still in progress)</p>
+		<br><br>
+		<p class="optionsText">You currently have <a class="protonAmount">0</a> protons</p>
+		<p class="optionsText">That'd take about <a id="protonAmountSeconds">0 seconds</a> to write out completely</p>
+	</div>
+
 	<!-- Options container -->
 	<div id="options">
 		<p class="optionsText" style="font-size: 42px; line-height: 5px">Options (Still in progress)</p>
@@ -250,8 +258,8 @@
 		<div id="skillsTab" class="tab" style="top: 199px" onclick="skillsTabSwitch()"><p class="tabText">Planck</p></div>
 		<div id="tachyonsTab" class="tab" style="top: 253px"><p class="tabText">Tachyons</p></div>
 		<div id="optionsTab" class="tab" style="bottom: 47px" onclick="optionsTabSwitch()"><p class="tabText">Options</p></div>
-		<div id="statisticsTab" class="tab" style="bottom: 101px"><p class="tabText">Statistics</p></div>
-		<p id="versionText" class="">Periodic Production<br>Update 56</p>
+		<div id="statisticsTab" class="tab" style="bottom: 101px" onclick="statisticsTabSwitch()"><p class="tabText">Statistics</p></div>
+		<p id="versionText" class="">Periodic Production<br>Update 58</p>
 		<img src="assets/logo-full-noback.png" id="tabLogo" class="unselectable" style="width: 40px; height: 40px; position: absolute; bottom: 3px">
 	</div>
 </body>

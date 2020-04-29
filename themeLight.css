@@ -88,6 +88,16 @@ th:hover, td:hover {
 
 
 
+
+#statistics {
+	background: rgba(34, 34, 34, 0.2);
+	border: 3px rgba(34, 34, 34, 0.2);
+}
+
+
+
+
+
 #options {
 	background: rgba(34, 34, 34, 0.2);
 	border: 3px rgba(34, 34, 34, 0.2);

@@ -28,6 +28,7 @@ function reset() {
 	game.elementAmounts.fill(0)
 
 	document.getElementById("skills").style.display = "none"
+	document.getElementById("statistics").style.display = "none"
 	document.getElementById("options").style.display = "none"
 
 	currentNotation = new ADNotations.StandardNotation()
@@ -53,7 +54,31 @@ reset()
 
 // Stuff that needs to be updated every frame (16ms, 60 times/second)
 function updateSmall() {
-	document.getElementById("protonAmount").innerHTML = currentNotation.format(game.protonAmount, 2, 0)
+	document.getElementsByClassName("protonAmount")[0].innerHTML = currentNotation.format(game.protonAmount, 2, 0)
+	document.getElementsByClassName("protonAmount")[1].innerHTML = currentNotation.format(game.protonAmount, 2, 0)
+	document.getElementsByClassName("protonAmount")[2].innerHTML = currentNotation.format(game.protonAmount, 2, 0)
+	if (game.protonAmount == 0) {
+		var protonAmountSeconds = new Decimal(0)
+	}
+	else {
+		var protonAmountSeconds = new Decimal(game.protonAmount.log10())
+	}
+	if (protonAmountSeconds < 60) {
+		document.getElementById("protonAmountSeconds").innerHTML = protonAmountSeconds.toFixed(1) + " seconds"
+	}
+	else if (protonAmountSeconds >= 60 && protonAmountSeconds < 3600) {
+		document.getElementById("protonAmountSeconds").innerHTML = (protonAmountSeconds.divide(60)).toFixed(2) + " minutes"
+	}
+	else if (protonAmountSeconds >= 3600 && protonAmountSeconds < 86400) {
+		document.getElementById("protonAmountSeconds").innerHTML = (protonAmountSeconds.divide(3600)).toFixed(2) + " hours"
+	}
+	else if (protonAmountSeconds >= 86400 && protonAmountSeconds < 31536000) {
+		document.getElementById("protonAmountSeconds").innerHTML = (protonAmountSeconds.divide(86400)).toFixed(2) + " days"
+	}
+	else if (protonAmountSeconds >= 31536000) {
+		document.getElementById("protonAmountSeconds").innerHTML = (protonAmountSeconds.divide(31536000)).toFixed(2) + " years"
+	}
+
 	document.getElementById("tabBar").style.width = (Math.sin(game.tabBarX / 25) * 160 + 40) + "px"
 	document.getElementById("tabLogo").style.right = (Math.sin(game.tabBarX / 25) * 160 - 156) + "px"
 	document.getElementById("versionText").style.right = (Math.sin(game.tabBarX / 25) * 160 - 105) + "px"
@@ -137,6 +162,7 @@ function buyElement(x) {
 function tableTabSwitch() {
 	document.getElementById("table").style.display = "block"
 	document.getElementById("skills").style.display = "none"
+	document.getElementById("statistics").style.display = "none"
 	document.getElementById("options").style.display = "none"
 
 	var rowNumbers = document.getElementsByClassName("rowNumber")
@@ -151,6 +177,7 @@ function tableTabSwitch() {
 function skillsTabSwitch() {
 	document.getElementById("table").style.display = "none"
 	document.getElementById("skills").style.display = "block"
+	document.getElementById("statistics").style.display = "none"
 	document.getElementById("options").style.display = "none"
 
 	var rowNumbers = document.getElementsByClassName("rowNumber")
@@ -162,10 +189,25 @@ function skillsTabSwitch() {
 	document.body.style.backgroundImage = "url('assets/back.jpg')"
 }
 
+function statisticsTabSwitch() {
+	document.getElementById("table").style.display = "none"
+	document.getElementById("skills").style.display = "none"
+	document.getElementById("statistics").style.display = "block"
+	document.getElementById("options").style.display = "none"
+
+	var rowNumbers = document.getElementsByClassName("rowNumber")
+	var rowNumberTemp
+	for (rowNumberTemp = 0; rowNumberTemp < 7; rowNumberTemp++) {
+		rowNumbers[rowNumberTemp].style.display = "none"
+	}
+
+	document.body.style.backgroundImage = "url('assets/back.jpg')"
+}
 
 function optionsTabSwitch() {
 	document.getElementById("table").style.display = "none"
 	document.getElementById("skills").style.display = "none"
+	document.getElementById("statistics").style.display = "none"
 	document.getElementById("options").style.display = "block"
 
 	var rowNumbers = document.getElementsByClassName("rowNumber")

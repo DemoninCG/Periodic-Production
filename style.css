@@ -196,6 +196,23 @@ th, td {
 
 
 
+#statistics {
+	position: absolute;
+	top: 20px;
+	left: 58px;
+	width: 75%;
+	height: 95.5%;
+	border-radius: 10px;
+}
+
+
+
+
+
+
+
+
+
 
 #options {
 	position: absolute;
