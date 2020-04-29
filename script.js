@@ -19,10 +19,13 @@ function reset() {
 		new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), 
 		new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), 
 		new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), 
-		new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), 69],
+		new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69), new Decimal(69)],
 		elementAmounts: [],
 		elementCosts: [],
 	}
+
+	game.elementAmounts.length = 119
+	game.elementAmounts.fill(0)
 
 	document.getElementById("skills").style.display = "none"
 	document.getElementById("options").style.display = "none"
@@ -96,7 +99,7 @@ function updateSmall() {
 
 	var elementCostTemp
 	for (elementCostTemp = 0; elementCostTemp <= 116; elementCostTemp++) {
-		game.elementCosts [elementCostTemp] = game.baseCosts [elementCostTemp]
+		game.elementCosts [elementCostTemp] = game.baseCosts [elementCostTemp] * Math.pow(2, game.elementAmounts[elementCostTemp+2])
 		var elementCostTemp2 = (elementCostTemp + 2) + "cost"
 		document.getElementById(elementCostTemp2).innerHTML = game.elementCosts [elementCostTemp]
 	}
@@ -117,8 +120,18 @@ setTimeout(updateLarge, game.ingameSecond)
 
 
 
-
-
+// Buying elements
+function buyElement(x) {
+	if (game.protonAmount > game.elementCosts[x-2]) {
+		game.protonAmount = game.protonAmount.subtract(game.elementCosts[x-2])
+		 if (game.elementAmounts[x] == undefined) {
+			game.elementAmounts[x] = 1
+		 }
+		 else {
+			game.elementAmounts[x] += 1
+		 }
+	}
+}
 
 // Switching tabs
 function tableTabSwitch() {
