@@ -64,19 +64,29 @@ th:hover, td:hover {
 	background-color: #bbbbbb;
 }
 
-.affordable {
-	background-color: #aaaaff;
-}
-
-.affordable:hover {
-	background-color: #bbbbff;
-}
-
 /* Tooltip text */
 .tooltip .tooltiptext {
 	background-color: #888888;
 	border: 3px solid #555555;
 }
+
+
+
+
+
+#skillsTopBar {
+	background: rgba(34, 34, 34, 0.2)
+}
+
+.skillsTopTab {
+	background-color: #bbbbbb;
+	border: 3px solid #666666;
+}
+
+
+
+
+
 
 #options {
 	background: rgba(34, 34, 34, 0.2);

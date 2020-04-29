@@ -24,6 +24,7 @@ function reset() {
 		elementCosts: [],
 	}
 
+	document.getElementById("skills").style.display = "none"
 	document.getElementById("options").style.display = "none"
 
 	currentNotation = new ADNotations.StandardNotation()
@@ -121,9 +122,8 @@ setTimeout(updateLarge, game.ingameSecond)
 
 // Switching tabs
 function tableTabSwitch() {
-	document.getElementById("periodicTable").style.display = "block"
-	document.getElementById("protonTextDiv").style.display = "block"
-	document.getElementById("protonCreateButton").style.display = "block"
+	document.getElementById("table").style.display = "block"
+	document.getElementById("skills").style.display = "none"
 	document.getElementById("options").style.display = "none"
 
 	var rowNumbers = document.getElementsByClassName("rowNumber")
@@ -135,10 +135,24 @@ function tableTabSwitch() {
 	document.body.style.backgroundImage = "url('assets/back2.jpg')"
 }
 
+function skillsTabSwitch() {
+	document.getElementById("table").style.display = "none"
+	document.getElementById("skills").style.display = "block"
+	document.getElementById("options").style.display = "none"
+
+	var rowNumbers = document.getElementsByClassName("rowNumber")
+	var rowNumberTemp
+	for (rowNumberTemp = 0; rowNumberTemp < 7; rowNumberTemp++) {
+		rowNumbers[rowNumberTemp].style.display = "none"
+	}
+
+	document.body.style.backgroundImage = "url('assets/back.jpg')"
+}
+
+
 function optionsTabSwitch() {
-	document.getElementById("periodicTable").style.display = "none"
-	document.getElementById("protonTextDiv").style.display = "none"
-	document.getElementById("protonCreateButton").style.display = "none"
+	document.getElementById("table").style.display = "none"
+	document.getElementById("skills").style.display = "none"
 	document.getElementById("options").style.display = "block"
 
 	var rowNumbers = document.getElementsByClassName("rowNumber")
