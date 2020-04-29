@@ -223,7 +223,7 @@ function statisticsTabSwitch() {
 		rowNumbers[rowNumberTemp].style.display = "none"
 	}
 
-	document.body.style.backgroundImage = "url('assets/back.jpg')"
+	document.body.style.backgroundImage = "url('assets/back4.jpg')"
 }
 
 function optionsTabSwitch() {
