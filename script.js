@@ -242,6 +242,7 @@ function buyElement(x) {
 		showObjectChecks()
 		elementColorCheck()
 	}
+
 }
 
 // Switching tabs
