@@ -166,7 +166,10 @@ function updateSmall() {
 		var elementAmountTemp = (elementCostTemp + 2) + "amount"
 		document.getElementById(elementAmountTemp).innerHTML = game.currentNotation.format(game.elementAmounts[elementCostTemp+2], 2, 0)
 
-		if (game.protonAmount >= game.elementCosts [elementCostTemp]) {
+		if (game.elementAmounts[elementCostTemp+2] >= 100) {
+			document.getElementsByClassName("tooltip")[elementCostTemp+1].style.backgroundColor = "#888888"
+		}
+		else if (game.protonAmount >= game.elementCosts [elementCostTemp]) {
 			document.getElementsByClassName("tooltip")[elementCostTemp+1].style.backgroundColor = "#9999ee"
 		}
 		else {
