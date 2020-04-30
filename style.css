@@ -25,6 +25,7 @@ p {
 	border-radius: 10px;
 	width: 250px;
 	font-size: 22px;
+	cursor: pointer;
 }
 
 #widthMessage {
@@ -57,6 +58,7 @@ p {
 	width: 0px;
 	height: 45px;
 	border-radius: 10px 0px 0px 10px;
+	cursor: pointer;
 }
 
 .tabText {
@@ -117,6 +119,12 @@ p {
 	width: 738px;
 	height: 282px;
 	border-radius: 8px;
+	display: none;
+}
+
+.infoText {
+	font-size: 14px;
+	margin-left: 12px;
 }
 
 
@@ -141,6 +149,7 @@ th, td {
 	font-size: 22px;
 	position: absolute;
 	border-radius: 5px;
+	cursor: pointer;
 }
 
 /* Tooltip text */
@@ -238,9 +247,11 @@ th, td {
 
 .optionsTextButton {
 	height: 30px;
+	cursor: pointer;
 }
 
 .optionsDropdown {
 	margin-left: 22px;
 	width: 120px;
+	cursor: pointer;
 }

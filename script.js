@@ -8,6 +8,7 @@ let game
 function reset() {
 	game = {
 		protonAmount: new Decimal(0),
+		protonsPerSecond: 0,
 		backgroundPosition: 0,
 		tabBarOut: false,
 		tabBarX: 0,
@@ -16,7 +17,7 @@ function reset() {
 		ingameSecondBarHeight: 0,
 		currentNotation: new ADNotations.StandardNotation(),
 
-		baseCosts: [new Decimal(20), new Decimal(100), new Decimal(800)],
+		baseCosts: [new Decimal(20), new Decimal(100), new Decimal(800), new Decimal(15000), new Decimal(2e7), new Decimal(8e9), new Decimal(5e11)],
 		elementAmounts: [],
 		elementCosts: [],
 	}
@@ -25,7 +26,7 @@ function reset() {
 	game.elementAmounts.fill(new Decimal(0))
 
 	game.baseCosts.length = 117
-	game.baseCosts.fill(new Decimal(69), 3, 117)
+	game.baseCosts.fill(new Decimal(1e100), 7, 117)
 
 	document.getElementById("skills").style.display = "none"
 	document.getElementById("statistics").style.display = "none"
@@ -51,7 +52,7 @@ reset()
 
 
 // Stuff that needs to be updated every frame (16ms, 60 times/second)
-function updateSmall() {
+function updateSmall() {	
 	if (document.getElementById("optionsNotation").value == "Standard") {
 		game.currentNotation = new ADNotations.StandardNotation()
 	}
@@ -77,6 +78,8 @@ function updateSmall() {
 	document.getElementsByClassName("protonAmount")[0].innerHTML = game.currentNotation.format(game.protonAmount, 2, 0)
 	document.getElementsByClassName("protonAmount")[1].innerHTML = game.currentNotation.format(game.protonAmount, 2, 0)
 	document.getElementsByClassName("protonAmount")[2].innerHTML = game.currentNotation.format(game.protonAmount, 2, 0)
+	document.getElementById("protonsPerSecond").innerHTML = game.currentNotation.format(game.protonsPerSecond, 2, 0)
+	document.getElementById("ingameSecond").innerHTML = game.ingameSecond
 	if (game.protonAmount == 0) {
 		var protonAmountSeconds = new Decimal(0)
 	}
@@ -142,6 +145,12 @@ function updateSmall() {
 		document.getElementById("tableTab").style.display = "none"
 	}
 
+	game.protonsPerSecond = new Decimal(game.elementAmounts[2]).multiply(game.elementAmounts[3].add(1))
+
+	if (game.elementAmounts[2] != 0) {
+		document.getElementById("infoDiv").style.display = "block"
+	}
+
 	var elementCostTemp
 	for (elementCostTemp = 0; elementCostTemp <= 116; elementCostTemp++) {
 		if (game.elementAmounts[elementCostTemp+2] < 100) {
@@ -152,14 +161,27 @@ function updateSmall() {
 		}
 		var elementCostTemp2 = (elementCostTemp + 2) + "cost"
 		document.getElementById(elementCostTemp2).innerHTML = game.currentNotation.format(game.elementCosts [elementCostTemp], 2, 0)
+
+		var elementAmountTemp = (elementCostTemp + 2) + "amount"
+		document.getElementById(elementAmountTemp).innerHTML = game.currentNotation.format(game.elementAmounts[elementCostTemp+2], 2, 0)
+
+		if (game.protonAmount >= game.elementCosts [elementCostTemp]) {
+			document.getElementsByClassName("tooltip")[elementCostTemp+1].style.backgroundColor = "#9999ee"
+		}
+		else {
+			document.getElementsByClassName("tooltip")[elementCostTemp+1].style.backgroundColor = "#aaaaaa"
+		}
 	}
 }
 
 
 // Stuff that needs to be updated every ingame second (starts at 1 second, decreases with tachyons)
 function updateLarge() {
-	game.protonAmount = game.protonAmount.add(new Decimal(game.elementAmounts[2]).multiply(game.elementAmounts[3].add(1)))
+	
+	game.protonAmount = game.protonAmount.add(game.protonsPerSecond)
 	game.elementAmounts[3] = game.elementAmounts[3].add(game.elementAmounts[4])
+	game.elementAmounts[4] = game.elementAmounts[4].add(game.elementAmounts[5])
+	game.elementAmounts[5] = game.elementAmounts[5].add(game.elementAmounts[6])
 
 	game.ingameSecondBarHeight = 0
 	document.getElementById("ingameSecondBar").style.height = game.ingameSecondBarHeight + "%"

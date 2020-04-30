@@ -1,12 +1,3 @@
-<!-- To do list (near future):
--Rename prestige to something more original
--Create buy 1 and buy max buttons
--Add buying functions
--Add proton production and multipliers
--More options
--Add stats tab
--->
-
 <!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
@@ -34,7 +25,8 @@
 		</div>
 
 		<div id="infoDiv">
-			
+			<p class="infoText">Protons/in-game second: <a id="protonsPerSecond">0</a></p>
+			<p class="infoText">Current in-game second: <a id="ingameSecond">1000</a>ms</p>
 		</div>
 
 		<!-- The Periodic Table -->
@@ -49,147 +41,147 @@
 			<!-- Row 1 -->
 			<tr>
 				<td style="top: 0px; left: 0px; background-color: #cccccc; border: 3px solid #666666; color: #333333" class="tooltip unselectable">H<span class="tooltiptext" style="color: #000000"><b>Hydrogen/Protons [1]</b><br>You have <a class="protonAmount">0</a></span></td>
-				<td style="top: 0px; left: 1275px" class="tooltip unselectable" onclick="buyElement(2)">He<span class="tooltiptext"><b>Helium [2]</b><br>You have 0<br>Costs <a id="2cost">0</a> protons</span></td>
+				<td style="top: 0px; left: 1275px" class="tooltip unselectable" onclick="buyElement(2)">He<span class="tooltiptext"><b>Helium [2]</b><br>You have <a id="2amount">0</a><br>Costs <a id="2cost">0</a> protons</span></td>
 			</tr>
 			<!-- Row 2 -->
 			<tr>
-				<td style="top: 75px; left: 0px" class="tooltip unselectable" onclick="buyElement(3)">Li<span class="tooltiptext"><b>Lithium [3]</b><br>You have 0<br>Costs <a id="3cost">0</a> protons</span></td>
-				<td style="top: 75px; left: 75px" class="tooltip unselectable" onclick="buyElement(4)">Be<span class="tooltiptext"><b>Beryllium [4]</b><br>You have 0<br>Costs <a id="4cost">0</a> protons</span></td>
-				<td style="top: 75px; left: 900px" class="tooltip unselectable" onclick="buyElement(5)">B<span class="tooltiptext"><b>Boron [5]</b><br>You have 0<br>Costs <a id="5cost">0</a> protons</span></td>
-				<td style="top: 75px; left: 975px" class="tooltip unselectable" onclick="buyElement(6)">C<span class="tooltiptext"><b>Carbon [6]</b><br>You have 0<br>Costs <a id="6cost">0</a> protons</span></td>
-				<td style="top: 75px; left: 1050px" class="tooltip unselectable" onclick="buyElement(7)">N<span class="tooltiptext"><b>Nitrogen [7]</b><br>You have 0<br>Costs <a id="7cost">0</a> protons</span></td>
-				<td style="top: 75px; left: 1125px" class="tooltip unselectable" onclick="buyElement(8)">O<span class="tooltiptext"><b>Oxygen [8]</b><br>You have 0<br>Costs <a id="8cost">0</a> protons</span></td>
-				<td style="top: 75px; left: 1200px" class="tooltip unselectable" onclick="buyElement(9)">F<span class="tooltiptext"><b>Fluorine [9]</b><br>You have 0<br>Costs <a id="9cost">0</a> protons</span></td>
-				<td style="top: 75px; left: 1275px" class="tooltip unselectable" onclick="buyElement(10)">Ne<span class="tooltiptext"><b>Neon [10]</b><br>You have 0<br>Costs <a id="10cost">0</a> protons</span></td>
+				<td style="top: 75px; left: 0px" class="tooltip unselectable" onclick="buyElement(3)">Li<span class="tooltiptext"><b>Lithium [3]</b><br>You have <a id="3amount">0</a><br>Costs <a id="3cost">0</a> protons</span></td>
+				<td style="top: 75px; left: 75px" class="tooltip unselectable" onclick="buyElement(4)">Be<span class="tooltiptext"><b>Beryllium [4]</b><br>You have <a id="4amount">0</a><br>Costs <a id="4cost">0</a> protons</span></td>
+				<td style="top: 75px; left: 900px" class="tooltip unselectable" onclick="buyElement(5)">B<span class="tooltiptext"><b>Boron [5]</b><br>You have <a id="5amount">0</a><br>Costs <a id="5cost">0</a> protons</span></td>
+				<td style="top: 75px; left: 975px" class="tooltip unselectable" onclick="buyElement(6)">C<span class="tooltiptext"><b>Carbon [6]</b><br>You have <a id="6amount">0</a><br>Costs <a id="6cost">0</a> protons</span></td>
+				<td style="top: 75px; left: 1050px" class="tooltip unselectable" onclick="buyElement(7)">N<span class="tooltiptext"><b>Nitrogen [7]</b><br>You have <a id="7amount">0</a><br>Costs <a id="7cost">0</a> protons</span></td>
+				<td style="top: 75px; left: 1125px" class="tooltip unselectable" onclick="buyElement(8)">O<span class="tooltiptext"><b>Oxygen [8]</b><br>You have <a id="8amount">0</a><br>Costs <a id="8cost">0</a> protons</span></td>
+				<td style="top: 75px; left: 1200px" class="tooltip unselectable" onclick="buyElement(9)">F<span class="tooltiptext"><b>Fluorine [9]</b><br>You have <a id="9amount">0</a><br>Costs <a id="9cost">0</a> protons</span></td>
+				<td style="top: 75px; left: 1275px" class="tooltip unselectable" onclick="buyElement(10)">Ne<span class="tooltiptext"><b>Neon [10]</b><br>You have <a id="10amount">0</a><br>Costs <a id="10cost">0</a> protons</span></td>
 			</tr>
 			<!-- Row 3 -->
 			<tr>
-				<td style="top: 150px; left: 0px" class="tooltip unselectable" onclick="buyElement(11)">Na<span class="tooltiptext"><b>Sodium [11]</b><br>You have 0<br>Costs <a id="11cost">0</a> protons</span></td>
-				<td style="top: 150px; left: 75px" class="tooltip unselectable" onclick="buyElement(12)">Mg<span class="tooltiptext"><b>Magnesium [12]</b><br>You have 0<br>Costs <a id="12cost">0</a> protons</span></td>
-				<td style="top: 150px; left: 900px" class="tooltip unselectable" onclick="buyElement(13)">Al<span class="tooltiptext"><b>Aluminium [13]</b><br>You have 0<br>Costs <a id="13cost">0</a> protons</span></td>
-				<td style="top: 150px; left: 975px" class="tooltip unselectable" onclick="buyElement(14)">Si<span class="tooltiptext"><b>Silicon [14]</b><br>You have 0<br>Costs <a id="14cost">0</a> protons</span></td>
-				<td style="top: 150px; left: 1050px" class="tooltip unselectable" onclick="buyElement(15)">P<span class="tooltiptext"><b>Phosphorus [15]</b><br>You have 0<br>Costs <a id="15cost">0</a> protons</span></td>
-				<td style="top: 150px; left: 1125px" class="tooltip unselectable" onclick="buyElement(16)">S<span class="tooltiptext"><b>Sulfur [16]</b><br>You have 0<br>Costs <a id="16cost">0</a> protons</span></td>
-				<td style="top: 150px; left: 1200px" class="tooltip unselectable" onclick="buyElement(17)">Cl<span class="tooltiptext"><b>Chlorine [17]</b><br>You have 0<br>Costs <a id="17cost">0</a> protons</span></td>
-				<td style="top: 150px; left: 1275px" class="tooltip unselectable" onclick="buyElement(18)">Ar<span class="tooltiptext"><b>Argon [18]</b><br>You have 0<br>Costs <a id="18cost">0</a> protons</span></td>
+				<td style="top: 150px; left: 0px" class="tooltip unselectable" onclick="buyElement(11)">Na<span class="tooltiptext"><b>Sodium [11]</b><br>You have <a id="11amount">0</a><br>Costs <a id="11cost">0</a> protons</span></td>
+				<td style="top: 150px; left: 75px" class="tooltip unselectable" onclick="buyElement(12)">Mg<span class="tooltiptext"><b>Magnesium [12]</b><br>You have <a id="12amount">0</a><br>Costs <a id="12cost">0</a> protons</span></td>
+				<td style="top: 150px; left: 900px" class="tooltip unselectable" onclick="buyElement(13)">Al<span class="tooltiptext"><b>Aluminium [13]</b><br>You have <a id="13amount">0</a><br>Costs <a id="13cost">0</a> protons</span></td>
+				<td style="top: 150px; left: 975px" class="tooltip unselectable" onclick="buyElement(14)">Si<span class="tooltiptext"><b>Silicon [14]</b><br>You have <a id="14amount">0</a><br>Costs <a id="14cost">0</a> protons</span></td>
+				<td style="top: 150px; left: 1050px" class="tooltip unselectable" onclick="buyElement(15)">P<span class="tooltiptext"><b>Phosphorus [15]</b><br>You have <a id="15amount">0</a><br>Costs <a id="15cost">0</a> protons</span></td>
+				<td style="top: 150px; left: 1125px" class="tooltip unselectable" onclick="buyElement(16)">S<span class="tooltiptext"><b>Sulfur [16]</b><br>You have <a id="16amount">0</a><br>Costs <a id="16cost">0</a> protons</span></td>
+				<td style="top: 150px; left: 1200px" class="tooltip unselectable" onclick="buyElement(17)">Cl<span class="tooltiptext"><b>Chlorine [17]</b><br>You have <a id="17amount">0</a><br>Costs <a id="17cost">0</a> protons</span></td>
+				<td style="top: 150px; left: 1275px" class="tooltip unselectable" onclick="buyElement(18)">Ar<span class="tooltiptext"><b>Argon [18]</b><br>You have <a id="18amount">0</a><br>Costs <a id="18cost">0</a> protons</span></td>
 			</tr>
 			<!-- Row 4 -->
 			<tr>
-				<td style="top: 225px; left: 0px" class="tooltip unselectable" onclick="buyElement(19)">K<span class="tooltiptext"><b>Potassium [19]</b><br>You have 0<br>Costs <a id="19cost">0</a> protons</span></td>
-				<td style="top: 225px; left: 75px" class="tooltip unselectable" onclick="buyElement(20)">Ca<span class="tooltiptext"><b>Calcium [20]</b><br>You have 0<br>Costs <a id="20cost">0</a> protons</span></td>
-				<td style="top: 225px; left: 150px" class="tooltip unselectable" onclick="buyElement(21)">Sc<span class="tooltiptext"><b>Scandium [21]</b><br>You have 0<br>Costs <a id="21cost">0</a> protons</span></td>
-				<td style="top: 225px; left: 225px" class="tooltip unselectable" onclick="buyElement(22)">Ti<span class="tooltiptext"><b>Titanium [22]</b><br>You have 0<br>Costs <a id="22cost">0</a> protons</span></td>
-				<td style="top: 225px; left: 300px" class="tooltip unselectable" onclick="buyElement(23)">V<span class="tooltiptext"><b>Vanadium [23]</b><br>You have 0<br>Costs <a id="23cost">0</a> protons</span></td>
-				<td style="top: 225px; left: 375px" class="tooltip unselectable" onclick="buyElement(24)">Cr<span class="tooltiptext"><b>Chromium [24]</b><br>You have 0<br>Costs <a id="24cost">0</a> protons</span></td>
-				<td style="top: 225px; left: 450px" class="tooltip unselectable" onclick="buyElement(25)">Mn<span class="tooltiptext"><b>Manganese [25]</b><br>You have 0<br>Costs <a id="25cost">0</a> protons</span></td>
-				<td style="top: 225px; left: 525px" class="tooltip unselectable" onclick="buyElement(26)">Fe<span class="tooltiptext"><b>Iron [26]</b><br>You have 0<br>Costs <a id="26cost">0</a> protons</span></td>
-				<td style="top: 225px; left: 600px" class="tooltip unselectable" onclick="buyElement(27)">Co<span class="tooltiptext"><b>Cobalt [27]</b><br>You have 0<br>Costs <a id="27cost">0</a> protons</span></td>
-				<td style="top: 225px; left: 675px" class="tooltip unselectable" onclick="buyElement(28)">Ni<span class="tooltiptext"><b>Nickel [28]</b><br>You have 0<br>Costs <a id="28cost">0</a> protons</span></td>
-				<td style="top: 225px; left: 750px" class="tooltip unselectable" onclick="buyElement(29)">Cu<span class="tooltiptext"><b>Copper [29]</b><br>You have 0<br>Costs <a id="29cost">0</a> protons</span></td>
-				<td style="top: 225px; left: 825px" class="tooltip unselectable" onclick="buyElement(30)">Zn<span class="tooltiptext"><b>Zinc [30]</b><br>You have 0<br>Costs <a id="30cost">0</a> protons</span></td>
-				<td style="top: 225px; left: 900px" class="tooltip unselectable" onclick="buyElement(31)">Ga<span class="tooltiptext"><b>Gallium [31]</b><br>You have 0<br>Costs <a id="31cost">0</a> protons</span></td>
-				<td style="top: 225px; left: 975px" class="tooltip unselectable" onclick="buyElement(32)">Ge<span class="tooltiptext"><b>Germanium [32]</b><br>You have 0<br>Costs <a id="32cost">0</a> protons</span></td>
-				<td style="top: 225px; left: 1050px" class="tooltip unselectable" onclick="buyElement(33)">As<span class="tooltiptext"><b>Arsenic [33]</b><br>You have 0<br>Costs <a id="33cost">0</a> protons</span></td>
-				<td style="top: 225px; left: 1125px" class="tooltip unselectable" onclick="buyElement(34)">Se<span class="tooltiptext"><b>Selenium [34]</b><br>You have 0<br>Costs <a id="34cost">0</a> protons</span></td>
-				<td style="top: 225px; left: 1200px" class="tooltip unselectable" onclick="buyElement(35)">Br<span class="tooltiptext"><b>Bromine [35]</b><br>You have 0<br>Costs <a id="35cost">0</a> protons</span></td>
-				<td style="top: 225px; left: 1275px" class="tooltip unselectable" onclick="buyElement(36)">Kr<span class="tooltiptext"><b>Krypton [36]</b><br>You have 0<br>Costs <a id="36cost">0</a> protons</span></td>
+				<td style="top: 225px; left: 0px" class="tooltip unselectable" onclick="buyElement(19)">K<span class="tooltiptext"><b>Potassium [19]</b><br>You have <a id="19amount">0</a><br>Costs <a id="19cost">0</a> protons</span></td>
+				<td style="top: 225px; left: 75px" class="tooltip unselectable" onclick="buyElement(20)">Ca<span class="tooltiptext"><b>Calcium [20]</b><br>You have <a id="20amount">0</a><br>Costs <a id="20cost">0</a> protons</span></td>
+				<td style="top: 225px; left: 150px" class="tooltip unselectable" onclick="buyElement(21)">Sc<span class="tooltiptext"><b>Scandium [21]</b><br>You have <a id="21amount">0</a><br>Costs <a id="21cost">0</a> protons</span></td>
+				<td style="top: 225px; left: 225px" class="tooltip unselectable" onclick="buyElement(22)">Ti<span class="tooltiptext"><b>Titanium [22]</b><br>You have <a id="22amount">0</a><br>Costs <a id="22cost">0</a> protons</span></td>
+				<td style="top: 225px; left: 300px" class="tooltip unselectable" onclick="buyElement(23)">V<span class="tooltiptext"><b>Vanadium [23]</b><br>You have <a id="23amount">0</a><br>Costs <a id="23cost">0</a> protons</span></td>
+				<td style="top: 225px; left: 375px" class="tooltip unselectable" onclick="buyElement(24)">Cr<span class="tooltiptext"><b>Chromium [24]</b><br>You have <a id="24amount">0</a><br>Costs <a id="24cost">0</a> protons</span></td>
+				<td style="top: 225px; left: 450px" class="tooltip unselectable" onclick="buyElement(25)">Mn<span class="tooltiptext"><b>Manganese [25]</b><br>You have <a id="25amount">0</a><br>Costs <a id="25cost">0</a> protons</span></td>
+				<td style="top: 225px; left: 525px" class="tooltip unselectable" onclick="buyElement(26)">Fe<span class="tooltiptext"><b>Iron [26]</b><br>You have <a id="26amount">0</a><br>Costs <a id="26cost">0</a> protons</span></td>
+				<td style="top: 225px; left: 600px" class="tooltip unselectable" onclick="buyElement(27)">Co<span class="tooltiptext"><b>Cobalt [27]</b><br>You have <a id="27amount">0</a><br>Costs <a id="27cost">0</a> protons</span></td>
+				<td style="top: 225px; left: 675px" class="tooltip unselectable" onclick="buyElement(28)">Ni<span class="tooltiptext"><b>Nickel [28]</b><br>You have <a id="28amount">0</a><br>Costs <a id="28cost">0</a> protons</span></td>
+				<td style="top: 225px; left: 750px" class="tooltip unselectable" onclick="buyElement(29)">Cu<span class="tooltiptext"><b>Copper [29]</b><br>You have <a id="29amount">0</a><br>Costs <a id="29cost">0</a> protons</span></td>
+				<td style="top: 225px; left: 825px" class="tooltip unselectable" onclick="buyElement(30)">Zn<span class="tooltiptext"><b>Zinc [30]</b><br>You have <a id="30amount">0</a><br>Costs <a id="30cost">0</a> protons</span></td>
+				<td style="top: 225px; left: 900px" class="tooltip unselectable" onclick="buyElement(31)">Ga<span class="tooltiptext"><b>Gallium [31]</b><br>You have <a id="31amount">0</a><br>Costs <a id="31cost">0</a> protons</span></td>
+				<td style="top: 225px; left: 975px" class="tooltip unselectable" onclick="buyElement(32)">Ge<span class="tooltiptext"><b>Germanium [32]</b><br>You have <a id="32amount">0</a><br>Costs <a id="32cost">0</a> protons</span></td>
+				<td style="top: 225px; left: 1050px" class="tooltip unselectable" onclick="buyElement(33)">As<span class="tooltiptext"><b>Arsenic [33]</b><br>You have <a id="33amount">0</a><br>Costs <a id="33cost">0</a> protons</span></td>
+				<td style="top: 225px; left: 1125px" class="tooltip unselectable" onclick="buyElement(34)">Se<span class="tooltiptext"><b>Selenium [34]</b><br>You have <a id="34amount">0</a><br>Costs <a id="34cost">0</a> protons</span></td>
+				<td style="top: 225px; left: 1200px" class="tooltip unselectable" onclick="buyElement(35)">Br<span class="tooltiptext"><b>Bromine [35]</b><br>You have <a id="35amount">0</a><br>Costs <a id="35cost">0</a> protons</span></td>
+				<td style="top: 225px; left: 1275px" class="tooltip unselectable" onclick="buyElement(36)">Kr<span class="tooltiptext"><b>Krypton [36]</b><br>You have <a id="36amount">0</a><br>Costs <a id="36cost">0</a> protons</span></td>
 			</tr>
 			<!-- Row 5 -->
 			<tr>
-				<td style="top: 300px; left: 0px" class="tooltip unselectable" onclick="buyElement(37)">Rb<span class="tooltiptext"><b>Rubidium [37]</b><br>You have 0<br>Costs <a id="37cost">0</a> protons</span></td>
-				<td style="top: 300px; left: 75px" class="tooltip unselectable" onclick="buyElement(38)">Sr<span class="tooltiptext"><b>Strontium [38]</b><br>You have 0<br>Costs <a id="38cost">0</a> protons</span></td>
-				<td style="top: 300px; left: 150px" class="tooltip unselectable" onclick="buyElement(39)">Y<span class="tooltiptext"><b>Yttrium [39]</b><br>You have 0<br>Costs <a id="39cost">0</a> protons</span></td>
-				<td style="top: 300px; left: 225px" class="tooltip unselectable" onclick="buyElement(40)">Zr<span class="tooltiptext"><b>Zirconium [40]</b><br>You have 0<br>Costs <a id="40cost">0</a> protons</span></td>
-				<td style="top: 300px; left: 300px" class="tooltip unselectable" onclick="buyElement(41)">Nb<span class="tooltiptext"><b>Niobium [41]</b><br>You have 0<br>Costs <a id="41cost">0</a> protons</span></td>
-				<td style="top: 300px; left: 375px" class="tooltip unselectable" onclick="buyElement(42)">Mo<span class="tooltiptext"><b>Molybdenum [42]</b><br>You have 0<br>Costs <a id="42cost">0</a> protons</span></td>
-				<td style="top: 300px; left: 450px" class="tooltip unselectable" onclick="buyElement(43)">Tc<span class="tooltiptext"><b>Technetium [43]</b><br>You have 0<br>Costs <a id="43cost">0</a> protons</span></td>
-				<td style="top: 300px; left: 525px" class="tooltip unselectable" onclick="buyElement(44)">Ru<span class="tooltiptext"><b>Ruthenium [44]</b><br>You have 0<br>Costs <a id="44cost">0</a> protons</span></td>
-				<td style="top: 300px; left: 600px" class="tooltip unselectable" onclick="buyElement(45)">Rh<span class="tooltiptext"><b>Rhodium [45]</b><br>You have 0<br>Costs <a id="45cost">0</a> protons</span></td>
-				<td style="top: 300px; left: 675px" class="tooltip unselectable" onclick="buyElement(46)">Pd<span class="tooltiptext"><b>Palladium [46]</b><br>You have 0<br>Costs <a id="46cost">0</a> protons</span></td>
-				<td style="top: 300px; left: 750px" class="tooltip unselectable" onclick="buyElement(47)">Ag<span class="tooltiptext"><b>Silver [47]</b><br>You have 0<br>Costs <a id="47cost">0</a> protons</span></td>
-				<td style="top: 300px; left: 825px" class="tooltip unselectable" onclick="buyElement(48)">Cd<span class="tooltiptext"><b>Cadmium [48]</b><br>You have 0<br>Costs <a id="48cost">0</a> protons</span></td>
-				<td style="top: 300px; left: 900px" class="tooltip unselectable" onclick="buyElement(49)">In<span class="tooltiptext"><b>Indium [49]</b><br>You have 0<br>Costs <a id="49cost">0</a> protons</span></td>
-				<td style="top: 300px; left: 975px" class="tooltip unselectable" onclick="buyElement(50)">Sn<span class="tooltiptext"><b>Tin [50]</b><br>You have 0<br>Costs <a id="50cost">0</a> protons</span></td>
-				<td style="top: 300px; left: 1050px" class="tooltip unselectable" onclick="buyElement(51)">Sb<span class="tooltiptext"><b>Antimony [51]</b><br>You have 0<br>Costs <a id="51cost">0</a> protons</span></td>
-				<td style="top: 300px; left: 1125px" class="tooltip unselectable" onclick="buyElement(52)">Te<span class="tooltiptext"><b>Tellurium [52]</b><br>You have 0<br>Costs <a id="52cost">0</a> protons</span></td>
-				<td style="top: 300px; left: 1200px" class="tooltip unselectable" onclick="buyElement(53)">I<span class="tooltiptext"><b>Iodine [53]</b><br>You have 0<br>Costs <a id="53cost">0</a> protons</span></td>
-				<td style="top: 300px; left: 1275px" class="tooltip unselectable" onclick="buyElement(54)">Xe<span class="tooltiptext"><b>Xenon [54]</b><br>You have 0<br>Costs <a id="54cost">0</a> protons</span></td>
+				<td style="top: 300px; left: 0px" class="tooltip unselectable" onclick="buyElement(37)">Rb<span class="tooltiptext"><b>Rubidium [37]</b><br>You have <a id="37amount">0</a><br>Costs <a id="37cost">0</a> protons</span></td>
+				<td style="top: 300px; left: 75px" class="tooltip unselectable" onclick="buyElement(38)">Sr<span class="tooltiptext"><b>Strontium [38]</b><br>You have <a id="38amount">0</a><br>Costs <a id="38cost">0</a> protons</span></td>
+				<td style="top: 300px; left: 150px" class="tooltip unselectable" onclick="buyElement(39)">Y<span class="tooltiptext"><b>Yttrium [39]</b><br>You have <a id="39amount">0</a><br>Costs <a id="39cost">0</a> protons</span></td>
+				<td style="top: 300px; left: 225px" class="tooltip unselectable" onclick="buyElement(40)">Zr<span class="tooltiptext"><b>Zirconium [40]</b><br>You have <a id="40amount">0</a><br>Costs <a id="40cost">0</a> protons</span></td>
+				<td style="top: 300px; left: 300px" class="tooltip unselectable" onclick="buyElement(41)">Nb<span class="tooltiptext"><b>Niobium [41]</b><br>You have <a id="41amount">0</a><br>Costs <a id="41cost">0</a> protons</span></td>
+				<td style="top: 300px; left: 375px" class="tooltip unselectable" onclick="buyElement(42)">Mo<span class="tooltiptext"><b>Molybdenum [42]</b><br>You have <a id="42amount">0</a><br>Costs <a id="42cost">0</a> protons</span></td>
+				<td style="top: 300px; left: 450px" class="tooltip unselectable" onclick="buyElement(43)">Tc<span class="tooltiptext"><b>Technetium [43]</b><br>You have <a id="43amount">0</a><br>Costs <a id="43cost">0</a> protons</span></td>
+				<td style="top: 300px; left: 525px" class="tooltip unselectable" onclick="buyElement(44)">Ru<span class="tooltiptext"><b>Ruthenium [44]</b><br>You have <a id="44amount">0</a><br>Costs <a id="44cost">0</a> protons</span></td>
+				<td style="top: 300px; left: 600px" class="tooltip unselectable" onclick="buyElement(45)">Rh<span class="tooltiptext"><b>Rhodium [45]</b><br>You have <a id="45amount">0</a><br>Costs <a id="45cost">0</a> protons</span></td>
+				<td style="top: 300px; left: 675px" class="tooltip unselectable" onclick="buyElement(46)">Pd<span class="tooltiptext"><b>Palladium [46]</b><br>You have <a id="46amount">0</a><br>Costs <a id="46cost">0</a> protons</span></td>
+				<td style="top: 300px; left: 750px" class="tooltip unselectable" onclick="buyElement(47)">Ag<span class="tooltiptext"><b>Silver [47]</b><br>You have <a id="47amount">0</a><br>Costs <a id="47cost">0</a> protons</span></td>
+				<td style="top: 300px; left: 825px" class="tooltip unselectable" onclick="buyElement(48)">Cd<span class="tooltiptext"><b>Cadmium [48]</b><br>You have <a id="48amount">0</a><br>Costs <a id="48cost">0</a> protons</span></td>
+				<td style="top: 300px; left: 900px" class="tooltip unselectable" onclick="buyElement(49)">In<span class="tooltiptext"><b>Indium [49]</b><br>You have <a id="49amount">0</a><br>Costs <a id="49cost">0</a> protons</span></td>
+				<td style="top: 300px; left: 975px" class="tooltip unselectable" onclick="buyElement(50)">Sn<span class="tooltiptext"><b>Tin [50]</b><br>You have <a id="50amount">0</a><br>Costs <a id="50cost">0</a> protons</span></td>
+				<td style="top: 300px; left: 1050px" class="tooltip unselectable" onclick="buyElement(51)">Sb<span class="tooltiptext"><b>Antimony [51]</b><br>You have <a id="51amount">0</a><br>Costs <a id="51cost">0</a> protons</span></td>
+				<td style="top: 300px; left: 1125px" class="tooltip unselectable" onclick="buyElement(52)">Te<span class="tooltiptext"><b>Tellurium [52]</b><br>You have <a id="52amount">0</a><br>Costs <a id="52cost">0</a> protons</span></td>
+				<td style="top: 300px; left: 1200px" class="tooltip unselectable" onclick="buyElement(53)">I<span class="tooltiptext"><b>Iodine [53]</b><br>You have <a id="53amount">0</a><br>Costs <a id="53cost">0</a> protons</span></td>
+				<td style="top: 300px; left: 1275px" class="tooltip unselectable" onclick="buyElement(54)">Xe<span class="tooltiptext"><b>Xenon [54]</b><br>You have <a id="54amount">0</a><br>Costs <a id="54cost">0</a> protons</span></td>
 			</tr>
 			<!-- Row 6 -->
 			<tr>
-				<td style="top: 375px; left: 0px" class="tooltip unselectable" onclick="buyElement(55)">Cs<span class="tooltiptext"><b>Caesium [55]</b><br>You have 0<br>Costs <a id="55cost">0</a> protons</span></td>
-				<td style="top: 375px; left: 75px" class="tooltip unselectable" onclick="buyElement(56)">Ba<span class="tooltiptext"><b>Barium [56]</b><br>You have 0<br>Costs <a id="56cost">0</a> protons</span></td>
-				<td style="top: 375px; left: 225px" class="tooltip unselectable" onclick="buyElement(72)">Hf<span class="tooltiptext"><b>hafnium [72]</b><br>You have 0<br>Costs <a id="72cost">0</a> protons</span></td>
-				<td style="top: 375px; left: 300px" class="tooltip unselectable" onclick="buyElement(73)">Ta<span class="tooltiptext"><b>Tantalum [73]</b><br>You have 0<br>Costs <a id="73cost">0</a> protons</span></td>
-				<td style="top: 375px; left: 375px" class="tooltip unselectable" onclick="buyElement(74)">W<span class="tooltiptext"><b>Tungsten [74]</b><br>You have 0<br>Costs <a id="74cost">0</a> protons</span></td>
-				<td style="top: 375px; left: 450px" class="tooltip unselectable" onclick="buyElement(75)">Re<span class="tooltiptext"><b>Rhenium [75]</b><br>You have 0<br>Costs <a id="75cost">0</a> protons</span></td>
-				<td style="top: 375px; left: 525px" class="tooltip unselectable" onclick="buyElement(76)">Os<span class="tooltiptext"><b>Osmium [76]</b><br>You have 0<br>Costs <a id="76cost">0</a> protons</span></td>
-				<td style="top: 375px; left: 600px" class="tooltip unselectable" onclick="buyElement(77)">Ir<span class="tooltiptext"><b>Iridium [77]</b><br>You have 0<br>Costs <a id="77cost">0</a> protons</span></td>
-				<td style="top: 375px; left: 675px" class="tooltip unselectable" onclick="buyElement(78)">Pt<span class="tooltiptext"><b>Platinum [78]</b><br>You have 0<br>Costs <a id="78cost">0</a> protons</span></td>
-				<td style="top: 375px; left: 750px" class="tooltip unselectable" onclick="buyElement(79)">Au<span class="tooltiptext"><b>Gold [79]</b><br>You have 0<br>Costs <a id="79cost">0</a> protons</span></td>
-				<td style="top: 375px; left: 825px" class="tooltip unselectable" onclick="buyElement(80)">Hg<span class="tooltiptext"><b>Mercury [80]</b><br>You have 0<br>Costs <a id="80cost">0</a> protons</span></td>
-				<td style="top: 375px; left: 900px" class="tooltip unselectable" onclick="buyElement(81)">Tl<span class="tooltiptext"><b>Thallium [81]</b><br>You have 0<br>Costs <a id="81cost">0</a> protons</span></td>
-				<td style="top: 375px; left: 975px" class="tooltip unselectable" onclick="buyElement(82)">Pb<span class="tooltiptext"><b>Lead [82]</b><br>You have 0<br>Costs <a id="82cost">0</a> protons</span></td>
-				<td style="top: 375px; left: 1050px" class="tooltip unselectable" onclick="buyElement(83)">Bi<span class="tooltiptext"><b>Bismuth [83]</b><br>You have 0<br>Costs <a id="83cost">0</a> protons</span></td>
-				<td style="top: 375px; left: 1125px" class="tooltip unselectable" onclick="buyElement(84)">Po<span class="tooltiptext"><b>Polonium [84]</b><br>You have 0<br>Costs <a id="84cost">0</a> protons</span></td>
-				<td style="top: 375px; left: 1200px" class="tooltip unselectable" onclick="buyElement(85)">At<span class="tooltiptext"><b>Astatine [85]</b><br>You have 0<br>Costs <a id="85cost">0</a> protons</span></td>
-				<td style="top: 375px; left: 1275px" class="tooltip unselectable" onclick="buyElement(86)">Rn<span class="tooltiptext"><b>Radon [86]</b><br>You have 0<br>Costs <a id="86cost">0</a> protons</span></td>
+				<td style="top: 375px; left: 0px" class="tooltip unselectable" onclick="buyElement(55)">Cs<span class="tooltiptext"><b>Caesium [55]</b><br>You have <a id="55amount">0</a><br>Costs <a id="55cost">0</a> protons</span></td>
+				<td style="top: 375px; left: 75px" class="tooltip unselectable" onclick="buyElement(56)">Ba<span class="tooltiptext"><b>Barium [56]</b><br>You have <a id="56amount">0</a><br>Costs <a id="56cost">0</a> protons</span></td>
+				<td style="top: 375px; left: 225px" class="tooltip unselectable" onclick="buyElement(72)">Hf<span class="tooltiptext"><b>hafnium [72]</b><br>You have <a id="72amount">0</a><br>Costs <a id="72cost">0</a> protons</span></td>
+				<td style="top: 375px; left: 300px" class="tooltip unselectable" onclick="buyElement(73)">Ta<span class="tooltiptext"><b>Tantalum [73]</b><br>You have <a id="73amount">0</a><br>Costs <a id="73cost">0</a> protons</span></td>
+				<td style="top: 375px; left: 375px" class="tooltip unselectable" onclick="buyElement(74)">W<span class="tooltiptext"><b>Tungsten [74]</b><br>You have <a id="74amount">0</a><br>Costs <a id="74cost">0</a> protons</span></td>
+				<td style="top: 375px; left: 450px" class="tooltip unselectable" onclick="buyElement(75)">Re<span class="tooltiptext"><b>Rhenium [75]</b><br>You have <a id="75amount">0</a><br>Costs <a id="75cost">0</a> protons</span></td>
+				<td style="top: 375px; left: 525px" class="tooltip unselectable" onclick="buyElement(76)">Os<span class="tooltiptext"><b>Osmium [76]</b><br>You have <a id="76amount">0</a><br>Costs <a id="76cost">0</a> protons</span></td>
+				<td style="top: 375px; left: 600px" class="tooltip unselectable" onclick="buyElement(77)">Ir<span class="tooltiptext"><b>Iridium [77]</b><br>You have <a id="77amount">0</a><br>Costs <a id="77cost">0</a> protons</span></td>
+				<td style="top: 375px; left: 675px" class="tooltip unselectable" onclick="buyElement(78)">Pt<span class="tooltiptext"><b>Platinum [78]</b><br>You have <a id="78amount">0</a><br>Costs <a id="78cost">0</a> protons</span></td>
+				<td style="top: 375px; left: 750px" class="tooltip unselectable" onclick="buyElement(79)">Au<span class="tooltiptext"><b>Gold [79]</b><br>You have <a id="79amount">0</a><br>Costs <a id="79cost">0</a> protons</span></td>
+				<td style="top: 375px; left: 825px" class="tooltip unselectable" onclick="buyElement(80)">Hg<span class="tooltiptext"><b>Mercury [80]</b><br>You have <a id="80amount">0</a><br>Costs <a id="80cost">0</a> protons</span></td>
+				<td style="top: 375px; left: 900px" class="tooltip unselectable" onclick="buyElement(81)">Tl<span class="tooltiptext"><b>Thallium [81]</b><br>You have <a id="81amount">0</a><br>Costs <a id="81cost">0</a> protons</span></td>
+				<td style="top: 375px; left: 975px" class="tooltip unselectable" onclick="buyElement(82)">Pb<span class="tooltiptext"><b>Lead [82]</b><br>You have <a id="82amount">0</a><br>Costs <a id="82cost">0</a> protons</span></td>
+				<td style="top: 375px; left: 1050px" class="tooltip unselectable" onclick="buyElement(83)">Bi<span class="tooltiptext"><b>Bismuth [83]</b><br>You have <a id="83amount">0</a><br>Costs <a id="83cost">0</a> protons</span></td>
+				<td style="top: 375px; left: 1125px" class="tooltip unselectable" onclick="buyElement(84)">Po<span class="tooltiptext"><b>Polonium [84]</b><br>You have <a id="84amount">0</a><br>Costs <a id="84cost">0</a> protons</span></td>
+				<td style="top: 375px; left: 1200px" class="tooltip unselectable" onclick="buyElement(85)">At<span class="tooltiptext"><b>Astatine [85]</b><br>You have <a id="85amount">0</a><br>Costs <a id="85cost">0</a> protons</span></td>
+				<td style="top: 375px; left: 1275px" class="tooltip unselectable" onclick="buyElement(86)">Rn<span class="tooltiptext"><b>Radon [86]</b><br>You have <a id="86amount">0</a><br>Costs <a id="86cost">0</a> protons</span></td>
 			</tr>
 			<!-- Row 7 -->
 			<tr>
-				<td style="top: 450px; left: 0px" class="tooltip unselectable" onclick="buyElement(87)">Fr<span class="tooltiptext"><b>Francium [87]</b><br>You have 0<br>Costs <a id="87cost">0</a> protons</span></td>
-				<td style="top: 450px; left: 75px" class="tooltip unselectable" onclick="buyElement(88)">Ra<span class="tooltiptext"><b>Radium [88]</b><br>You have 0<br>Costs <a id="88cost">0</a> protons</span></td>
-				<td style="top: 450px; left: 225px" class="tooltip unselectable" onclick="buyElement(104)">Rf<span class="tooltiptext"><b>Rutherfordium [104]</b><br>You have 0<br>Costs <a id="104cost">0</a> protons</span></td>
-				<td style="top: 450px; left: 300px" class="tooltip unselectable" onclick="buyElement(105)">Db<span class="tooltiptext"><b>Dubnium [105]</b><br>You have 0<br>Costs <a id="105cost">0</a> protons</span></td>
-				<td style="top: 450px; left: 375px" class="tooltip unselectable" onclick="buyElement(106)">Sg<span class="tooltiptext"><b>Seaborgium [106]</b><br>You have 0<br>Costs <a id="106cost">0</a> protons</span></td>
-				<td style="top: 450px; left: 450px" class="tooltip unselectable" onclick="buyElement(107)">Bh<span class="tooltiptext"><b>Bohrium [107]</b><br>You have 0<br>Costs <a id="107cost">0</a> protons</span></td>
-				<td style="top: 450px; left: 525px" class="tooltip unselectable" onclick="buyElement(108)">Hs<span class="tooltiptext"><b>Hassium [108]</b><br>You have 0<br>Costs <a id="108cost">0</a> protons</span></td>
-				<td style="top: 450px; left: 600px" class="tooltip unselectable" onclick="buyElement(109)">Mt<span class="tooltiptext"><b>Meitnerium [109]</b><br>You have 0<br>Costs <a id="109cost">0</a> protons</span></td>
-				<td style="top: 450px; left: 675px" class="tooltip unselectable" onclick="buyElement(110)">Ds<span class="tooltiptext"><b>Darmstadtium [110]</b><br>You have 0<br>Costs <a id="110cost">0</a> protons</span></td>
-				<td style="top: 450px; left: 750px" class="tooltip unselectable" onclick="buyElement(111)">Rg<span class="tooltiptext"><b>Roentgenium [111]</b><br>You have 0<br>Costs <a id="111cost">0</a> protons</span></td>
-				<td style="top: 450px; left: 825px" class="tooltip unselectable" onclick="buyElement(112)">Cn<span class="tooltiptext"><b>Copermicium [112]</b><br>You have 0<br>Costs <a id="112cost">0</a> protons</span></td>
-				<td style="top: 450px; left: 900px" class="tooltip unselectable" onclick="buyElement(113)">Nh<span class="tooltiptext"><b>Nihonium [113]</b><br>You have 0<br>Costs <a id="113cost">0</a> protons</span></td>
-				<td style="top: 450px; left: 975px" class="tooltip unselectable" onclick="buyElement(114)">Fl<span class="tooltiptext"><b>Flerovium [114]</b><br>You have 0<br>Costs <a id="114cost">0</a> protons</span></td>
-				<td style="top: 450px; left: 1050px" class="tooltip unselectable" onclick="buyElement(115)">Mc<span class="tooltiptext"><b>Moscovium [115]</b><br>You have 0<br>Costs <a id="115cost">0</a> protons</span></td>
-				<td style="top: 450px; left: 1125px" class="tooltip unselectable" onclick="buyElement(116)">Lv<span class="tooltiptext"><b>Livermorium [116]</b><br>You have 0<br>Costs <a id="116cost">0</a> protons</span></td>
-				<td style="top: 450px; left: 1200px" class="tooltip unselectable" onclick="buyElement(117)">Ts<span class="tooltiptext"><b>Tennesine [117]</b><br>You have 0<br>Costs <a id="117cost">0</a> protons</span></td>
-				<td style="top: 450px; left: 1275px" class="tooltip unselectable" onclick="buyElement(118)">Og<span class="tooltiptext"><b>Oganesson [118]</b><br>You have 0<br>Costs <a id="118cost">0</a> protons</span></td>
+				<td style="top: 450px; left: 0px" class="tooltip unselectable" onclick="buyElement(87)">Fr<span class="tooltiptext"><b>Francium [87]</b><br>You have <a id="87amount">0</a><br>Costs <a id="87cost">0</a> protons</span></td>
+				<td style="top: 450px; left: 75px" class="tooltip unselectable" onclick="buyElement(88)">Ra<span class="tooltiptext"><b>Radium [88]</b><br>You have <a id="88amount">0</a><br>Costs <a id="88cost">0</a> protons</span></td>
+				<td style="top: 450px; left: 225px" class="tooltip unselectable" onclick="buyElement(104)">Rf<span class="tooltiptext"><b>Rutherfordium [104]</b><br>You have <a id="104amount">0</a><br>Costs <a id="104cost">0</a> protons</span></td>
+				<td style="top: 450px; left: 300px" class="tooltip unselectable" onclick="buyElement(105)">Db<span class="tooltiptext"><b>Dubnium [105]</b><br>You have <a id="105amount">0</a><br>Costs <a id="105cost">0</a> protons</span></td>
+				<td style="top: 450px; left: 375px" class="tooltip unselectable" onclick="buyElement(106)">Sg<span class="tooltiptext"><b>Seaborgium [106]</b><br>You have <a id="106amount">0</a><br>Costs <a id="106cost">0</a> protons</span></td>
+				<td style="top: 450px; left: 450px" class="tooltip unselectable" onclick="buyElement(107)">Bh<span class="tooltiptext"><b>Bohrium [107]</b><br>You have <a id="107amount">0</a><br>Costs <a id="107cost">0</a> protons</span></td>
+				<td style="top: 450px; left: 525px" class="tooltip unselectable" onclick="buyElement(108)">Hs<span class="tooltiptext"><b>Hassium [108]</b><br>You have <a id="108amount">0</a><br>Costs <a id="108cost">0</a> protons</span></td>
+				<td style="top: 450px; left: 600px" class="tooltip unselectable" onclick="buyElement(109)">Mt<span class="tooltiptext"><b>Meitnerium [109]</b><br>You have <a id="109amount">0</a><br>Costs <a id="109cost">0</a> protons</span></td>
+				<td style="top: 450px; left: 675px" class="tooltip unselectable" onclick="buyElement(110)">Ds<span class="tooltiptext"><b>Darmstadtium [110]</b><br>You have <a id="110amount">0</a><br>Costs <a id="110cost">0</a> protons</span></td>
+				<td style="top: 450px; left: 750px" class="tooltip unselectable" onclick="buyElement(111)">Rg<span class="tooltiptext"><b>Roentgenium [111]</b><br>You have <a id="111amount">0</a><br>Costs <a id="111cost">0</a> protons</span></td>
+				<td style="top: 450px; left: 825px" class="tooltip unselectable" onclick="buyElement(112)">Cn<span class="tooltiptext"><b>Copermicium [112]</b><br>You have <a id="112amount">0</a><br>Costs <a id="112cost">0</a> protons</span></td>
+				<td style="top: 450px; left: 900px" class="tooltip unselectable" onclick="buyElement(113)">Nh<span class="tooltiptext"><b>Nihonium [113]</b><br>You have <a id="113amount">0</a><br>Costs <a id="113cost">0</a> protons</span></td>
+				<td style="top: 450px; left: 975px" class="tooltip unselectable" onclick="buyElement(114)">Fl<span class="tooltiptext"><b>Flerovium [114]</b><br>You have <a id="114amount">0</a><br>Costs <a id="114cost">0</a> protons</span></td>
+				<td style="top: 450px; left: 1050px" class="tooltip unselectable" onclick="buyElement(115)">Mc<span class="tooltiptext"><b>Moscovium [115]</b><br>You have <a id="115amount">0</a><br>Costs <a id="115cost">0</a> protons</span></td>
+				<td style="top: 450px; left: 1125px" class="tooltip unselectable" onclick="buyElement(116)">Lv<span class="tooltiptext"><b>Livermorium [116]</b><br>You have <a id="116amount">0</a><br>Costs <a id="116cost">0</a> protons</span></td>
+				<td style="top: 450px; left: 1200px" class="tooltip unselectable" onclick="buyElement(117)">Ts<span class="tooltiptext"><b>Tennesine [117]</b><br>You have <a id="117amount">0</a><br>Costs <a id="117cost">0</a> protons</span></td>
+				<td style="top: 450px; left: 1275px" class="tooltip unselectable" onclick="buyElement(118)">Og<span class="tooltiptext"><b>Oganesson [118]</b><br>You have <a id="118amount">0</a><br>Costs <a id="118cost">0</a> protons</span></td>
 			</tr>
 			<!-- Lanthanides -->
 			<tr>
-				<td style="top: 570px; left: 225px" class="tooltip unselectable" onclick="buyElement(57)">La<span class="tooltiptext"><b>Lanthanum [57]</b><br>You have 0<br>Costs <a id="57cost">0</a> protons</span></td>
-				<td style="top: 570px; left: 300px" class="tooltip unselectable" onclick="buyElement(58)">Ce<span class="tooltiptext"><b>Cerium [58]</b><br>You have 0<br>Costs <a id="58cost">0</a> protons</span></td>
-				<td style="top: 570px; left: 375px" class="tooltip unselectable" onclick="buyElement(59)">Pr<span class="tooltiptext"><b>Praseodymium [59]</b><br>You have 0<br>Costs <a id="59cost">0</a> protons</span></td>
-				<td style="top: 570px; left: 450px" class="tooltip unselectable" onclick="buyElement(60)">Nd<span class="tooltiptext"><b>Neodymium [60]</b><br>You have 0<br>Costs <a id="60cost">0</a> protons</span></td>
-				<td style="top: 570px; left: 525px" class="tooltip unselectable" onclick="buyElement(61)">Pm<span class="tooltiptext"><b>Promethium [61]</b><br>You have 0<br>Costs <a id="61cost">0</a> protons</span></td>
-				<td style="top: 570px; left: 600px" class="tooltip unselectable" onclick="buyElement(62)">Sm<span class="tooltiptext"><b>Samarium [62]</b><br>You have 0<br>Costs <a id="62cost">0</a> protons</span></td>
-				<td style="top: 570px; left: 675px" class="tooltip unselectable" onclick="buyElement(63)">Eu<span class="tooltiptext"><b>Europium [63]</b><br>You have 0<br>Costs <a id="63cost">0</a> protons</span></td>
-				<td style="top: 570px; left: 750px" class="tooltip unselectable" onclick="buyElement(64)">Gd<span class="tooltiptext"><b>Gadolinium [64]</b><br>You have 0<br>Costs <a id="64cost">0</a> protons</span></td>
-				<td style="top: 570px; left: 825px" class="tooltip unselectable" onclick="buyElement(65)">Tb<span class="tooltiptext"><b>Terbium [65]</b><br>You have 0<br>Costs <a id="65cost">0</a> protons</span></td>
-				<td style="top: 570px; left: 900px" class="tooltip unselectable" onclick="buyElement(66)">Dy<span class="tooltiptext"><b>Dysprosium [66]</b><br>You have 0<br>Costs <a id="66cost">0</a> protons</span></td>
-				<td style="top: 570px; left: 975px" class="tooltip unselectable" onclick="buyElement(67)">Ho<span class="tooltiptext"><b>Holmium [67]</b><br>You have 0<br>Costs <a id="67cost">0</a> protons</span></td>
-				<td style="top: 570px; left: 1050px" class="tooltip unselectable" onclick="buyElement(68)">Er<span class="tooltiptext"><b>Erbium [68]</b><br>You have 0<br>Costs <a id="68cost">0</a> protons</span></td>
-				<td style="top: 570px; left: 1125px" class="tooltip unselectable" onclick="buyElement(69)">Tm<span class="tooltiptext"><b>Thulium [69]</b><br>You have 0<br>Costs <a id="69cost">0</a> protons</span></td>
-				<td style="top: 570px; left: 1200px" class="tooltip unselectable" onclick="buyElement(70)">Yb<span class="tooltiptext"><b>Ytterbium [70]</b><br>You have 0<br>Costs <a id="70cost">0</a> protons</span></td>
-				<td style="top: 570px; left: 1275px" class="tooltip unselectable" onclick="buyElement(71)">Lu<span class="tooltiptext"><b>Lutetium [71]</b><br>You have 0<br>Costs <a id="71cost">0</a> protons</span></td>
+				<td style="top: 570px; left: 225px" class="tooltip unselectable" onclick="buyElement(57)">La<span class="tooltiptext"><b>Lanthanum [57]</b><br>You have <a id="57amount">0</a><br>Costs <a id="57cost">0</a> protons</span></td>
+				<td style="top: 570px; left: 300px" class="tooltip unselectable" onclick="buyElement(58)">Ce<span class="tooltiptext"><b>Cerium [58]</b><br>You have <a id="58amount">0</a><br>Costs <a id="58cost">0</a> protons</span></td>
+				<td style="top: 570px; left: 375px" class="tooltip unselectable" onclick="buyElement(59)">Pr<span class="tooltiptext"><b>Praseodymium [59]</b><br>You have <a id="59amount">0</a><br>Costs <a id="59cost">0</a> protons</span></td>
+				<td style="top: 570px; left: 450px" class="tooltip unselectable" onclick="buyElement(60)">Nd<span class="tooltiptext"><b>Neodymium [60]</b><br>You have <a id="60amount">0</a><br>Costs <a id="60cost">0</a> protons</span></td>
+				<td style="top: 570px; left: 525px" class="tooltip unselectable" onclick="buyElement(61)">Pm<span class="tooltiptext"><b>Promethium [61]</b><br>You have <a id="61amount">0</a><br>Costs <a id="61cost">0</a> protons</span></td>
+				<td style="top: 570px; left: 600px" class="tooltip unselectable" onclick="buyElement(62)">Sm<span class="tooltiptext"><b>Samarium [62]</b><br>You have <a id="62amount">0</a><br>Costs <a id="62cost">0</a> protons</span></td>
+				<td style="top: 570px; left: 675px" class="tooltip unselectable" onclick="buyElement(63)">Eu<span class="tooltiptext"><b>Europium [63]</b><br>You have <a id="63amount">0</a><br>Costs <a id="63cost">0</a> protons</span></td>
+				<td style="top: 570px; left: 750px" class="tooltip unselectable" onclick="buyElement(64)">Gd<span class="tooltiptext"><b>Gadolinium [64]</b><br>You have <a id="64amount">0</a><br>Costs <a id="64cost">0</a> protons</span></td>
+				<td style="top: 570px; left: 825px" class="tooltip unselectable" onclick="buyElement(65)">Tb<span class="tooltiptext"><b>Terbium [65]</b><br>You have <a id="65amount">0</a><br>Costs <a id="65cost">0</a> protons</span></td>
+				<td style="top: 570px; left: 900px" class="tooltip unselectable" onclick="buyElement(66)">Dy<span class="tooltiptext"><b>Dysprosium [66]</b><br>You have <a id="66amount">0</a><br>Costs <a id="66cost">0</a> protons</span></td>
+				<td style="top: 570px; left: 975px" class="tooltip unselectable" onclick="buyElement(67)">Ho<span class="tooltiptext"><b>Holmium [67]</b><br>You have <a id="67amount">0</a><br>Costs <a id="67cost">0</a> protons</span></td>
+				<td style="top: 570px; left: 1050px" class="tooltip unselectable" onclick="buyElement(68)">Er<span class="tooltiptext"><b>Erbium [68]</b><br>You have <a id="68amount">0</a><br>Costs <a id="68cost">0</a> protons</span></td>
+				<td style="top: 570px; left: 1125px" class="tooltip unselectable" onclick="buyElement(69)">Tm<span class="tooltiptext"><b>Thulium [69]</b><br>You have <a id="69amount">0</a><br>Costs <a id="69cost">0</a> protons</span></td>
+				<td style="top: 570px; left: 1200px" class="tooltip unselectable" onclick="buyElement(70)">Yb<span class="tooltiptext"><b>Ytterbium [70]</b><br>You have <a id="70amount">0</a><br>Costs <a id="70cost">0</a> protons</span></td>
+				<td style="top: 570px; left: 1275px" class="tooltip unselectable" onclick="buyElement(71)">Lu<span class="tooltiptext"><b>Lutetium [71]</b><br>You have <a id="71amount">0</a><br>Costs <a id="71cost">0</a> protons</span></td>
 			</tr>
 			<!-- Actinides -->
 			<tr>
-				<td style="top: 660px; left: 225px" class="tooltip unselectable" onclick="buyElement(89)">Ac<span class="tooltiptext"><b>Actinium [89]</b><br>You have 0<br>Costs <a id="89cost">0</a> protons</span></td>
-				<td style="top: 660px; left: 300px" class="tooltip unselectable" onclick="buyElement(90)">Th<span class="tooltiptext"><b>Thorium [90]</b><br>You have 0<br>Costs <a id="90cost">0</a> protons</span></td>
-				<td style="top: 660px; left: 375px" class="tooltip unselectable" onclick="buyElement(91)">Pa<span class="tooltiptext"><b>Protactinium [91]</b><br>You have 0<br>Costs <a id="91cost">0</a> protons</span></td>
-				<td style="top: 660px; left: 450px" class="tooltip unselectable" onclick="buyElement(92)">U<span class="tooltiptext"><b>Uranium [92]</b><br>You have 0<br>Costs <a id="92cost">0</a> protons</span></td>
-				<td style="top: 660px; left: 525px" class="tooltip unselectable" onclick="buyElement(93)">Np<span class="tooltiptext"><b>Neptunium [93]</b><br>You have 0<br>Costs <a id="93cost">0</a> protons</span></td>
-				<td style="top: 660px; left: 600px" class="tooltip unselectable" onclick="buyElement(94)">Pu<span class="tooltiptext"><b>Plutonium [94]</b><br>You have 0<br>Costs <a id="94cost">0</a> protons</span></td>
-				<td style="top: 660px; left: 675px" class="tooltip unselectable" onclick="buyElement(95)">Am<span class="tooltiptext"><b>Americium [95]</b><br>You have 0<br>Costs <a id="95cost">0</a> protons</span></td>
-				<td style="top: 660px; left: 750px" class="tooltip unselectable" onclick="buyElement(96)">Cm<span class="tooltiptext"><b>Curium [96]</b><br>You have 0<br>Costs <a id="96cost">0</a> protons</span></td>
-				<td style="top: 660px; left: 825px" class="tooltip unselectable" onclick="buyElement(97)">Bk<span class="tooltiptext"><b>Berkelium [97]</b><br>You have 0<br>Costs <a id="97cost">0</a> protons</span></td>
-				<td style="top: 660px; left: 900px" class="tooltip unselectable" onclick="buyElement(98)">Cf<span class="tooltiptext"><b>Californium [98]</b><br>You have 0<br>Costs <a id="98cost">0</a> protons</span></td>
-				<td style="top: 660px; left: 975px" class="tooltip unselectable" onclick="buyElement(99)">Es<span class="tooltiptext"><b>Einsteinium [99]</b><br>You have 0<br>Costs <a id="99cost">0</a> protons</span></td>
-				<td style="top: 660px; left: 1050px" class="tooltip unselectable" onclick="buyElement(100)">Fm<span class="tooltiptext"><b>Fermium [100]</b><br>You have 0<br>Costs <a id="100cost">0</a> protons</span></td>
-				<td style="top: 660px; left: 1125px" class="tooltip unselectable" onclick="buyElement(101)">Md<span class="tooltiptext"><b>Mendelevium [101]</b><br>You have 0<br>Costs <a id="101cost">0</a> protons</span></td>
-				<td style="top: 660px; left: 1200px" class="tooltip unselectable" onclick="buyElement(102)">No<span class="tooltiptext"><b>Nobelium [102]</b><br>You have 0<br>Costs <a id="102cost">0</a> protons</span></td>
-				<td style="top: 660px; left: 1275px" class="tooltip unselectable" onclick="buyElement(103)">Lr<span class="tooltiptext"><b>Lawrencium [103]</b><br>You have 0<br>Costs <a id="103cost">0</a> protons</span></td>
+				<td style="top: 660px; left: 225px" class="tooltip unselectable" onclick="buyElement(89)">Ac<span class="tooltiptext"><b>Actinium [89]</b><br>You have <a id="89amount">0</a><br>Costs <a id="89cost">0</a> protons</span></td>
+				<td style="top: 660px; left: 300px" class="tooltip unselectable" onclick="buyElement(90)">Th<span class="tooltiptext"><b>Thorium [90]</b><br>You have <a id="90amount">0</a><br>Costs <a id="90cost">0</a> protons</span></td>
+				<td style="top: 660px; left: 375px" class="tooltip unselectable" onclick="buyElement(91)">Pa<span class="tooltiptext"><b>Protactinium [91]</b><br>You have <a id="91amount">0</a><br>Costs <a id="91cost">0</a> protons</span></td>
+				<td style="top: 660px; left: 450px" class="tooltip unselectable" onclick="buyElement(92)">U<span class="tooltiptext"><b>Uranium [92]</b><br>You have <a id="92amount">0</a><br>Costs <a id="92cost">0</a> protons</span></td>
+				<td style="top: 660px; left: 525px" class="tooltip unselectable" onclick="buyElement(93)">Np<span class="tooltiptext"><b>Neptunium [93]</b><br>You have <a id="93amount">0</a><br>Costs <a id="93cost">0</a> protons</span></td>
+				<td style="top: 660px; left: 600px" class="tooltip unselectable" onclick="buyElement(94)">Pu<span class="tooltiptext"><b>Plutonium [94]</b><br>You have <a id="94amount">0</a><br>Costs <a id="94cost">0</a> protons</span></td>
+				<td style="top: 660px; left: 675px" class="tooltip unselectable" onclick="buyElement(95)">Am<span class="tooltiptext"><b>Americium [95]</b><br>You have <a id="95amount">0</a><br>Costs <a id="95cost">0</a> protons</span></td>
+				<td style="top: 660px; left: 750px" class="tooltip unselectable" onclick="buyElement(96)">Cm<span class="tooltiptext"><b>Curium [96]</b><br>You have <a id="96amount">0</a><br>Costs <a id="96cost">0</a> protons</span></td>
+				<td style="top: 660px; left: 825px" class="tooltip unselectable" onclick="buyElement(97)">Bk<span class="tooltiptext"><b>Berkelium [97]</b><br>You have <a id="97amount">0</a><br>Costs <a id="97cost">0</a> protons</span></td>
+				<td style="top: 660px; left: 900px" class="tooltip unselectable" onclick="buyElement(98)">Cf<span class="tooltiptext"><b>Californium [98]</b><br>You have <a id="98amount">0</a><br>Costs <a id="98cost">0</a> protons</span></td>
+				<td style="top: 660px; left: 975px" class="tooltip unselectable" onclick="buyElement(99)">Es<span class="tooltiptext"><b>Einsteinium [99]</b><br>You have <a id="99amount">0</a><br>Costs <a id="99cost">0</a> protons</span></td>
+				<td style="top: 660px; left: 1050px" class="tooltip unselectable" onclick="buyElement(100)">Fm<span class="tooltiptext"><b>Fermium [100]</b><br>You have <a id="100amount">0</a><br>Costs <a id="100cost">0</a> protons</span></td>
+				<td style="top: 660px; left: 1125px" class="tooltip unselectable" onclick="buyElement(101)">Md<span class="tooltiptext"><b>Mendelevium [101]</b><br>You have <a id="101amount">0</a><br>Costs <a id="101cost">0</a> protons</span></td>
+				<td style="top: 660px; left: 1200px" class="tooltip unselectable" onclick="buyElement(102)">No<span class="tooltiptext"><b>Nobelium [102]</b><br>You have <a id="102amount">0</a><br>Costs <a id="102cost">0</a> protons</span></td>
+				<td style="top: 660px; left: 1275px" class="tooltip unselectable" onclick="buyElement(103)">Lr<span class="tooltiptext"><b>Lawrencium [103]</b><br>You have <a id="103amount">0</a><br>Costs <a id="103cost">0</a> protons</span></td>
 			</tr>
 		</table>
 
@@ -220,7 +212,7 @@
 		<p class="optionsText">You currently have <a class="protonAmount">0</a> protons</p>
 		<p class="optionsText">That'd take about <a id="protonAmountSeconds">0 seconds</a> to write out completely</p>
 		<br><br>
-		<p class="optionsText">Element rules:<br>The first element of each row (Li, Na, K, etc.) multiplies all rows before it<br>Other elements produce the element before them.</p>
+		<p class="optionsText" style="position: absolute; left: 2px; bottom: -3px">Element rules:<br>The first element of each row (Li, Na, K, etc.) multiplies all rows before it<br>Other elements produce the element before them.</p>
 	</div>
 
 	<!-- Options container -->
@@ -260,12 +252,12 @@
 		<p id="tabBarText"><</p>
 		<div id="tableTab" class="tab" style="top: 17px; height: 65px;" onclick="tableTabSwitch()"><p class="tabText" style="line-height: 24px">Table</p></div>
 		<div id="neutronsTab" class="tab" style="top: 91px"><p class="tabText">Neutrons</p></div>
-		<div id="prestigeTab" class="tab" style="top: 145px"><p class="tabText">Prestige</p></div>
+		<div id="prestigeTab" class="tab" style="top: 145px"><p class="tabText">Accelerator</p></div>
 		<div id="skillsTab" class="tab" style="top: 199px" onclick="skillsTabSwitch()"><p class="tabText">Planck</p></div>
 		<div id="tachyonsTab" class="tab" style="top: 253px"><p class="tabText">Tachyons</p></div>
 		<div id="optionsTab" class="tab" style="bottom: 47px" onclick="optionsTabSwitch()"><p class="tabText">Options</p></div>
 		<div id="statisticsTab" class="tab" style="bottom: 101px" onclick="statisticsTabSwitch()"><p class="tabText">Statistics</p></div>
-		<p id="versionText" class="">Periodic Production<br>Update 61</p>
+		<p id="versionText" class="">Periodic Production<br>Update 62</p>
 		<img src="assets/logo-full-noback.png" id="tabLogo" class="unselectable" style="width: 40px; height: 40px; position: absolute; bottom: 3px">
 	</div>
 </body>

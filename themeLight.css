@@ -61,6 +61,10 @@ body {
 	border: 3px rgba(68, 68, 68, 0.1);
 }
 
+.infoText {
+	color: #444444;
+}
+
 th, td {
 	border: 3px solid black;
 	background-color: #aaaaaa;
