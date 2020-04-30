@@ -190,6 +190,8 @@
 
 		<!-- The button to make protons -->
 		<button id="protonCreateButton" class="buttonGeneric" style="position: absolute; top: 35px; left: 1480px" onclick="protonAdd()"><b>Create protons</b></button>
+
+		<button id="clickValueButton" class="buttonGeneric" style="position: absolute; top: 210px; left: 1480px; height: 80px; font-size: 16px" onclick="clickValueUp()"><b>Multiply protons/click by 100<br>Currently <a id="protonsPerClick">0</a><br>Costs <a id="clickValueCost">0</a> protons</b></button>
 	</div>
 
 	<!-- Planck tree container -->
@@ -248,7 +250,7 @@
 		<p class="optionsText optionsTextButton">Import</p>
 		<br><br><br>
 		<p class="optionsText optionsTextButton" style="color: #bb1111; background: rgba(160, 100, 100, 0.5)">HARD RESET</p>
-		<p class="optionsText" style="position: absolute; bottom: 5px; left: 0px; font-size: 12px; line-height: 15px">Game made by Demonin, tested by LightB and Wolfdale276<br>Libraries used: break_infinity.js, ad-notations.js</p>
+		<p class="optionsText" style="position: absolute; bottom: 5px; left: 0px; font-size: 12px; line-height: 15px">Game made by Demonin, tested by LightB<br>Libraries used: break_infinity.js, ad-notations.js</p>
 	</div>
 
 	<!-- The tab bar on the right side -->
@@ -261,7 +263,7 @@
 		<div id="tachyonsTab" class="tab" style="top: 253px"><p class="tabText">Tachyons</p></div>
 		<div id="optionsTab" class="tab" style="bottom: 47px" onclick="optionsTabSwitch()"><p class="tabText">Options</p></div>
 		<div id="statisticsTab" class="tab" style="bottom: 101px" onclick="statisticsTabSwitch()"><p class="tabText">Statistics</p></div>
-		<p id="versionText" class="">Periodic Production<br>Update 64</p>
+		<p id="versionText" class="">Periodic Production<br>Update 65</p>
 		<img src="assets/logo-full-noback.png" id="tabLogo" class="unselectable" style="width: 40px; height: 40px; position: absolute; bottom: 3px">
 	</div>
 </body>

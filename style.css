@@ -178,6 +178,9 @@ th, td {
     visibility: visible;
 }
 
+#clickValueButton {
+	display: none;
+}
 
 
 
