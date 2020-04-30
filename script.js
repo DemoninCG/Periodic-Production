@@ -17,7 +17,7 @@ function reset() {
 		ingameSecondBarHeight: 0,
 		currentNotation: new ADNotations.StandardNotation(),
 		protonsPerClick: new Decimal(1),
-		clickValueCost: new Decimal(1000),
+		clickValueCost: new Decimal(750),
 
 		baseCosts: [new Decimal(20), new Decimal(100), new Decimal(800), new Decimal(15000), new Decimal(1.5e7), new Decimal(1e9), new Decimal(4e10)],
 		elementAmounts: [],
@@ -152,37 +152,19 @@ function updateSmall() {
 
 	game.protonsPerSecond = new Decimal(game.elementAmounts[2]).multiply(game.elementAmounts[3].add(1))
 
-	if (game.elementAmounts[2] != 0) {
-		document.getElementById("infoDiv").style.display = "block"
-	}
-
-	if (game.protonAmount >= 500) {
-		document.getElementById("clickValueButton").style.display = "block"
-	}
-
 	var elementCostTemp
 	for (elementCostTemp = 0; elementCostTemp <= 116; elementCostTemp++) {
 		if (game.elementAmounts[elementCostTemp+2] < 100) {
-			game.elementCosts [elementCostTemp] = game.baseCosts [elementCostTemp] * Math.pow(elementCostTemp+2, game.elementAmounts[elementCostTemp+2])
+			game.elementCosts [elementCostTemp] = game.baseCosts [elementCostTemp].multiply(new Decimal(elementCostTemp+2).pow(game.elementAmounts[elementCostTemp+2]))
 		}
 		else {
-			game.elementCosts [elementCostTemp] = Infinity
+			game.elementCosts [elementCostTemp] = new Decimal(Infinity)
 		}
 		var elementCostTemp2 = (elementCostTemp + 2) + "cost"
 		document.getElementById(elementCostTemp2).innerHTML = game.currentNotation.format(game.elementCosts [elementCostTemp], 2, 0)
 
 		var elementAmountTemp = (elementCostTemp + 2) + "amount"
 		document.getElementById(elementAmountTemp).innerHTML = game.currentNotation.format(game.elementAmounts[elementCostTemp+2], 2, 0)
-
-		if (game.elementAmounts[elementCostTemp+2] >= 100) {
-			document.getElementsByClassName("tooltip")[elementCostTemp+1].style.backgroundColor = "#889988"
-		}
-		else if (game.protonAmount >= game.elementCosts [elementCostTemp]) {
-			document.getElementsByClassName("tooltip")[elementCostTemp+1].style.backgroundColor = "#9999ee"
-		}
-		else {
-			document.getElementsByClassName("tooltip")[elementCostTemp+1].style.backgroundColor = "#aaaaaa"
-		}
 	}
 }
 
@@ -199,10 +181,38 @@ function updateLarge() {
 	game.elementAmounts[8] = game.elementAmounts[8].add(game.elementAmounts[9])
 	game.elementAmounts[9] = game.elementAmounts[9].add(game.elementAmounts[10])
 
+	showObjectChecks()
+	elementColorCheck()
+
 	game.ingameSecondBarHeight = 0
 	document.getElementById("ingameSecondBar").style.height = game.ingameSecondBarHeight + "%"
 	setTimeout(updateLarge, game.ingameSecond)
 	game.ingameSecondTime = Date.now()
+}
+
+function showObjectChecks() {
+	if (game.elementAmounts[2] != 0) {
+		document.getElementById("infoDiv").style.display = "block"
+	}
+
+	if (game.protonAmount >= 300) {
+		document.getElementById("clickValueButton").style.display = "block"
+	}
+}
+
+function elementColorCheck() {
+	var elementColorTemp
+	for (elementColorTemp = 0; elementColorTemp <= 116; elementColorTemp++) {
+		if (game.elementAmounts[elementColorTemp+2] >= 100) {
+			document.getElementsByClassName("tooltip")[elementColorTemp+1].style.backgroundColor = "#889988"
+		}
+		else if (game.protonAmount.greaterThan(game.elementCosts[elementColorTemp] - 1) == true) {
+			document.getElementsByClassName("tooltip")[elementColorTemp+1].style.backgroundColor = "#9999ee"
+		}
+		else {
+			document.getElementsByClassName("tooltip")[elementColorTemp+1].style.backgroundColor = "#aaaaaa"
+		}
+	}
 }
 
 setInterval(updateSmall, 16)
@@ -211,11 +221,26 @@ setTimeout(updateLarge, game.ingameSecond)
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Buying elements
 function buyElement(x) {
-	if (game.protonAmount >= game.elementCosts[x-2]) {
+	if (game.protonAmount.greaterThan(game.elementCosts[x-2] - 1) == true) {
 		game.protonAmount = game.protonAmount.subtract(game.elementCosts[x-2])
 		game.elementAmounts[x] = game.elementAmounts[x].add(1)
+		showObjectChecks()
+		elementColorCheck()
 	}
 }
 
@@ -324,6 +349,8 @@ setInterval(backPos, 50)
 // Add protons, wow amazing
 function protonAdd() {
 	game.protonAmount = game.protonAmount.add(game.protonsPerClick)
+	showObjectChecks()
+	elementColorCheck()
 }
 
 // Multiply protons/click by 100
