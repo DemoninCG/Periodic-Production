@@ -202,6 +202,7 @@ th, td {
 	line-height: 40px;
 	text-align: center;
 	font-size: 22px;
+	cursor: pointer;
 }
 
 
@@ -212,12 +213,32 @@ th, td {
 
 
 
-#statistics {
+#statisticsTabs {
 	position: absolute;
-	top: 20px;
+	top: 10px;
 	left: 58px;
 	width: 75%;
-	height: 95.5%;
+	height: 60px;
+	border-radius: 10px;
+}
+
+.statisticsTab {
+	position: absolute;
+	width: 150px;
+	height: 40px;
+	border-radius: 8px;
+	line-height: 40px;
+	text-align: center;
+	font-size: 22px;
+	cursor: pointer;
+}
+
+#statistics {
+	position: absolute;
+	top: 80px;
+	left: 58px;
+	width: 75%;
+	height: 89.5%;
 	border-radius: 10px;
 }
 

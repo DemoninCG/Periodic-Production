@@ -17,7 +17,7 @@ function reset() {
 		ingameSecondBarHeight: 0,
 		currentNotation: new ADNotations.StandardNotation(),
 
-		baseCosts: [new Decimal(20), new Decimal(100), new Decimal(800), new Decimal(15000), new Decimal(2e7), new Decimal(8e9), new Decimal(5e11)],
+		baseCosts: [new Decimal(20), new Decimal(100), new Decimal(800), new Decimal(15000), new Decimal(1.5e7), new Decimal(3e9), new Decimal(1e11)],
 		elementAmounts: [],
 		elementCosts: [],
 	}
@@ -29,6 +29,7 @@ function reset() {
 	game.baseCosts.fill(new Decimal(1e100), 7, 117)
 
 	document.getElementById("skills").style.display = "none"
+	document.getElementById("statisticsTabs").style.display = "none"
 	document.getElementById("statistics").style.display = "none"
 	document.getElementById("options").style.display = "none"
 
@@ -207,6 +208,7 @@ function buyElement(x) {
 function tableTabSwitch() {
 	document.getElementById("table").style.display = "block"
 	document.getElementById("skills").style.display = "none"
+	document.getElementById("statisticsTabs").style.display = "none"
 	document.getElementById("statistics").style.display = "none"
 	document.getElementById("options").style.display = "none"
 
@@ -222,6 +224,7 @@ function tableTabSwitch() {
 function skillsTabSwitch() {
 	document.getElementById("table").style.display = "none"
 	document.getElementById("skills").style.display = "block"
+	document.getElementById("statisticsTabs").style.display = "none"
 	document.getElementById("statistics").style.display = "none"
 	document.getElementById("options").style.display = "none"
 
@@ -237,6 +240,7 @@ function skillsTabSwitch() {
 function statisticsTabSwitch() {
 	document.getElementById("table").style.display = "none"
 	document.getElementById("skills").style.display = "none"
+	document.getElementById("statisticsTabs").style.display = "block"
 	document.getElementById("statistics").style.display = "block"
 	document.getElementById("options").style.display = "none"
 
@@ -252,6 +256,7 @@ function statisticsTabSwitch() {
 function optionsTabSwitch() {
 	document.getElementById("table").style.display = "none"
 	document.getElementById("skills").style.display = "none"
+	document.getElementById("statisticsTabs").style.display = "none"
 	document.getElementById("statistics").style.display = "none"
 	document.getElementById("options").style.display = "block"
 

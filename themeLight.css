@@ -100,6 +100,17 @@ th:hover, td:hover {
 
 
 
+#statisticsTabs {
+	background: rgba(34, 34, 34, 0.2);
+	border: 3px rgba(34, 34, 34, 0.2);
+}
+
+.statisticsTab {
+	background-color: #bbbbbb;
+	border: 3px solid #666666;
+	color: #444444
+}
+
 #statistics {
 	background: rgba(34, 34, 34, 0.2);
 	border: 3px rgba(34, 34, 34, 0.2);
