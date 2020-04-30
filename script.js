@@ -328,9 +328,9 @@ function protonAdd() {
 
 // Multiply protons/click by 100
 function clickValueUp() {
-	if (game.protonAmount >= game.clickValueCost) {
+	if (game.protonAmount.greaterThan(game.clickValueCost - 1)) {
 		game.protonAmount = game.protonAmount.subtract(game.clickValueCost)
-		game.protonsPerClick = game.protonsPerClick.multiply(100)
-		game.clickValueCost = game.clickValueCost.multiply(200)
+		game.protonsPerClick = game.protonsPerClick.multiply(10)
+		game.clickValueCost = game.clickValueCost.multiply(12)
 	}
 }
