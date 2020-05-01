@@ -4,6 +4,8 @@
 
 console.log("Hello there! This is a test console message to ensure the JS file works.")
 let game
+var logoRotation = 0
+var loadingOpacity = 1
 
 function reset() {
 	game = {
@@ -30,6 +32,7 @@ function reset() {
 	game.baseCosts.length = 117
 	game.baseCosts.fill(new Decimal(1e100), 9, 117)
 
+	document.getElementById("loadingScreen").style.display = "block"
 	document.getElementById("skills").style.display = "none"
 	document.getElementById("statisticsTabs").style.display = "none"
 	document.getElementById("statistics").style.display = "none"
@@ -166,6 +169,13 @@ function updateSmall() {
 		var elementAmountTemp = (elementCostTemp + 2) + "amount"
 		document.getElementById(elementAmountTemp).innerHTML = game.currentNotation.format(game.elementAmounts[elementCostTemp+2], 2, 0)
 	}
+
+	if (document.getElementById("loadingScreen").style.display == "block") {
+		logoRotation += 1
+		var logoRotation2 = Math.sin(logoRotation / 30) * 200
+		logoRotation3 = "rotate(" + logoRotation2 + "deg)"
+		document.getElementById("logoLines").style.transform = logoRotation3
+	}
 }
 
 
@@ -240,6 +250,23 @@ setTimeout(updateLarge, game.ingameSecond)
 
 
 
+
+
+
+
+// Make the loading screen disappear
+function loadingGoAway() {
+	if (loadingOpacity > 0) {
+		loadingOpacity -= 0.05
+		document.getElementById("loadingScreen").style.opacity = loadingOpacity + ""
+		setTimeout(loadingGoAway, 15)
+	}
+	else {
+		document.getElementById("loadingScreen").style.display = "none"
+	}
+}
+
+setTimeout(loadingGoAway, 1500)
 
 // Buying elements
 function buyElement(x) {

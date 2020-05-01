@@ -7,6 +7,10 @@ body {
 	font-family: Tahoma, Geneva, sans-serif;
 }
 
+#loadingScreen {
+	background-color: #bbbbbb
+}
+
 .buttonGeneric {
 	background-color: #aaaaaa;
 	color: black;
