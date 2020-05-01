@@ -19,7 +19,7 @@ function reset() {
 		protonsPerClick: new Decimal(1),
 		clickValueCost: new Decimal(750),
 
-		baseCosts: [new Decimal(20), new Decimal(100), new Decimal(800), new Decimal(15000), new Decimal(1.5e7), new Decimal(1e9), new Decimal(4e10)],
+		baseCosts: [new Decimal(20), new Decimal(100), new Decimal(800), new Decimal(15000), new Decimal(1.5e7), new Decimal(1e9), new Decimal(4e10), new Decimal(1.5e13), new Decimal(1e16)],
 		elementAmounts: [],
 		elementCosts: [],
 	}
@@ -28,7 +28,7 @@ function reset() {
 	game.elementAmounts.fill(new Decimal(0))
 
 	game.baseCosts.length = 117
-	game.baseCosts.fill(new Decimal(1e100), 7, 117)
+	game.baseCosts.fill(new Decimal(1e100), 9, 117)
 
 	document.getElementById("skills").style.display = "none"
 	document.getElementById("statisticsTabs").style.display = "none"
@@ -213,6 +213,13 @@ function elementColorCheck() {
 			document.getElementsByClassName("tooltip")[elementColorTemp+1].style.backgroundColor = "#aaaaaa"
 		}
 	}
+
+	if (game.protonAmount.greaterThan(game.clickValueCost - 1)) {
+		document.getElementById("clickValueButton").style.backgroundColor = "#9999ee"
+	}
+	else {
+		document.getElementById("clickValueButton").style.backgroundColor = "#aaaaaa"
+	}
 }
 
 setInterval(updateSmall, 16)
@@ -360,5 +367,7 @@ function clickValueUp() {
 		game.protonAmount = game.protonAmount.subtract(game.clickValueCost)
 		game.protonsPerClick = game.protonsPerClick.multiply(10)
 		game.clickValueCost = game.clickValueCost.multiply(12)
+		showObjectChecks()
+		elementColorCheck()
 	}
 }
