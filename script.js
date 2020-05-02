@@ -10,6 +10,7 @@ var loadingOpacity = 1
 function reset() {
 	game = {
 		protonAmount: new Decimal(0),
+		protonAmountChecking: new Decimal(0),
 		protonsPerSecond: 0,
 		backgroundPosition: 0,
 		tabBarOut: false,
@@ -170,6 +171,12 @@ function updateSmall() {
 		document.getElementById(elementAmountTemp).innerHTML = game.currentNotation.format(game.elementAmounts[elementCostTemp+2], 2, 0)
 	}
 
+	if (game.protonAmount != game.protonAmountChecking) {
+		game.protonAmountChecking = game.protonAmount
+		showObjectChecks()
+		elementColorCheck()
+	}
+
 	if (document.getElementById("loadingScreen").style.display == "block") {
 		logoRotation += 1
 		var logoRotation2 = Math.sin(logoRotation / 30) * 200
@@ -190,9 +197,6 @@ function updateLarge() {
 	game.elementAmounts[7] = game.elementAmounts[7].add(game.elementAmounts[8])
 	game.elementAmounts[8] = game.elementAmounts[8].add(game.elementAmounts[9])
 	game.elementAmounts[9] = game.elementAmounts[9].add(game.elementAmounts[10])
-
-	showObjectChecks()
-	elementColorCheck()
 
 	game.ingameSecondBarHeight = 0
 	document.getElementById("ingameSecondBar").style.height = game.ingameSecondBarHeight + "%"
@@ -273,8 +277,6 @@ function buyElement(x) {
 	if (game.protonAmount.greaterThan(game.elementCosts[x-2] - 1) == true) {
 		game.protonAmount = game.protonAmount.subtract(game.elementCosts[x-2])
 		game.elementAmounts[x] = game.elementAmounts[x].add(1)
-		showObjectChecks()
-		elementColorCheck()
 	}
 
 }
@@ -384,8 +386,6 @@ setInterval(backPos, 50)
 // Add protons, wow amazing
 function protonAdd() {
 	game.protonAmount = game.protonAmount.add(game.protonsPerClick)
-	showObjectChecks()
-	elementColorCheck()
 }
 
 // Multiply protons/click by 100
@@ -394,7 +394,5 @@ function clickValueUp() {
 		game.protonAmount = game.protonAmount.subtract(game.clickValueCost)
 		game.protonsPerClick = game.protonsPerClick.multiply(10)
 		game.clickValueCost = game.clickValueCost.multiply(12)
-		showObjectChecks()
-		elementColorCheck()
 	}
 }
