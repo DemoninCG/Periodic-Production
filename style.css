@@ -58,6 +58,17 @@ p {
     margin-bottom: auto; 
 }
 
+/* The news ticker */
+#newsTicker {
+	position: absolute;
+	top: 0px;
+	left: 4%;
+	width: 92%;
+	height: 20px;
+	border-radius: 0px 0px 5px 5px;
+	text-align: center;
+	color: #444444;
+}
 
 /* Most buttons use this */
 .buttonGeneric {
@@ -76,8 +87,6 @@ p {
 	width: 500px;
 	height: 50px;
 	line-height: 23px;
-	background-color: #aaaaaa;
-	border: 3px solid #666666;
 	z-index: 999;
 	display: none;
 }
@@ -140,7 +149,7 @@ p {
 
 #protonTextDiv {
 	position: absolute;
-	top: 15px;
+	top: 35px;
 	left: 103px;
 	width: 1334px;
 	height: 80px;
@@ -155,10 +164,10 @@ p {
 
 #infoDiv {
 	position: absolute;
-	top: 111px;
+	top: 131px;
 	left: 250px;
 	width: 738px;
-	height: 282px;
+	height: 262px;
 	border-radius: 8px;
 	display: none;
 }

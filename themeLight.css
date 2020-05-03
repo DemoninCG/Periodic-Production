@@ -8,13 +8,25 @@ body {
 }
 
 #loadingScreen {
-	background-color: #bbbbbb
+	background-color: #bbbbbb;
+}
+
+#newsTicker {
+	background-color: #dddddd;
+	border-left: 3px solid #aaaaaa;
+	border-bottom: 3px solid #aaaaaa;
+	border-right: 3px solid #aaaaaa;
 }
 
 .buttonGeneric {
 	background-color: #aaaaaa;
 	color: black;
 	border-color: #444444;
+}
+
+#widthMessage {
+	background-color: #aaaaaa;
+	border: 3px solid #666666;
 }
 
 #tabBar {

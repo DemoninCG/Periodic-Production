@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -9,6 +9,7 @@
 	<script src="ad-notations.js" defer></script>
     <script type="text/javascript" src="break_infinity.js"></script>
     <script src="script.js" defer></script>
+	<script src="news.js" defer></script>
 	<title>Periodic Production</title>
 </head>
 <body>
@@ -17,6 +18,9 @@
 		<img id="logoLines" src="assets/logo-lines-noback.png">
 	</div>
 	
+	<!-- News ticker! Don't sue me for stealing ideas plz -->
+	<div id="newsTicker"><p style="margin-top: 0px"><a id="news">Welcome to Periodic Production! I'll be your news ticker for today.</a></p></div>
+
 	<!-- The ingame second bar -->
 	<div id="ingameSecondBack"></div>
 	<div id="ingameSecondBar"></div>
@@ -197,7 +201,7 @@
 		<div id="widthMessage">It appears your screen size is not 1920x1080! This game is designed for 1080p screens, so things may break for you.</div>
 
 		<!-- The button to make protons -->
-		<button id="protonCreateButton" class="buttonGeneric" style="position: absolute; top: 35px; left: 1480px" onclick="protonAdd()"><b>Create protons</b></button>
+		<button id="protonCreateButton" class="buttonGeneric" style="position: absolute; top: 55px; left: 1480px" onclick="protonAdd()"><b>Create protons</b></button>
 
 		<button id="clickValueButton" class="buttonGeneric" style="position: absolute; top: 210px; left: 1480px; height: 80px; font-size: 16px" onclick="clickValueUp()"><b>Multiply protons/click by 10<br>Currently <a id="protonsPerClick">0</a><br>Costs <a id="clickValueCost">0</a> protons</b></button>
 	</div>
@@ -271,7 +275,7 @@
 		<div id="tachyonsTab" class="tab" style="top: 253px"><p class="tabText">Tachyons</p></div>
 		<div id="optionsTab" class="tab" style="bottom: 47px" onclick="optionsTabSwitch()"><p class="tabText">Options</p></div>
 		<div id="statisticsTab" class="tab" style="bottom: 101px" onclick="statisticsTabSwitch()"><p class="tabText">Statistics</p></div>
-		<p id="versionText" class="">Periodic Production<br>Update I (72)</p>
+		<p id="versionText" class="">Periodic Production<br>Update II (73)</p>
 		<img src="assets/logo-full-noback.png" id="tabLogo" class="unselectable" style="width: 40px; height: 40px; position: absolute; bottom: 3px">
 	</div>
 </body>
