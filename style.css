@@ -240,7 +240,7 @@ th, td {
 
 #skillsTopBar {
 	position: absolute;
-	top: 15px;
+	top: 35px;
 	left: 53px;
 	width: 1400px;
 	height: 60px;
@@ -255,6 +255,7 @@ th, td {
 	line-height: 40px;
 	text-align: center;
 	font-size: 22px;
+	top: 42px;
 	cursor: pointer;
 }
 
@@ -268,7 +269,7 @@ th, td {
 
 #statisticsTabs {
 	position: absolute;
-	top: 10px;
+	top: 30px;
 	left: 58px;
 	width: 75%;
 	height: 60px;
@@ -288,7 +289,7 @@ th, td {
 
 #statistics {
 	position: absolute;
-	top: 80px;
+	top: 100px;
 	left: 58px;
 	width: 75%;
 	height: 89.5%;
@@ -306,10 +307,10 @@ th, td {
 
 #options {
 	position: absolute;
-	top: 20px;
+	top: 40px;
 	left: 58px;
-	width: 75%;
-	height: 95.5%;
+	width: 40%;
+	height: 93.5%;
 	border-radius: 10px;
 }
 

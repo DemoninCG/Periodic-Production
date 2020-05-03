@@ -12,7 +12,7 @@ body {
 }
 
 #newsTicker {
-	background-color: #dddddd;
+	background-image: linear-gradient(to right, #cccccc, #eeeeee, #cccccc);
 	border-left: 3px solid #aaaaaa;
 	border-bottom: 3px solid #aaaaaa;
 	border-right: 3px solid #aaaaaa;

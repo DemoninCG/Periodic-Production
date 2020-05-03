@@ -1,4 +1,4 @@
-console.log("Hello there! This is another test console message to ensure the news file works.")
+﻿console.log("Hello there! This is another test console message to ensure the news file works.")
 
 var news = [
 "I'd like to thank you for playing my game: Antimatter Di- Wait crap sorry, Periodic Production.",
@@ -16,6 +16,20 @@ var news = [
 '"Oh, you\'re approaching me? Instead of getting more antiprotons, you\'re coming right to me? Even though your progress has slowed down over 10 times?" "I can\'t unlock the sh*t out of you without getting closer."',
 "Sorry but you\'ve hit your proton limit for this month! Please upgrade your payment plan to continue.",
 "*burp*",
+"The news for today: Nothing of note, at all, just another usual day of producing protons. There's nothing of interest YOU HAVE TO HELP ME THEY\'RE COMI-",
+"Where is Jessica Hyderogen?",
+"You know, for a news ticker I give very little news.",
+"News tickers are an elite job, given only to those with high skill and a large repertoire of knowledge. As for me? I just kind of snuck in the back.",
+"Pfft. Time, I laugh at the concept. I can spend a whole day without even trying.",
+"BREAKING NEWS: literally. I just dropped my plate and it broke. Hey, could you buy me a new plate?",
+"Why don't you tell me the news for once? How's your life going? ... ... Okay... ... Oh, I'm sorry to hear that.",
+"YOU ARE NOW BEING TRACKED FOR SUSPICIOUS ACTIVITY. PLEASE DO NOT LEAVE YOUR COMPUTER",
+"It's okay to have this much matter in one place because black holes are disabled by default.",
+"Oh, you're a geologist? Then tell me: Is 'The Rock' igneous, sedimentary, or metamorphic?",
+"THERE IS NO ELEMENT 119",
+"Nice proton bro. A little on the small side, but a nice shape. 8/10",
+"Neutrons? Never heard of them.",
+"Copper? I barely know her!",
 ]
 
 function getRandomInt(max) {
@@ -24,8 +38,8 @@ function getRandomInt(max) {
 
 function setNews() {
 	document.getElementById("news").innerHTML = news[getRandomInt(news.length)]
-	var timeUntilNextNews = 2000 + (document.getElementById("news").innerHTML.length * 60)
+	var timeUntilNextNews = 2000 + (document.getElementById("news").innerHTML.length * 100)
 	setTimeout(setNews, timeUntilNextNews)
 }
 
-setTimeout(setNews, 6000)
+setTimeout(setNews, 8000)
