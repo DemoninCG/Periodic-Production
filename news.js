@@ -1,5 +1,20 @@
 ﻿console.log("Hello there! This is another test console message to ensure the news file works.")
 
+var starters=[
+"Welcome back!",
+"Welcome back to Periodic Production! I'll be your news ticker for today.",
+"Oh hi! Didn't see you there. Welcome back!",
+"Welcome back, player!",
+"Heeey! You're back!",
+"Oh, look how big you've grown now! It's been too long!",
+"Oh, it's you again.",
+"Please take your seat, the exam begins now.",
+]
+
+if (game.started == true) {
+	document.getElementById("news").innerHTML = starters[getRandomInt(starters.length)]
+}
+
 var news = [
 "I'd like to thank you for playing my game: Antimatter Di- Wait crap sorry, Periodic Production.",
 "Local laboratory synthesizes new element, discovers it has a mass of over 100 NStQuMC-DSeOeMI-TVgQu. In unrelated news, Earth is now gone.",
@@ -16,8 +31,7 @@ var news = [
 '"Oh, you\'re approaching me? Instead of getting more antiprotons, you\'re coming right to me? Even though your progress has slowed down over 10 times?" "I can\'t unlock the sh*t out of you without getting closer."',
 "Sorry but you\'ve hit your proton limit for this month! Please upgrade your payment plan to continue.",
 "*burp*",
-"The news for today: Nothing of note, at all, just another usual day of producing protons. There's nothing of interest YOU HAVE TO HELP ME THEY\'RE COMI-",
-"Where is Jessica Hyderogen?",
+"Where is Jessica Hyde?",
 "You know, for a news ticker I give very little news.",
 "News tickers are an elite job, given only to those with high skill and a large repertoire of knowledge. As for me? I just kind of snuck in the back.",
 "Pfft. Time, I laugh at the concept. I can spend a whole day without even trying.",
@@ -27,9 +41,22 @@ var news = [
 "It's okay to have this much matter in one place because black holes are disabled by default.",
 "Oh, you're a geologist? Then tell me: Is 'The Rock' igneous, sedimentary, or metamorphic?",
 "THERE IS NO ELEMENT 119",
-"Nice proton bro. A little on the small side, but a nice shape. 8/10",
-"Neutrons? Never heard of them.",
+"Nice proton bro. A little on the small side, but overall a nice shape. 8/10",
+"Neutrons? Never heard of them. Not even real. Only protons are real.",
 "Copper? I barely know her!",
+"Thank you for playing ♥",
+"Periodic Production is coming to VR in 2028! Stay tuned!",
+"Now where could my pipe be? Garfield!!",
+"Hey Vsauce, Michael here! Where are your protons?",
+"hehe big numbre go up",
+"I'm gonna go ahead and say you are looking sodium fine today.",
+"Guys what does 'sodium nitrogen' mean please why is it in my code",
+'Sir, I\'m very sorry to say your friend has died. I have here his final words for you: "My ex still misses me... BUT HER AIM IS GETTING BETTE-"',
+"Editor's note: Ignore that last news ticker.",
+'"Did you know that thulium is element 69? You know what that means riiiight?" "...That it\'s a lanthanide?"',
+"So is H2O 40,000,000,002 protons now?",
+"Periodic Production: Because physics can suck it!™",
+"Do other news tickers treat their players right? No! This is what makes Periodic Production so good. We really CARE about you.",
 ]
 
 function getRandomInt(max) {
@@ -42,4 +69,5 @@ function setNews() {
 	setTimeout(setNews, timeUntilNextNews)
 }
 
-setTimeout(setNews, 8000)
+var timeUntilNextNews = 3500 + (document.getElementById("news").innerHTML.length * 100)
+setTimeout(setNews, timeUntilNextNews)

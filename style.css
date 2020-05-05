@@ -219,7 +219,7 @@ th, td {
     /* Position the tooltip text - see examples below! */
     position: absolute;
     z-index: 100;
-    bottom: 110%;
+    bottom: 120%;
     right: -50px;
 }
 
@@ -292,7 +292,7 @@ th, td {
 	top: 100px;
 	left: 58px;
 	width: 75%;
-	height: 89.5%;
+	height: 87.5%;
 	border-radius: 10px;
 }
 

@@ -9,6 +9,8 @@ var loadingOpacity = 1
 
 function reset() {
 	game = {
+		started: true,
+
 		protonAmount: new Decimal(0),
 		protonAmountChecking: new Decimal(0),
 		protonsPerSecond: 0,
@@ -22,7 +24,7 @@ function reset() {
 		protonsPerClick: new Decimal(1),
 		clickValueCost: new Decimal(750),
 
-		baseCosts: [new Decimal(20), new Decimal(100), new Decimal(800), new Decimal(15000), new Decimal(1.5e7), new Decimal(1e9), new Decimal(4e10), new Decimal(1.5e13), new Decimal(1e16)],
+		baseCosts: [new Decimal(20), new Decimal(100), new Decimal(800), new Decimal(15000), new Decimal(1.5e7), new Decimal(1e9), new Decimal(4e10), new Decimal(1.5e13), new Decimal(1e16), new Decimal(5e23)],
 		elementAmounts: [],
 		elementCosts: [],
 	}
@@ -31,7 +33,7 @@ function reset() {
 	game.elementAmounts.fill(new Decimal(0))
 
 	game.baseCosts.length = 117
-	game.baseCosts.fill(new Decimal(1e100), 9, 117)
+	game.baseCosts.fill(new Decimal(1e100), 10, 117)
 
 	document.getElementById("loadingScreen").style.display = "block"
 	document.getElementById("skills").style.display = "none"
@@ -311,7 +313,7 @@ function skillsTabSwitch() {
 		rowNumbers[rowNumberTemp].style.display = "none"
 	}
 
-	document.body.style.backgroundImage = "url('assets/back.jpg')"
+	document.body.style.backgroundImage = "url('assets/back6.jpg')"
 }
 
 function statisticsTabSwitch() {
@@ -327,7 +329,7 @@ function statisticsTabSwitch() {
 		rowNumbers[rowNumberTemp].style.display = "none"
 	}
 
-	document.body.style.backgroundImage = "url('assets/back4.jpg')"
+	document.body.style.backgroundImage = "url('assets/back.jpg')"
 }
 
 function optionsTabSwitch() {
@@ -386,6 +388,7 @@ setInterval(backPos, 50)
 // Add protons, wow amazing
 function protonAdd() {
 	game.protonAmount = game.protonAmount.add(game.protonsPerClick)
+	game.started = true
 }
 
 // Multiply protons/click by 100
