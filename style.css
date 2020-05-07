@@ -68,6 +68,7 @@ p {
 	border-radius: 0px 0px 5px 5px;
 	text-align: center;
 	color: #444444;
+	z-index: 200;
 }
 
 /* Most buttons use this */
@@ -232,6 +233,14 @@ th, td {
 	display: none;
 }
 
+#somethingWillBeUnlocked {
+	position: absolute;
+	bottom: 15px;
+	left: 1460px;
+	display: none;
+	font-size: 18px;
+}
+
 
 
 
@@ -292,7 +301,7 @@ th, td {
 	top: 100px;
 	left: 58px;
 	width: 75%;
-	height: 87.5%;
+	height: 820px;
 	border-radius: 10px;
 }
 
@@ -305,12 +314,12 @@ th, td {
 
 
 
-#options {
+#options, #options2 {
 	position: absolute;
 	top: 40px;
 	left: 58px;
 	width: 40%;
-	height: 93.5%;
+	height: 880px;
 	border-radius: 10px;
 }
 

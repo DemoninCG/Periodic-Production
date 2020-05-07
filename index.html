@@ -19,17 +19,17 @@
 	</div>
 	
 	<!-- News ticker! Don't sue me for stealing ideas plz -->
-	<div id="newsTicker"><p style="margin-top: 0px"><a id="news">Welcome to Periodic Production!</a></p></div>
+	<div id="newsTicker"><p style="margin-top: 0px; overflow: hidden; white-space: nowrap;"><a id="news">Welcome to Periodic Production!</a></p></div>
 
 	<!-- The ingame second bar -->
 	<div id="ingameSecondBack"></div>
 	<div id="ingameSecondBar"></div>
 
 	<!-- Main game container -->
-	<div id="table">
+	<div id="table" style="width: 100%; height: 100%">
 		<!-- The proton amount text -->
 		<div id="protonTextDiv">
-			<p id="protonText">You have <a class="protonAmount" style="font-size: 60px">0</a> protons</p>
+			<p id="protonText">You have <a class="protonAmount" style="font-size: 60px">0</a> <a id="protonAmount2">0</a></p>
 		</div>
 
 		<div id="infoDiv">
@@ -204,6 +204,18 @@
 		<button id="protonCreateButton" class="buttonGeneric" style="position: absolute; top: 55px; left: 1480px" onclick="protonAdd()"><b>Create protons</b></button>
 
 		<button id="clickValueButton" class="buttonGeneric" style="position: absolute; top: 210px; left: 1480px; height: 80px; font-size: 16px" onclick="clickValueUp()"><b>Multiply protons/click by 10<br>Currently <a id="protonsPerClick">0</a><br>Costs <a id="clickValueCost">0</a> protons</b></button>
+
+		<p id="somethingWillBeUnlocked">Something will be unlocked at 1 Qa (1e15) protons!</p>
+	</div>
+
+	<!-- Antiverse accelerator container -->
+	<div id="prestige" style="width: 100%; height: 100%">
+		<p style="position: absolute; top: 0px; left: 727px; font-size: 50px; text-align: center; color: #222222">Antiverse accelerator</p>
+		<div style="position: absolute; top: 108px; left: 723px; width: 470px; height: 6px; background-color: #222222"></div>
+		<img src="assets/accelerator2.png" height="450px" width="450px" style="position: absolute; left: 735px; top: 75px">
+		<img src="assets/accelerator1.png" id="accelerator1" height="300px" width="300px" style="position: absolute; left: 810px; top: 150px">
+		<img src="assets/accelerator1.png" id="accelerator2" height="150px" width="150px" style="position: absolute; left: 812px; top: 225px">
+		<img src="assets/accelerator1.png" id="accelerator3" height="150px" width="150px" style="position: absolute; left: 958px; top: 225px">
 	</div>
 
 	<!-- Planck tree container -->
@@ -227,7 +239,7 @@
 	<div id="statistics">
 		<p class="optionsText" style="font-size: 42px; line-height: 5px">Statistics (Still in progress)</p>
 		<br><br>
-		<p class="optionsText">You currently have <a class="protonAmount">0</a> protons</p>
+		<p class="optionsText">You currently have <a class="protonAmount">0</a></p>
 		<p class="optionsText">That'd take about <a id="protonAmountSeconds">0 seconds</a> to write out completely</p>
 		<br><br>
 		<p class="optionsText" style="position: absolute; left: 2px; bottom: -3px">Element rules:<br>The first element of each row (Li, Na, K, etc.) multiplies all rows before it<br>Other elements produce the element before them.</p>
@@ -265,17 +277,30 @@
 		<p class="optionsText" style="position: absolute; bottom: 5px; left: 0px; font-size: 12px; line-height: 15px">Game made by Demonin, tested by LightB<br>Libraries used: break_infinity.js, ad-notations.js</p>
 	</div>
 
+	<div id="options2" style="left: 44%">
+		<p class="optionsText" style="font-size: 32px; line-height: 50px; margin-top: 150px">Miscellaneous</p>
+		<p class="optionsText" style="line-height: 2px">News ticker speed</p>
+		<select id="optionsNews" class="optionsDropdown">
+		  <option value="Off">OFF</option>
+		  <option value="0.5x">0.5x</option>
+		  <option value="0.75x">0.75x</option>
+		  <option value="1x" selected>1x</option>
+		  <option value="1.5x">1.5x</option>
+		  <option value="2x">2x</option>
+		</select>
+	</div>
+
 	<!-- The tab bar on the right side -->
 	<div id="tabBar" onmouseover="tabBarOpen()" onmouseout="tabBarClose()">
 		<p id="tabBarText"><</p>
 		<div id="tableTab" class="tab" style="top: 17px; height: 65px;" onclick="tableTabSwitch()"><p class="tabText" style="line-height: 24px">Table</p></div>
 		<div id="neutronsTab" class="tab" style="top: 91px"><p class="tabText">Neutrons</p></div>
-		<div id="prestigeTab" class="tab" style="top: 145px"><p class="tabText">Accelerator</p></div>
+		<div id="prestigeTab" class="tab" style="top: 145px" onclick="prestigeTabSwitch()"><p class="tabText">Accelerator</p></div>
 		<div id="skillsTab" class="tab" style="top: 199px" onclick="skillsTabSwitch()"><p class="tabText">Planck</p></div>
 		<div id="tachyonsTab" class="tab" style="top: 253px"><p class="tabText">Tachyons</p></div>
 		<div id="optionsTab" class="tab" style="bottom: 47px" onclick="optionsTabSwitch()"><p class="tabText">Options</p></div>
 		<div id="statisticsTab" class="tab" style="bottom: 101px" onclick="statisticsTabSwitch()"><p class="tabText">Statistics</p></div>
-		<p id="versionText" class="">Periodic Production<br>Update II (75)</p>
+		<p id="versionText" class="">Periodic Production<br>Update II (77)</p>
 		<img src="assets/logo-full-noback.png" id="tabLogo" class="unselectable" style="width: 40px; height: 40px; position: absolute; bottom: 3px">
 	</div>
 </body>

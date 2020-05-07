@@ -136,7 +136,7 @@ th:hover, td:hover {
 
 
 
-#options {
+#options, #options2 {
 	background: rgba(34, 34, 34, 0.2);
 	border: 3px rgba(34, 34, 34, 0.2);
 }

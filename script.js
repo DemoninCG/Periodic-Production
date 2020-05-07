@@ -4,12 +4,12 @@
 
 console.log("Hello there! This is a test console message to ensure the JS file works.")
 let game
-var logoRotation = 0
+var imageRotation = 0
 var loadingOpacity = 1
 
 function reset() {
 	game = {
-		started: true,
+		started: false,
 
 		protonAmount: new Decimal(0),
 		protonAmountChecking: new Decimal(0),
@@ -36,10 +36,12 @@ function reset() {
 	game.baseCosts.fill(new Decimal(1e100), 10, 117)
 
 	document.getElementById("loadingScreen").style.display = "block"
+	document.getElementById("prestige").style.display = "none"
 	document.getElementById("skills").style.display = "none"
 	document.getElementById("statisticsTabs").style.display = "none"
 	document.getElementById("statistics").style.display = "none"
 	document.getElementById("options").style.display = "none"
+	document.getElementById("options2").style.display = "none"
 
 	var givenWidthMessage = false
 	if (screen.width != 1920 && givenWidthMessage == false) {
@@ -86,16 +88,23 @@ function updateSmall() {
 
 	document.getElementsByClassName("protonAmount")[0].innerHTML = game.currentNotation.format(game.protonAmount, 2, 0)
 	document.getElementsByClassName("protonAmount")[1].innerHTML = game.currentNotation.format(game.protonAmount, 2, 0)
-	document.getElementsByClassName("protonAmount")[2].innerHTML = game.currentNotation.format(game.protonAmount, 2, 0)
+	document.getElementsByClassName("protonAmount")[2].innerHTML = game.currentNotation.format(game.protonAmount, 2, 0) + pluralize(" proton", game.protonAmount)
 	document.getElementById("protonsPerSecond").innerHTML = game.currentNotation.format(game.protonsPerSecond, 2, 0)
 	document.getElementById("ingameSecond").innerHTML = game.ingameSecond
 	document.getElementById("protonsPerClick").innerHTML = game.currentNotation.format(game.protonsPerClick, 2, 0)
 	document.getElementById("clickValueCost").innerHTML = game.currentNotation.format(game.clickValueCost, 2, 0)
+
 	if (game.protonAmount == 0) {
 		var protonAmountSeconds = new Decimal(0)
+		document.getElementById("protonAmount2").innerHTML = "protons"
+	}
+	else if (game.protonAmount == 1) {
+		var protonAmountSeconds = new Decimal(game.protonAmount.log10())
+		document.getElementById("protonAmount2").innerHTML = "proton"
 	}
 	else {
 		var protonAmountSeconds = new Decimal(game.protonAmount.log10())
+		document.getElementById("protonAmount2").innerHTML = "protons"
 	}
 	if (protonAmountSeconds < 60) {
 		document.getElementById("protonAmountSeconds").innerHTML = protonAmountSeconds.toFixed(1) + " seconds"
@@ -179,11 +188,18 @@ function updateSmall() {
 		elementColorCheck()
 	}
 
+	imageRotation += 1
 	if (document.getElementById("loadingScreen").style.display == "block") {
-		logoRotation += 1
-		var logoRotation2 = Math.sin(logoRotation / 30) * 200
+		var logoRotation2 = Math.sin(imageRotation / 30) * 200
 		logoRotation3 = "rotate(" + logoRotation2 + "deg)"
 		document.getElementById("logoLines").style.transform = logoRotation3
+	}
+
+	if (document.getElementById("prestige").style.display == "block") {
+		acceleratorRotation = "rotate(" + imageRotation + "deg)"
+		document.getElementById("accelerator1").style.transform = acceleratorRotation
+		document.getElementById("accelerator2").style.transform = acceleratorRotation
+		document.getElementById("accelerator3").style.transform = acceleratorRotation
 	}
 }
 
@@ -213,28 +229,31 @@ function showObjectChecks() {
 
 	if (game.protonAmount >= 300) {
 		document.getElementById("clickValueButton").style.display = "block"
+		document.getElementById("somethingWillBeUnlocked").style.display = "block"
 	}
 }
 
 function elementColorCheck() {
-	var elementColorTemp
-	for (elementColorTemp = 0; elementColorTemp <= 116; elementColorTemp++) {
-		if (game.elementAmounts[elementColorTemp+2] >= 100) {
-			document.getElementsByClassName("tooltip")[elementColorTemp+1].style.backgroundColor = "#889988"
+	if (document.getElementById("table").style.display == "block") {
+		var elementColorTemp
+		for (elementColorTemp = 0; elementColorTemp <= 116; elementColorTemp++) {
+			if (game.elementAmounts[elementColorTemp+2] >= 100) {
+				document.getElementsByClassName("tooltip")[elementColorTemp+1].style.backgroundColor = "#889988"
+			}
+			else if (game.protonAmount.greaterThan(game.elementCosts[elementColorTemp] - 1) == true) {
+				document.getElementsByClassName("tooltip")[elementColorTemp+1].style.backgroundColor = "#9999ee"
+			}
+			else {
+				document.getElementsByClassName("tooltip")[elementColorTemp+1].style.backgroundColor = "#aaaaaa"
+			}
 		}
-		else if (game.protonAmount.greaterThan(game.elementCosts[elementColorTemp] - 1) == true) {
-			document.getElementsByClassName("tooltip")[elementColorTemp+1].style.backgroundColor = "#9999ee"
+
+		if (game.protonAmount.greaterThan(game.clickValueCost - 1)) {
+			document.getElementById("clickValueButton").style.backgroundColor = "#9999ee"
 		}
 		else {
-			document.getElementsByClassName("tooltip")[elementColorTemp+1].style.backgroundColor = "#aaaaaa"
+			document.getElementById("clickValueButton").style.backgroundColor = "#aaaaaa"
 		}
-	}
-
-	if (game.protonAmount.greaterThan(game.clickValueCost - 1)) {
-		document.getElementById("clickValueButton").style.backgroundColor = "#9999ee"
-	}
-	else {
-		document.getElementById("clickValueButton").style.backgroundColor = "#aaaaaa"
 	}
 }
 
@@ -274,22 +293,28 @@ function loadingGoAway() {
 
 setTimeout(loadingGoAway, 1500)
 
+// Pluralize words
+function pluralize(word, amount) {
+	return amount.eq(1) ? word : (word + "s")
+}
+
 // Buying elements
 function buyElement(x) {
 	if (game.protonAmount.greaterThan(game.elementCosts[x-2] - 1) == true) {
 		game.protonAmount = game.protonAmount.subtract(game.elementCosts[x-2])
 		game.elementAmounts[x] = game.elementAmounts[x].add(1)
 	}
-
 }
 
 // Switching tabs
 function tableTabSwitch() {
 	document.getElementById("table").style.display = "block"
+	document.getElementById("prestige").style.display = "none"
 	document.getElementById("skills").style.display = "none"
 	document.getElementById("statisticsTabs").style.display = "none"
 	document.getElementById("statistics").style.display = "none"
 	document.getElementById("options").style.display = "none"
+	document.getElementById("options2").style.display = "none"
 
 	var rowNumbers = document.getElementsByClassName("rowNumber")
 	var rowNumberTemp
@@ -300,12 +325,32 @@ function tableTabSwitch() {
 	document.body.style.backgroundImage = "url('assets/back2.jpg')"
 }
 
+function prestigeTabSwitch() {
+	document.getElementById("table").style.display = "none"
+	document.getElementById("prestige").style.display = "block"
+	document.getElementById("skills").style.display = "none"
+	document.getElementById("statisticsTabs").style.display = "none"
+	document.getElementById("statistics").style.display = "none"
+	document.getElementById("options").style.display = "none"
+	document.getElementById("options2").style.display = "none"
+
+	var rowNumbers = document.getElementsByClassName("rowNumber")
+	var rowNumberTemp
+	for (rowNumberTemp = 0; rowNumberTemp < 7; rowNumberTemp++) {
+		rowNumbers[rowNumberTemp].style.display = "none"
+	}
+
+	document.body.style.backgroundImage = "url('assets/back7.jpg')"
+}
+
 function skillsTabSwitch() {
 	document.getElementById("table").style.display = "none"
+	document.getElementById("prestige").style.display = "none"
 	document.getElementById("skills").style.display = "block"
 	document.getElementById("statisticsTabs").style.display = "none"
 	document.getElementById("statistics").style.display = "none"
 	document.getElementById("options").style.display = "none"
+	document.getElementById("options2").style.display = "none"
 
 	var rowNumbers = document.getElementsByClassName("rowNumber")
 	var rowNumberTemp
@@ -318,10 +363,12 @@ function skillsTabSwitch() {
 
 function statisticsTabSwitch() {
 	document.getElementById("table").style.display = "none"
+	document.getElementById("prestige").style.display = "none"
 	document.getElementById("skills").style.display = "none"
 	document.getElementById("statisticsTabs").style.display = "block"
 	document.getElementById("statistics").style.display = "block"
 	document.getElementById("options").style.display = "none"
+	document.getElementById("options2").style.display = "none"
 
 	var rowNumbers = document.getElementsByClassName("rowNumber")
 	var rowNumberTemp
@@ -334,10 +381,12 @@ function statisticsTabSwitch() {
 
 function optionsTabSwitch() {
 	document.getElementById("table").style.display = "none"
+	document.getElementById("prestige").style.display = "none"
 	document.getElementById("skills").style.display = "none"
 	document.getElementById("statisticsTabs").style.display = "none"
 	document.getElementById("statistics").style.display = "none"
 	document.getElementById("options").style.display = "block"
+	document.getElementById("options2").style.display = "block"
 
 	var rowNumbers = document.getElementsByClassName("rowNumber")
 	var rowNumberTemp

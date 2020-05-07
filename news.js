@@ -9,6 +9,7 @@ var starters=[
 "Oh, look how big you've grown now! It's been too long!",
 "Oh, it's you again.",
 "Please take your seat, the exam begins now.",
+"It's been a long time. How have you been?",
 ]
 
 if (game.started == true) {
@@ -56,7 +57,11 @@ var news = [
 '"Did you know that thulium is element 69? You know what that means riiiight?" "...That it\'s a lanthanide?"',
 "So is H2O 40,000,000,002 protons now?",
 "Periodic Production: Because physics can suck it!™",
-"Do other news tickers treat their players right? No! This is what makes Periodic Production so good. We really CARE about you.",
+"Do other news tickers treat their players right? No! This is what makes Periodic Production so good. I care about you, Whatever-your-name-is.",
+"Today's tarot reading for you: Uncaught TypeError: Cannot read property 'style' of null",
+"What's all this drama about 1.79e308 being equal to infinity? It's not even that big. What's wrong with you people?",
+"After 1e100 years in development, hopefully it will have been worth the wait. Thanks, and have fun.",
+"16 people now dead the antiverse accelerator department, chief engineer claims 'It's just too damn entrancing to look at'",
 ]
 
 function getRandomInt(max) {
