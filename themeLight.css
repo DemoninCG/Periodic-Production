@@ -87,7 +87,7 @@ th, td {
 }
 
 th:hover, td:hover {
-	background-color: #bbbbbb;
+	border: 3px solid #444444;
 }
 
 /* Tooltip text */
@@ -147,6 +147,7 @@ th:hover, td:hover {
 
 .optionsTextButton {
 	background: rgba(120, 120, 120, 0.5);
+	transition: background 150ms;
 }
 
 .optionsTextButton:hover {

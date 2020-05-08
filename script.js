@@ -36,6 +36,7 @@ function reset() {
 	game.baseCosts.fill(new Decimal(1e100), 10, 117)
 
 	document.getElementById("loadingScreen").style.display = "block"
+	document.getElementById("table").style.display = "block"
 	document.getElementById("prestige").style.display = "none"
 	document.getElementById("skills").style.display = "none"
 	document.getElementById("statisticsTabs").style.display = "none"
@@ -106,6 +107,8 @@ function updateSmall() {
 		var protonAmountSeconds = new Decimal(game.protonAmount.log10())
 		document.getElementById("protonAmount2").innerHTML = "protons"
 	}
+
+	document.getElementById("protonAmountKilograms").innerHTML = game.currentNotation.format(game.protonAmount.divide(6.25e+25), 2, 0)
 	if (protonAmountSeconds < 60) {
 		document.getElementById("protonAmountSeconds").innerHTML = protonAmountSeconds.toFixed(1) + " seconds"
 	}

@@ -61,7 +61,7 @@ var news = [
 "Today's tarot reading for you: Uncaught TypeError: Cannot read property 'style' of null",
 "What's all this drama about 1.79e308 being equal to infinity? It's not even that big. What's wrong with you people?",
 "After 1e100 years in development, hopefully it will have been worth the wait. Thanks, and have fun.",
-"16 people now dead the antiverse accelerator department, chief engineer claims 'It's just too damn entrancing to look at'",
+"16 people now dead at the antiverse accelerator department, chief engineer claims 'It's just too damn entrancing to look at'",
 ]
 
 function getRandomInt(max) {
