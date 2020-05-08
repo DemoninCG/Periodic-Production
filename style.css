@@ -235,11 +235,29 @@ th, td {
 
 #somethingWillBeUnlocked {
 	position: absolute;
-	bottom: 15px;
-	left: 1460px;
+	bottom: 30px;
+	left: 1450px;
 	display: none;
 	font-size: 18px;
 }
+
+
+
+
+
+
+
+
+#prestigeStuff {
+	position: absolute;
+	top: 480px;
+	left: 35%;
+	width: 30%;
+	height: 440px;
+	border-radius: 8px;
+}
+
+
 
 
 

@@ -27,6 +27,9 @@ function reset() {
 		baseCosts: [new Decimal(20), new Decimal(100), new Decimal(800), new Decimal(15000), new Decimal(1.5e7), new Decimal(1e9), new Decimal(4e10), new Decimal(1.5e13), new Decimal(1e16), new Decimal(5e23)],
 		elementAmounts: [],
 		elementCosts: [],
+
+		antiprotonAmount: new Decimal(0),
+		antiprotonsToGet: new Decimal(0),
 	}
 
 	game.elementAmounts.length = 119
@@ -64,7 +67,7 @@ reset()
 
 
 // Stuff that needs to be updated every frame (16ms, 60 times/second)
-function updateSmall() {	
+function updateNormal() {	
 	if (document.getElementById("optionsNotation").value == "Standard") {
 		game.currentNotation = new ADNotations.StandardNotation()
 	}
@@ -140,17 +143,37 @@ function updateSmall() {
 		document.getElementById("protonAmountSeconds").innerHTML = (protonAmountSeconds.divide(31536000)).toFixed(2) + " years"
 	}
 
-	document.getElementById("tabBar").style.width = (Math.sin(game.tabBarX / 25) * 160 + 40) + "px"
-	document.getElementById("tabLogo").style.right = (Math.sin(game.tabBarX / 25) * 160 - 156) + "px"
-	document.getElementById("versionText").style.right = (Math.sin(game.tabBarX / 25) * 160 - 105) + "px"
-	document.getElementById("tableTab").style.width = (Math.sin(game.tabBarX / 25) * 250 - 70) + "px"
-	document.getElementById("prestigeTab").style.width = (Math.sin(game.tabBarX / 25) * 250 - 90) + "px"
-	document.getElementById("skillsTab").style.width = (Math.sin(game.tabBarX / 25) * 250 - 90) + "px"
-	document.getElementById("neutronsTab").style.width = (Math.sin(game.tabBarX / 25) * 250 - 90) + "px"
-	document.getElementById("tachyonsTab").style.width = (Math.sin(game.tabBarX / 25) * 250 - 90) + "px"
-	document.getElementById("optionsTab").style.width = (Math.sin(game.tabBarX / 25) * 250 - 90) + "px"
-	document.getElementById("statisticsTab").style.width = (Math.sin(game.tabBarX / 25) * 250 - 90) + "px"
-	document.getElementById("tabBarText").style.lineHeight = (window.innerHeight / 1.5 + 210) + "px"
+	game.protonsPerSecond = new Decimal(game.elementAmounts[2]).multiply(game.elementAmounts[3].add(1))
+
+	var elementCostTemp
+	for (elementCostTemp = 0; elementCostTemp <= 116; elementCostTemp++) {
+		if (game.elementAmounts[elementCostTemp+2] < 100) {
+			game.elementCosts [elementCostTemp] = game.baseCosts [elementCostTemp].multiply(new Decimal(elementCostTemp+2).pow(game.elementAmounts[elementCostTemp+2]))
+		}
+		else {
+			game.elementCosts [elementCostTemp] = new Decimal(Infinity)
+		}
+		var elementCostTemp2 = (elementCostTemp + 2) + "cost"
+		document.getElementById(elementCostTemp2).innerHTML = game.currentNotation.format(game.elementCosts [elementCostTemp], 2, 0)
+
+		var elementAmountTemp = (elementCostTemp + 2) + "amount"
+		document.getElementById(elementAmountTemp).innerHTML = game.currentNotation.format(game.elementAmounts[elementCostTemp+2], 2, 0)
+	}
+
+	if (game.protonAmount != 0) {
+		game.antiprotonsToGet = new Decimal(game.protonAmount.log2())
+		document.getElementsByClassName("antiprotonsToGet")[0].innerHTML = game.currentNotation.format(game.antiprotonsToGet.floor(), 2, 0)
+		document.getElementsByClassName("antiprotonsToGet")[1].innerHTML = game.currentNotation.format(game.antiprotonsToGet.floor(), 2, 0)
+	}
+}
+
+function updateSmall() {
+	if (game.protonAmount != game.protonAmountChecking) {
+		game.protonAmountChecking = game.protonAmount
+		updateNormal()
+		showObjectChecks()
+		elementColorCheck()
+	}
 
 	if (game.tabBarOut == true && game.tabBarX < 40) {
 		game.tabBarX += 1
@@ -183,28 +206,17 @@ function updateSmall() {
 		document.getElementById("tableTab").style.display = "none"
 	}
 
-	game.protonsPerSecond = new Decimal(game.elementAmounts[2]).multiply(game.elementAmounts[3].add(1))
-
-	var elementCostTemp
-	for (elementCostTemp = 0; elementCostTemp <= 116; elementCostTemp++) {
-		if (game.elementAmounts[elementCostTemp+2] < 100) {
-			game.elementCosts [elementCostTemp] = game.baseCosts [elementCostTemp].multiply(new Decimal(elementCostTemp+2).pow(game.elementAmounts[elementCostTemp+2]))
-		}
-		else {
-			game.elementCosts [elementCostTemp] = new Decimal(Infinity)
-		}
-		var elementCostTemp2 = (elementCostTemp + 2) + "cost"
-		document.getElementById(elementCostTemp2).innerHTML = game.currentNotation.format(game.elementCosts [elementCostTemp], 2, 0)
-
-		var elementAmountTemp = (elementCostTemp + 2) + "amount"
-		document.getElementById(elementAmountTemp).innerHTML = game.currentNotation.format(game.elementAmounts[elementCostTemp+2], 2, 0)
-	}
-
-	if (game.protonAmount != game.protonAmountChecking) {
-		game.protonAmountChecking = game.protonAmount
-		showObjectChecks()
-		elementColorCheck()
-	}
+	document.getElementById("tabBar").style.width = (Math.sin(game.tabBarX / 25) * 160 + 40) + "px"
+	document.getElementById("tabLogo").style.right = (Math.sin(game.tabBarX / 25) * 160 - 156) + "px"
+	document.getElementById("versionText").style.right = (Math.sin(game.tabBarX / 25) * 160 - 105) + "px"
+	document.getElementById("tableTab").style.width = (Math.sin(game.tabBarX / 25) * 250 - 70) + "px"
+	document.getElementById("prestigeTab").style.width = (Math.sin(game.tabBarX / 25) * 250 - 90) + "px"
+	document.getElementById("skillsTab").style.width = (Math.sin(game.tabBarX / 25) * 250 - 90) + "px"
+	document.getElementById("neutronsTab").style.width = (Math.sin(game.tabBarX / 25) * 250 - 90) + "px"
+	document.getElementById("tachyonsTab").style.width = (Math.sin(game.tabBarX / 25) * 250 - 90) + "px"
+	document.getElementById("optionsTab").style.width = (Math.sin(game.tabBarX / 25) * 250 - 90) + "px"
+	document.getElementById("statisticsTab").style.width = (Math.sin(game.tabBarX / 25) * 250 - 90) + "px"
+	document.getElementById("tabBarText").style.lineHeight = (window.innerHeight / 1.5 + 210) + "px"
 
 	imageRotation += 1
 	if (document.getElementById("loadingScreen").style.display == "block") {
@@ -221,9 +233,9 @@ function updateSmall() {
 	}
 }
 
-
 // Stuff that needs to be updated every ingame second (starts at 1 second, decreases with tachyons)
 function updateLarge() {
+	updateNormal()
 	
 	game.protonAmount = game.protonAmount.add(game.protonsPerSecond)
 	game.elementAmounts[3] = game.elementAmounts[3].add(game.elementAmounts[4])
