@@ -97,31 +97,46 @@ function updateSmall() {
 
 	if (game.protonAmount == 0) {
 		var protonAmountSeconds = new Decimal(0)
+		var protonAmountKilograms = new Decimal(0)
 		document.getElementById("protonAmount2").innerHTML = "protons"
 	}
 	else if (game.protonAmount == 1) {
 		var protonAmountSeconds = new Decimal(game.protonAmount.log10())
+		var protonAmountKilograms = new Decimal(game.protonAmount.divide(6.25e+19))
 		document.getElementById("protonAmount2").innerHTML = "proton"
 	}
 	else {
 		var protonAmountSeconds = new Decimal(game.protonAmount.log10())
+		var protonAmountKilograms = new Decimal(game.protonAmount.divide(6.25e+19))
 		document.getElementById("protonAmount2").innerHTML = "protons"
 	}
 
-	document.getElementById("protonAmountKilograms").innerHTML = game.currentNotation.format(game.protonAmount.divide(6.25e+25), 2, 0)
+	if (game.protonAmount < 6.25e22) {
+		document.getElementById("protonAmountKilograms").innerHTML = protonAmountKilograms.toFixed(2) + " micrograms"
+	}
+	else if (game.protonAmount < 6.25e25) {
+		document.getElementById("protonAmountKilograms").innerHTML = protonAmountKilograms.divide(1000).toFixed(2) + " milligrams"
+	}
+	else if (game.protonAmount < 6.25e28) {
+		document.getElementById("protonAmountKilograms").innerHTML = protonAmountKilograms.divide(1e6).toFixed(2) + " grams"
+	}
+	else {
+		document.getElementById("protonAmountKilograms").innerHTML = game.currentNotation.format(protonAmountKilograms.divide(1e9), 2, 0) + " kilograms"
+	}
+
 	if (protonAmountSeconds < 60) {
 		document.getElementById("protonAmountSeconds").innerHTML = protonAmountSeconds.toFixed(1) + " seconds"
 	}
-	else if (protonAmountSeconds >= 60 && protonAmountSeconds < 3600) {
+	else if (protonAmountSeconds < 3600) {
 		document.getElementById("protonAmountSeconds").innerHTML = (protonAmountSeconds.divide(60)).toFixed(2) + " minutes"
 	}
-	else if (protonAmountSeconds >= 3600 && protonAmountSeconds < 86400) {
+	else if (protonAmountSeconds < 86400) {
 		document.getElementById("protonAmountSeconds").innerHTML = (protonAmountSeconds.divide(3600)).toFixed(2) + " hours"
 	}
-	else if (protonAmountSeconds >= 86400 && protonAmountSeconds < 31536000) {
+	else if (protonAmountSeconds < 31536000) {
 		document.getElementById("protonAmountSeconds").innerHTML = (protonAmountSeconds.divide(86400)).toFixed(2) + " days"
 	}
-	else if (protonAmountSeconds >= 31536000) {
+	else {
 		document.getElementById("protonAmountSeconds").innerHTML = (protonAmountSeconds.divide(31536000)).toFixed(2) + " years"
 	}
 
