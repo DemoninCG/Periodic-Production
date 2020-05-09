@@ -30,7 +30,7 @@ var news = [
 "If you're having trouble progressing, try pressing one of the buttons.",
 "I have no clue why oganesson comes last. After all, it is the Og element.",
 '"Oh, you\'re approaching me? Instead of getting more antiprotons, you\'re coming right to me? Even though your progress has slowed down over 10 times?" "I can\'t unlock the sh*t out of you without getting closer."',
-"Sorry but you\'ve hit your proton limit for this month! Please upgrade your payment plan to continue.",
+"Sorry but you've hit your proton limit for this month! Please upgrade your payment plan to continue.",
 "*burp*",
 "Where is Jessica Hyde?",
 "You know, for a news ticker I give very little news.",
@@ -62,6 +62,8 @@ var news = [
 "What's all this drama about 1.79e308 being equal to infinity? It's not even that big. What's wrong with you people?",
 "After 1e100 years in development, hopefully it will have been worth the wait. Thanks, and have fun.",
 "16 people now dead at the antiverse accelerator department, chief engineer claims 'It's just too damn entrancing to look at'",
+"So what color are antiprotons, really? Well, one scientist claims to know the answer: 'They're sort of an orangey-bluish-blackish-white'",
+"Local pro-neutron group finally silenced after months of riots. Neutrons don't exist. Everything is protons.",
 ]
 
 function getRandomInt(max) {
