@@ -23,6 +23,7 @@ function reset() {
 		currentNotation: new ADNotations.StandardNotation(),
 		protonsPerClick: new Decimal(1),
 		clickValueCost: new Decimal(750),
+		multiplier: new Decimal(1),
 
 		baseCosts: [new Decimal(20), new Decimal(100), new Decimal(800), new Decimal(15000), new Decimal(1.5e7), new Decimal(1e9), new Decimal(4e10), new Decimal(1.5e13), new Decimal(1e16), new Decimal(5e23)],
 		elementAmounts: [],
@@ -68,6 +69,9 @@ reset()
 
 // Stuff that needs to be updated every frame (16ms, 60 times/second)
 function updateNormal() {	
+	var antiprotonBonus = new Decimal(game.antiprotonAmount).divide(100)
+	game.multiplier = new Decimal(1).add(antiprotonBonus)
+
 	if (document.getElementById("optionsNotation").value == "Standard") {
 		game.currentNotation = new ADNotations.StandardNotation()
 	}
@@ -97,6 +101,7 @@ function updateNormal() {
 	document.getElementById("ingameSecond").innerHTML = game.ingameSecond
 	document.getElementById("protonsPerClick").innerHTML = game.currentNotation.format(game.protonsPerClick, 2, 0)
 	document.getElementById("clickValueCost").innerHTML = game.currentNotation.format(game.clickValueCost, 2, 0)
+	document.getElementById("antiprotonAmount").innerHTML = game.currentNotation.format(game.antiprotonAmount, 2, 0)
 
 	if (game.protonAmount == 0) {
 		var protonAmountSeconds = new Decimal(0)
@@ -160,14 +165,20 @@ function updateNormal() {
 		document.getElementById(elementAmountTemp).innerHTML = game.currentNotation.format(game.elementAmounts[elementCostTemp+2], 2, 0)
 	}
 
-	if (game.protonAmount != 0) {
-		game.antiprotonsToGet = new Decimal(game.protonAmount.log2())
+	if (game.protonAmount >= 1e15) {
+		game.antiprotonsToGet = new Decimal(game.protonAmount.ln()).multiply(2).subtract(30)
 		document.getElementsByClassName("antiprotonsToGet")[0].innerHTML = game.currentNotation.format(game.antiprotonsToGet.floor(), 2, 0)
 		document.getElementsByClassName("antiprotonsToGet")[1].innerHTML = game.currentNotation.format(game.antiprotonsToGet.floor(), 2, 0)
+	}
+	else {
+		game.antiprotonsToGet = new Decimal(0)
+		document.getElementsByClassName("antiprotonsToGet")[0].innerHTML = 0
+		document.getElementsByClassName("antiprotonsToGet")[1].innerHTML = 0
 	}
 }
 
 function updateSmall() {
+
 	if (game.protonAmount != game.protonAmountChecking) {
 		game.protonAmountChecking = game.protonAmount
 		updateNormal()
@@ -466,7 +477,7 @@ setInterval(backPos, 50)
 
 // Add protons, wow amazing
 function protonAdd() {
-	game.protonAmount = game.protonAmount.add(game.protonsPerClick)
+	game.protonAmount = game.protonAmount.add(new Decimal(game.protonsPerClick).multiply(game.multiplier))
 	game.started = true
 }
 
