@@ -148,7 +148,7 @@ function updateNormal() {
 		document.getElementById("protonAmountSeconds").innerHTML = (protonAmountSeconds.divide(31536000)).toFixed(2) + " years"
 	}
 
-	game.protonsPerSecond = new Decimal(game.elementAmounts[2]).multiply(game.elementAmounts[3].add(1))
+	game.protonsPerSecond = new Decimal(game.elementAmounts[2]).multiply(game.elementAmounts[3].add(1).multiply(game.elementAmounts[11].add(1))).multiply(game.multiplier)
 
 	var elementCostTemp
 	for (elementCostTemp = 0; elementCostTemp <= 116; elementCostTemp++) {
@@ -165,16 +165,19 @@ function updateNormal() {
 		document.getElementById(elementAmountTemp).innerHTML = game.currentNotation.format(game.elementAmounts[elementCostTemp+2], 2, 0)
 	}
 
-	if (game.protonAmount >= 1e15) {
+	if (game.protonAmount.greaterThan(1e15)) {
 		game.antiprotonsToGet = new Decimal(game.protonAmount.ln()).multiply(2).subtract(30)
 		document.getElementsByClassName("antiprotonsToGet")[0].innerHTML = game.currentNotation.format(game.antiprotonsToGet.floor(), 2, 0)
 		document.getElementsByClassName("antiprotonsToGet")[1].innerHTML = game.currentNotation.format(game.antiprotonsToGet.floor(), 2, 0)
+		document.getElementById("acceleratorText").innerHTML = "Activate Accelerator"
 	}
 	else {
 		game.antiprotonsToGet = new Decimal(0)
 		document.getElementsByClassName("antiprotonsToGet")[0].innerHTML = 0
 		document.getElementsByClassName("antiprotonsToGet")[1].innerHTML = 0
+		document.getElementById("acceleratorText").innerHTML = "You need 1 Qd protons to activate!"
 	}
+
 }
 
 function updateSmall() {
@@ -249,13 +252,13 @@ function updateLarge() {
 	updateNormal()
 	
 	game.protonAmount = game.protonAmount.add(game.protonsPerSecond)
-	game.elementAmounts[3] = game.elementAmounts[3].add(game.elementAmounts[4])
-	game.elementAmounts[4] = game.elementAmounts[4].add(game.elementAmounts[5])
-	game.elementAmounts[5] = game.elementAmounts[5].add(game.elementAmounts[6])
-	game.elementAmounts[6] = game.elementAmounts[6].add(game.elementAmounts[7])
-	game.elementAmounts[7] = game.elementAmounts[7].add(game.elementAmounts[8])
-	game.elementAmounts[8] = game.elementAmounts[8].add(game.elementAmounts[9])
-	game.elementAmounts[9] = game.elementAmounts[9].add(game.elementAmounts[10])
+	game.elementAmounts[3] = game.elementAmounts[3].add(game.elementAmounts[4].multiply(game.elementAmounts[11].add(1)))
+	game.elementAmounts[4] = game.elementAmounts[4].add(game.elementAmounts[5].multiply(game.elementAmounts[11].add(1)))
+	game.elementAmounts[5] = game.elementAmounts[5].add(game.elementAmounts[6].multiply(game.elementAmounts[11].add(1)))
+	game.elementAmounts[6] = game.elementAmounts[6].add(game.elementAmounts[7].multiply(game.elementAmounts[11].add(1)))
+	game.elementAmounts[7] = game.elementAmounts[7].add(game.elementAmounts[8].multiply(game.elementAmounts[11].add(1)))
+	game.elementAmounts[8] = game.elementAmounts[8].add(game.elementAmounts[9].multiply(game.elementAmounts[11].add(1)))
+	game.elementAmounts[9] = game.elementAmounts[9].add(game.elementAmounts[10].multiply(game.elementAmounts[11].add(1)))
 
 	game.ingameSecondBarHeight = 0
 	document.getElementById("ingameSecondBar").style.height = game.ingameSecondBarHeight + "%"
@@ -487,5 +490,16 @@ function clickValueUp() {
 		game.protonAmount = game.protonAmount.subtract(game.clickValueCost)
 		game.protonsPerClick = game.protonsPerClick.multiply(10)
 		game.clickValueCost = game.clickValueCost.multiply(12)
+	}
+}
+
+function activateAccelerator() {
+	if (game.protonAmount >= 1e15) {
+		game.antiprotonAmount += game.antiprotonsToGet
+		game.protonAmount = new Decimal(0)
+		game.elementAmounts.fill(new Decimal(0))
+		game.protonsPerClick = new Decimal(1)
+		game.clickValueCost = new Decimal(750)
+		elementColorCheck()
 	}
 }
