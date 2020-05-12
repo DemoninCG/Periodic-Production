@@ -52,7 +52,6 @@ var news = [
 "hehe big numbre go up",
 "I'm gonna go ahead and say you are looking sodium fine today.",
 "Guys what does 'sodium nitrogen' mean please why is it in my code",
-'Sir, I\'m very sorry to say your friend has died. I have here his final words for you: "My ex still misses me... BUT HER AIM IS GETTING BETTE-"',
 "Editor's note: Ignore that last news ticker.",
 '"Did you know that thulium is element 69? You know what that means riiiight?" "...That it\'s a lanthanide?"',
 "So is H2O 40,000,000,002 protons now?",

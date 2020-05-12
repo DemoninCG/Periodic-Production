@@ -61,6 +61,38 @@ function reset() {
 
 reset()
 
+function save() {
+	localStorage.setItem("massivePP", JSON.stringify(game))
+}
+
+setInterval(save, 30000)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
