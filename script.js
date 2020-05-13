@@ -13,7 +13,7 @@ function reset() {
 
 		protonAmount: new Decimal(0),
 		protonAmountChecking: new Decimal(0),
-		protonsPerSecond: 0,
+		protonsPerSecond: new Decimal(0),
 		backgroundPosition: 0,
 		tabBarOut: false,
 		tabBarX: 0,
@@ -25,7 +25,7 @@ function reset() {
 		clickValueCost: new Decimal(750),
 		multiplier: new Decimal(1),
 
-		baseCosts: [new Decimal(20), new Decimal(100), new Decimal(800), new Decimal(15000), new Decimal(1.5e7), new Decimal(1e9), new Decimal(4e10), new Decimal(1.5e13), new Decimal(1e16), new Decimal(5e23)],
+		baseCosts: [new Decimal(20), new Decimal(100), new Decimal(800), new Decimal(15000), new Decimal(1.5e7), new Decimal(1e9), new Decimal(4e10), new Decimal(1.5e13), new Decimal(1e16), new Decimal(5e22), new Decimal(8e23)],
 		elementAmounts: [],
 		elementCosts: [],
 
@@ -37,7 +37,7 @@ function reset() {
 	game.elementAmounts.fill(new Decimal(0))
 
 	game.baseCosts.length = 117
-	game.baseCosts.fill(new Decimal(1e100), 10, 117)
+	game.baseCosts.fill(new Decimal(1e100), 11, 117)
 
 	document.getElementById("loadingScreen").style.display = "block"
 	document.getElementById("table").style.display = "block"
@@ -59,13 +59,50 @@ function reset() {
 	}
 }
 
-reset()
+function resetCheck() {
+    if (confirm("Are you sure you want to hard reset? You will lose everything!")) {
+      reset()
+	  document.getElementById("loadingScreen").style.display = "none"
+      save()
+    }
+}
 
 function save() {
 	localStorage.setItem("massivePP", JSON.stringify(game))
 }
 
 setInterval(save, 30000)
+
+function load() {
+	let loadgame = JSON.parse(localStorage.getItem("massivePP"))
+	if (loadgame != null) {
+		loadGame(loadgame)
+	}
+}
+
+load()
+
+function loadGame(loadgame) {
+	reset()
+	if (typeof loadgame.protonAmount != "undefined") game.protonAmount = new Decimal(loadgame.protonAmount)
+	if (typeof loadgame.protonAmountChecking != "undefined") game.protonAmountChecking = new Decimal(loadgame.protonAmountChecking)
+	if (typeof loadgame.protonsPerSecond != "undefined") game.protonsPerSecond = new Decimal(loadgame.protonsPerSecond)
+	if (typeof loadgame.tabBarOut != "undefined") game.tabBarOut = loadgame.tabBarOut
+	if (typeof loadgame.tabBarX != "undefined") game.tabBarX = loadgame.tabBarX
+	if (typeof loadgame.ingameSecond != "undefined") game.ingameSecond = new Decimal(loadgame.ingameSecond)
+	if (typeof loadgame.currentNotation != "undefined") game.currentNotation = loadgame.currentNotation
+	if (typeof loadgame.protonsPerClick != "undefined") game.protonsPerClick = new Decimal(loadgame.protonsPerClick)
+	if (typeof loadgame.clickValueCost != "undefined") game.clickValueCost = new Decimal(loadgame.clickValueCost)
+	if (typeof loadgame.multiplier != "undefined") game.multiplier = new Decimal(loadgame.multiplier)
+
+	if (typeof loadgame.elementAmounts != "undefined") game.elementAmounts = loadgame.elementAmounts
+	for (elementAmountTemp = 0; elementAmountTemp <= 116; elementAmountTemp++) {
+		game.elementAmounts[elementAmountTemp] = new Decimal(loadgame.elementAmounts[elementAmountTemp])
+	}
+
+	if (typeof loadgame.antiprotonAmount != "undefined") game.antiprotonAmount = new Decimal(loadgame.antiprotonAmount)
+	if (typeof loadgame.antiprotonsToGet != "undefined") game.antiprotonsToGet = new Decimal(loadgame.antiprotonsToGet)
+}
 
 
 
