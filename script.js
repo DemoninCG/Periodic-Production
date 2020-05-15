@@ -75,6 +75,7 @@ function save() {
 setInterval(save, 30000)
 
 function load() {
+	reset()
 	let loadgame = JSON.parse(localStorage.getItem("massivePP"))
 	if (loadgame != null) {
 		loadGame(loadgame)
@@ -84,7 +85,6 @@ function load() {
 load()
 
 function loadGame(loadgame) {
-	reset()
 	if (typeof loadgame.started != "undefined") game.started = loadgame.started
 	if (typeof loadgame.protonAmount != "undefined") game.protonAmount = new Decimal(loadgame.protonAmount)
 	if (typeof loadgame.protonAmountChecking != "undefined") game.protonAmountChecking = new Decimal(loadgame.protonAmountChecking)
@@ -504,7 +504,7 @@ setInterval(IngameSecondBarUp, 10)
 // Gives the player a message if their screen is not 1920x1080
 function widthMessage() {
 	document.getElementById("widthMessage").style.display = "block"
-	setTimeout(widthMessageHide, 3000)
+	setTimeout(widthMessageHide, 5000)
 }
 
 function widthMessageHide() {
