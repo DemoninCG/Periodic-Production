@@ -24,6 +24,7 @@ function reset() {
 		protonsPerClick: new Decimal(1),
 		clickValueCost: new Decimal(750),
 		multiplier: new Decimal(1),
+		unlocks: 0,
 
 		baseCosts: [new Decimal(20), new Decimal(100), new Decimal(800), new Decimal(15000), new Decimal(1.5e7), new Decimal(1e9), new Decimal(4e10), new Decimal(1.5e13), new Decimal(1e16), new Decimal(5e22), new Decimal(8e23)],
 		elementAmounts: [],
@@ -84,16 +85,16 @@ load()
 
 function loadGame(loadgame) {
 	reset()
+	if (typeof loadgame.started != "undefined") game.started = loadgame.started
 	if (typeof loadgame.protonAmount != "undefined") game.protonAmount = new Decimal(loadgame.protonAmount)
 	if (typeof loadgame.protonAmountChecking != "undefined") game.protonAmountChecking = new Decimal(loadgame.protonAmountChecking)
 	if (typeof loadgame.protonsPerSecond != "undefined") game.protonsPerSecond = new Decimal(loadgame.protonsPerSecond)
-	if (typeof loadgame.tabBarOut != "undefined") game.tabBarOut = loadgame.tabBarOut
-	if (typeof loadgame.tabBarX != "undefined") game.tabBarX = loadgame.tabBarX
 	if (typeof loadgame.ingameSecond != "undefined") game.ingameSecond = new Decimal(loadgame.ingameSecond)
 	if (typeof loadgame.currentNotation != "undefined") game.currentNotation = loadgame.currentNotation
 	if (typeof loadgame.protonsPerClick != "undefined") game.protonsPerClick = new Decimal(loadgame.protonsPerClick)
 	if (typeof loadgame.clickValueCost != "undefined") game.clickValueCost = new Decimal(loadgame.clickValueCost)
 	if (typeof loadgame.multiplier != "undefined") game.multiplier = new Decimal(loadgame.multiplier)
+	if (typeof loadgame.unlocks != "undefined") game.unlocks = loadgame.unlocks
 
 	if (typeof loadgame.elementAmounts != "undefined") game.elementAmounts = loadgame.elementAmounts
 	for (elementAmountTemp = 0; elementAmountTemp <= 116; elementAmountTemp++) {
@@ -103,25 +104,6 @@ function loadGame(loadgame) {
 	if (typeof loadgame.antiprotonAmount != "undefined") game.antiprotonAmount = new Decimal(loadgame.antiprotonAmount)
 	if (typeof loadgame.antiprotonsToGet != "undefined") game.antiprotonsToGet = new Decimal(loadgame.antiprotonsToGet)
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -168,7 +150,7 @@ function updateNormal() {
 	document.getElementsByClassName("protonAmount")[2].innerHTML = game.currentNotation.format(game.protonAmount, 2, 0) + pluralize(" proton", game.protonAmount)
 	document.getElementById("protonsPerSecond").innerHTML = game.currentNotation.format(game.protonsPerSecond, 2, 0)
 	document.getElementById("ingameSecond").innerHTML = game.ingameSecond
-	document.getElementById("protonsPerClick").innerHTML = game.currentNotation.format(game.protonsPerClick, 2, 0)
+	document.getElementById("protonsPerClick").innerHTML = game.currentNotation.format(game.protonsPerClick.multiply(game.multiplier), 2, 0)
 	document.getElementById("clickValueCost").innerHTML = game.currentNotation.format(game.clickValueCost, 2, 0)
 	document.getElementById("antiprotonAmount").innerHTML = game.currentNotation.format(game.antiprotonAmount, 2, 0)
 
@@ -235,7 +217,7 @@ function updateNormal() {
 	}
 
 	if (game.protonAmount.greaterThan(1e15)) {
-		game.antiprotonsToGet = new Decimal(game.protonAmount.ln()).multiply(2).subtract(30)
+		game.antiprotonsToGet = new Decimal(game.protonAmount.ln()).multiply(4).subtract(90)
 		document.getElementsByClassName("antiprotonsToGet")[0].innerHTML = game.currentNotation.format(game.antiprotonsToGet.floor(), 2, 0)
 		document.getElementsByClassName("antiprotonsToGet")[1].innerHTML = game.currentNotation.format(game.antiprotonsToGet.floor(), 2, 0)
 		document.getElementById("acceleratorText").innerHTML = "Activate Accelerator"
@@ -564,7 +546,7 @@ function clickValueUp() {
 
 function activateAccelerator() {
 	if (game.protonAmount >= 1e15) {
-		game.antiprotonAmount += game.antiprotonsToGet
+		game.antiprotonAmount = game.antiprotonAmount.add(game.antiprotonsToGet)
 		game.protonAmount = new Decimal(0)
 		game.elementAmounts.fill(new Decimal(0))
 		game.protonsPerClick = new Decimal(1)

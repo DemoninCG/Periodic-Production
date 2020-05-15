@@ -1,4 +1,21 @@
-﻿<!DOCTYPE html>
+﻿<!--
+Gameplay:
+-First run (Goes to around fluorine)
+-Reset for around 50-70 antiprotons, unlock first antiverse upgrade
+-Buy AU1 for 250 antiprotons, doubles antiproton gain and unlocks AU2-7
+-Get row 3 elements
+-Buy AU2 for 1000 antiprotons(?), lets you start with 1000 protons each acceleration
+-Buy AU3 for ???, multiplies production by 5
+-Buy AU4 for ???, unlocks the antitable
+-Buy AU5
+-Buy AU6
+-Buy AU7, unlocks autobuyers and AU8-13
+-get row 4 elements?
+-Buy AU13, unlocks Planck tree
+-Planck tree stuff, unlocks more antiproton upgrades and better autovuyer yadda yadda
+-->
+
+<!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -201,7 +218,7 @@
 		<div id="widthMessage">It appears your screen size is not 1920x1080! This game is designed for 1080p screens, so things may break for you.</div>
 
 		<!-- The button to make protons -->
-		<button id="protonCreateButton" class="buttonGeneric" style="position: absolute; top: 55px; left: 1480px" onclick="protonAdd()"><b>Create protons</b></button>
+		<button id="protonCreateButton" class="buttonGeneric" style="position: absolute; top: 55px; left: 1480px; background-color: #a0c0b0" onclick="protonAdd()"><b>Create protons</b></button>
 
 		<button id="clickValueButton" class="buttonGeneric" style="position: absolute; top: 210px; left: 1480px; height: 80px; font-size: 16px" onclick="clickValueUp()"><b>Multiply protons/click by 10<br>Currently <a id="protonsPerClick">0</a><br>Costs <a id="clickValueCost">0</a> protons</b></button>
 
@@ -246,8 +263,8 @@
 		<p class="optionsText" style="font-size: 42px; line-height: 5px">Statistics (Still in progress)</p>
 		<br><br>
 		<p class="optionsText">You currently have <a class="protonAmount">0</a></p>
-		<p class="optionsText">Your protons weigh about <a id="protonAmountKilograms">0</a></p>
 		<p class="optionsText">That'd take about <a id="protonAmountSeconds">0 seconds</a> to write out completely</p>
+		<p class="optionsText">Your protons weigh about <a id="protonAmountKilograms">0</a></p>
 		<br><br>
 		<p class="optionsText" style="position: absolute; left: 2px; bottom: -3px">Element rules:<br>The first element of each row (Li, Na, K, etc.) multiplies all rows before it<br>Other elements produce the element before them.</p>
 	</div>
@@ -304,7 +321,7 @@
 		<div id="tachyonsTab" class="tab" style="top: 253px"><p class="tabText">Tachyons</p></div>
 		<div id="optionsTab" class="tab" style="bottom: 47px" onclick="optionsTabSwitch()"><p class="tabText">Options</p></div>
 		<div id="statisticsTab" class="tab" style="bottom: 101px" onclick="statisticsTabSwitch()"><p class="tabText">Statistics</p></div>
-		<p id="versionText" class="">Periodic Production<br>Update IV (85)</p>
+		<p id="versionText" class="">Periodic Production<br>Update IV (86)</p>
 		<img src="assets/logo-full-noback.png" id="tabLogo" class="unselectable" style="width: 40px; height: 40px; position: absolute; bottom: 3px">
 	</div>
 </body>
