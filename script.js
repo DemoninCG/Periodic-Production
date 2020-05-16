@@ -25,6 +25,7 @@ function reset() {
 		clickValueCost: new Decimal(750),
 		multiplier: new Decimal(1),
 		unlocks: 0,
+		tabUnlocks: ["none", "none", "none",],
 
 		baseCosts: [new Decimal(20), new Decimal(100), new Decimal(800), new Decimal(15000), new Decimal(1.5e7), new Decimal(1e9), new Decimal(4e10), new Decimal(1.5e13), new Decimal(1e16), new Decimal(5e22), new Decimal(8e23)],
 		elementAmounts: [],
@@ -48,7 +49,6 @@ function reset() {
 	document.getElementById("statistics").style.display = "none"
 	document.getElementById("options").style.display = "none"
 	document.getElementById("options2").style.display = "none"
-
 	var givenWidthMessage = false
 	if (screen.width != 1920 && givenWidthMessage == false) {
 		givenWidthMessage = true
@@ -217,7 +217,7 @@ function updateNormal() {
 	}
 
 	if (game.protonAmount.greaterThan(1e15)) {
-		game.antiprotonsToGet = new Decimal(game.protonAmount.ln()).multiply(4).subtract(90)
+		game.antiprotonsToGet = new Decimal(game.protonAmount.pow(0.1))
 		document.getElementsByClassName("antiprotonsToGet")[0].innerHTML = game.currentNotation.format(game.antiprotonsToGet.floor(), 2, 0)
 		document.getElementsByClassName("antiprotonsToGet")[1].innerHTML = game.currentNotation.format(game.antiprotonsToGet.floor(), 2, 0)
 		document.getElementById("acceleratorText").innerHTML = "Activate Accelerator"
@@ -324,7 +324,13 @@ function showObjectChecks() {
 
 	if (game.protonAmount >= 300) {
 		document.getElementById("clickValueButton").style.display = "block"
+	}
+
+	if (game.protonAmount >= 300 && game.protonAmount <= 1e15 && game.antiprotonAmount == 0) {
 		document.getElementById("somethingWillBeUnlocked").style.display = "block"
+	}
+	else {
+		document.getElementById("somethingWillBeUnlocked").style.display = "none"
 	}
 }
 
