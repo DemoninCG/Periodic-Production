@@ -105,6 +105,13 @@ th:hover, td:hover {
 	border: 3px rgba(68, 68, 68, 0.1);
 }
 
+.antiverseUpgradeButton {
+	background-color: #eeddcc;
+	color: #444444;
+	border: 5px solid #bbaa99;
+	border-style: outset;
+}
+
 
 
 

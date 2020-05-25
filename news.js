@@ -18,7 +18,7 @@ if (game.started == true) {
 
 var news = [
 "I'd like to thank you for playing my game: Antimatter Di- Wait crap sorry, Periodic Production.",
-"Local laboratory synthesizes new element, discovers it has a mass of over 100 NStQuMC-DSeOeMI-TVgQu. In unrelated news, Earth is now gone.",
+"Local laboratory synthesizes new element, discovers it has a mass of over 100 NStQuMC-DSeOeMI-TVgQu.",
 "You will die in " + (getRandomInt(10)+1) + " days",
 '"Create some news tickers" they said. "It will be fun" they said. I think I may be the least imaginative person on the planet.',
 "Today's word of the day is: Defenestration. This is the word of the day for every day, because it is the only good word.",
