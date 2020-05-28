@@ -46,7 +46,7 @@ Gameplay:
 	<div id="table" style="width: 100%; height: 100%">
 		<!-- The proton amount text -->
 		<div id="protonTextDiv">
-			<p id="protonText">You have <a class="protonAmount" style="font-size: 60px">0</a> <a id="protonAmount2">0</a></p>
+			<p id="protonText">You have <a class="protonAmount" style="font-size: 60px">0</a> <a id="protonAmount2"> protons</a></p>
 		</div>
 
 		<div id="infoDiv">
@@ -234,13 +234,14 @@ Gameplay:
 		<img src="assets/accelerator1.png" id="accelerator2" height="150px" width="150px" style="position: absolute; left: 812px; top: 225px">
 		<img src="assets/accelerator1.png" id="accelerator3" height="150px" width="150px" style="position: absolute; left: 958px; top: 225px">
 		<div id="prestigeStuff">
-			<center><p style="font-size: 32px; color: #111166">You have <a id="antiprotonAmount">0</a> antiprotons</p>
+			<center><p style="font-size: 32px; color: #111177">You have <a id="antiprotonAmount">0</a> antiprotons</p>
 			<p>Activating the acccelerator destroys all of your protons, but pulls some antiprotons from the antiverse.<br><br>Each antiproton gives a +1% bonus to all proton production.</p>
-			<p>Activating now will give you <a class="antiprotonsToGet" style="color: #111166">0</a> antiprotons, providing a <a class="antiprotonsToGet" style="color: #111166">0</a>% production bonus.</p><br><br><br><br><br><br><br>
+			<p>Activating now will give you <a class="antiprotonsToGet" style="color: #111177">0</a> antiprotons, providing a <a class="antiprotonsToGet" style="color: #111177">0</a>% production bonus.</p>
+			<p>Your current antiproton multiplier is <a id="antiprotonMultiplier" style="color: #771111">1</a>
 			<button id="acceleratorButton" class="buttonGeneric" style="position: absolute; left: 13px; bottom: 13px; background-color: #aaaadd; border-color: #555588; color: #333366; width: 550px" onclick="activateAccelerator()"><b><a id="acceleratorText">You need 1 Qd protons to activate!</a></b></button></center>
 		</div>
 		<p style="position: absolute; top: 0; left: 165px; font-size: 32px">Antiverse Upgrades</p>
-		<div class="antiverseUpgradeButton" style="	top: 80px; left: 50px;">
+		<div class="antiverseUpgradeButton" style="	top: 80px; left: 50px;" onclick="AU1()">
 			<p style="position: relative; margin: auto; margin-top: 10px;"><b>AU1</b><br>Gain twice as many antiprotons<br>Unlock AU2-6<br>Costs 250 antiprotons</p>
 		</div>
 		<div class="antiverseUpgradeButton" style="	top: 80px; left: 310px;">
@@ -340,7 +341,7 @@ Gameplay:
 		<div id="tachyonsTab" class="tab" style="top: 253px"><p class="tabText">Tachyons</p></div>
 		<div id="optionsTab" class="tab" style="bottom: 47px" onclick="optionsTabSwitch()"><p class="tabText">Options</p></div>
 		<div id="statisticsTab" class="tab" style="bottom: 101px" onclick="statisticsTabSwitch()"><p class="tabText">Statistics</p></div>
-		<p id="versionText" class="">Periodic Production<br>Update IV (89)</p>
+		<p id="versionText" class="">Periodic Production<br>Update IV (90)</p>
 		<img src="assets/logo-full-noback.png" id="tabLogo" class="unselectable" style="width: 40px; height: 40px; position: absolute; bottom: 3px">
 	</div>
 </body>

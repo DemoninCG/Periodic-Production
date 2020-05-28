@@ -25,7 +25,7 @@ function reset() {
 		clickValueCost: new Decimal(750),
 		multiplier: new Decimal(1),
 		unlocks: 0,
-		tabUnlocks: ["none", "none", "none",],
+		tabUnlocks: ["none", "none", "none"],
 
 		baseCosts: [new Decimal(20), new Decimal(100), new Decimal(800), new Decimal(15000), new Decimal(1.5e7), new Decimal(1e9), new Decimal(4e10), new Decimal(1.5e13), new Decimal(1e16), new Decimal(5e22), new Decimal(8e23)],
 		elementAmounts: [],
@@ -33,6 +33,9 @@ function reset() {
 
 		antiprotonAmount: new Decimal(0),
 		antiprotonsToGet: new Decimal(0),
+		antiprotonMultiplier: new Decimal(1),
+		accelerations: 0,
+		AUsBought: [false, false, false, false, false, false],
 	}
 
 	game.elementAmounts.length = 119
@@ -57,6 +60,12 @@ function reset() {
 	else if (screen.height != 1080 && givenWidthMessage == false) {
 		givenWidthMessage = true
 		widthMessage()
+	}
+
+	for (i = 0; i <= 5; i++) {
+		document.getElementsByClassName("antiverseUpgradeButton")[i].style.backgroundColor = "#eeddcc"
+		document.getElementsByClassName("antiverseUpgradeButton")[i].style.border = "5px solid #bbaa99"
+		document.getElementsByClassName("antiverseUpgradeButton")[i].style.borderStyle = "outset"
 	}
 }
 
@@ -103,6 +112,9 @@ function loadGame(loadgame) {
 
 	if (typeof loadgame.antiprotonAmount != "undefined") game.antiprotonAmount = new Decimal(loadgame.antiprotonAmount)
 	if (typeof loadgame.antiprotonsToGet != "undefined") game.antiprotonsToGet = new Decimal(loadgame.antiprotonsToGet)
+	if (typeof loadgame.antiprotonMultiplier != "undefined") game.antiprotonMultiplier = new Decimal(loadgame.antiprotonMultiplier)
+	if (typeof loadgame.accelerations != "undefined") game.accelerations = loadgame.accelerations
+	if (typeof loadgame.AUsBought != "undefined") game.AUsBought = loadgame.AUsBought
 }
 
 
@@ -118,7 +130,7 @@ function loadGame(loadgame) {
 
 
 
-// Stuff that needs to be updated every frame (16ms, 60 times/second)
+// Stuff that needs to be updated every time something happens
 function updateNormal() {	
 	var antiprotonBonus = new Decimal(game.antiprotonAmount).divide(100)
 	game.multiplier = new Decimal(1).add(antiprotonBonus)
@@ -153,6 +165,7 @@ function updateNormal() {
 	document.getElementById("protonsPerClick").innerHTML = game.currentNotation.format(game.protonsPerClick.multiply(game.multiplier), 2, 0)
 	document.getElementById("clickValueCost").innerHTML = game.currentNotation.format(game.clickValueCost, 2, 0)
 	document.getElementById("antiprotonAmount").innerHTML = game.currentNotation.format(game.antiprotonAmount, 2, 0)
+	document.getElementById("antiprotonMultiplier").innerHTML = game.currentNotation.format(game.antiprotonMultiplier, 2, 0)
 
 	if (game.protonAmount == 0) {
 		var protonAmountSeconds = new Decimal(0)
@@ -217,7 +230,7 @@ function updateNormal() {
 	}
 
 	if (game.protonAmount.greaterThan(1e15)) {
-		game.antiprotonsToGet = new Decimal(game.protonAmount.pow(0.1))
+		game.antiprotonsToGet = new Decimal(game.protonAmount.pow(0.1).multiply(game.antiprotonMultiplier))
 		document.getElementsByClassName("antiprotonsToGet")[0].innerHTML = game.currentNotation.format(game.antiprotonsToGet.floor(), 2, 0)
 		document.getElementsByClassName("antiprotonsToGet")[1].innerHTML = game.currentNotation.format(game.antiprotonsToGet.floor(), 2, 0)
 		document.getElementById("acceleratorText").innerHTML = "Activate Accelerator"
@@ -229,8 +242,33 @@ function updateNormal() {
 		document.getElementById("acceleratorText").innerHTML = "You need 1 Qd protons to activate!"
 	}
 
+	if (game.AUsBought[0] == true) {
+		document.getElementsByClassName("antiverseUpgradeButton")[0].style.backgroundColor = "#ddddcc"
+		document.getElementsByClassName("antiverseUpgradeButton")[0].style.border = "5px solid #aaaa99"
+	}
+	if (game.AUsBought[1] == true) {
+		document.getElementsByClassName("antiverseUpgradeButton")[1].style.backgroundColor = "#ddddcc"
+		document.getElementsByClassName("antiverseUpgradeButton")[1].style.border = "5px solid #aaaa99"
+	}
+	if (game.AUsBought[2] == true) {
+		document.getElementsByClassName("antiverseUpgradeButton")[2].style.backgroundColor = "#ddddcc"
+		document.getElementsByClassName("antiverseUpgradeButton")[2].style.border = "5px solid #aaaa99"
+	}
+	if (game.AUsBought[3] == true) {
+		document.getElementsByClassName("antiverseUpgradeButton")[3].style.backgroundColor = "#ddddcc"
+		document.getElementsByClassName("antiverseUpgradeButton")[3].style.border = "5px solid #aaaa99"
+	}
+	if (game.AUsBought[4] == true) {
+		document.getElementsByClassName("antiverseUpgradeButton")[4].style.backgroundColor = "#ddddcc"
+		document.getElementsByClassName("antiverseUpgradeButton")[4].style.border = "5px solid #aaaa99"
+	}
+	if (game.AUsBought[5] == true) {
+		document.getElementsByClassName("antiverseUpgradeButton")[5].style.backgroundColor = "#ddddcc"
+		document.getElementsByClassName("antiverseUpgradeButton")[5].style.border = "5px solid #aaaa99"
+	}
 }
 
+// Stuff that needs to be updated every frame (16ms, 60 times/second)
 function updateSmall() {
 
 	if (game.protonAmount != game.protonAmountChecking) {
@@ -558,5 +596,14 @@ function activateAccelerator() {
 		game.protonsPerClick = new Decimal(1)
 		game.clickValueCost = new Decimal(750)
 		elementColorCheck()
+	}
+}
+
+function AU1() {
+	if (game.antiprotonAmount >= 250 && game.AUsBought[0] == false) {
+		game.antiprotonAmount = game.antiprotonAmount.subtract(250)
+		game.antiprotonMultiplier = game.antiprotonMultiplier.multiply(2)
+		game.AUsBought[0] = true
+		updateNormal()
 	}
 }
