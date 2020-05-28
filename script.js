@@ -25,7 +25,7 @@ function reset() {
 		clickValueCost: new Decimal(750),
 		multiplier: new Decimal(1),
 		unlocks: 0,
-		tabUnlocks: ["none", "none", "none"],
+		tabUnlocks: ["block", "none", "none"],
 
 		baseCosts: [new Decimal(20), new Decimal(100), new Decimal(800), new Decimal(15000), new Decimal(1.5e7), new Decimal(1e9), new Decimal(4e10), new Decimal(1.5e13), new Decimal(1e16), new Decimal(5e22), new Decimal(8e23)],
 		elementAmounts: [],
@@ -104,6 +104,7 @@ function loadGame(loadgame) {
 	if (typeof loadgame.clickValueCost != "undefined") game.clickValueCost = new Decimal(loadgame.clickValueCost)
 	if (typeof loadgame.multiplier != "undefined") game.multiplier = new Decimal(loadgame.multiplier)
 	if (typeof loadgame.unlocks != "undefined") game.unlocks = loadgame.unlocks
+	if (typeof loadgame.tabUnlocks != "undefined") game.tabUnlocks = loadgame.tabUnlocks
 
 	if (typeof loadgame.elementAmounts != "undefined") game.elementAmounts = loadgame.elementAmounts
 	for (elementAmountTemp = 0; elementAmountTemp <= 116; elementAmountTemp++) {
@@ -286,10 +287,10 @@ function updateSmall() {
 	}
 
 	if ((Math.sin(game.tabBarX / 25) * 250 - 90) > 0) {
-		document.getElementById("prestigeTab").style.display = "block"
-		document.getElementById("skillsTab").style.display = "block"
 		document.getElementById("neutronsTab").style.display = "block"
-		document.getElementById("tachyonsTab").style.display = "block"
+		document.getElementById("prestigeTab").style.display = game.tabUnlocks[0]
+		document.getElementById("skillsTab").style.display = game.tabUnlocks[1]
+		document.getElementById("tachyonsTab").style.display = game.tabUnlocks[2]
 		document.getElementById("optionsTab").style.display = "block"
 		document.getElementById("statisticsTab").style.display = "block"
 	}
