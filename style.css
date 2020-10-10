@@ -58,19 +58,6 @@ p {
     margin-bottom: auto;
 }
 
-/* The news ticker */
-#newsTicker {
-	position: absolute;
-	top: 0;
-	left: 4%;
-	width: 92%;
-	height: 20px;
-	border-radius: 0 0 5px 5px;
-	text-align: center;
-	color: #444444;
-	z-index: 200;
-}
-
 /* Most buttons use this */
 .buttonGeneric {
 	height: 40px;
@@ -150,7 +137,7 @@ p {
 
 #protonTextDiv {
 	position: absolute;
-	top: 35px;
+	top: 15px;
 	left: 103px;
 	width: 1334px;
 	height: 80px;
